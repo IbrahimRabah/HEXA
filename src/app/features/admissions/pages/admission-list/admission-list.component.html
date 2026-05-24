@@ -1,6 +1,8 @@
 <app-page-header title="Admissions">
-  <p-button label="New Admission" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Admission form coming soon.')"></p-button>
+  <p-button label="New Admission" icon="pi pi-plus" (onClick)="showAdmForm = true"></p-button>
 </app-page-header>
+
+<app-admission-form [(visible)]="showAdmForm" (saved)="onAdmSaved($event)"></app-admission-form>
 
 <div class="filters-bar">
   <p-iconfield>

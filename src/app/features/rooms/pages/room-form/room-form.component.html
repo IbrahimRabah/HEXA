@@ -1,0 +1,146 @@
+<p-dialog
+  header="Add New Room"
+  [visible]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '740px', maxWidth: '95vw' }"
+  [contentStyle]="{ 'max-height': '72vh', 'overflow-y': 'auto' }"
+>
+  <form [formGroup]="form" class="room-form" autocomplete="off">
+
+    <!-- Room Location -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-map-marker"></i> Room Location</h4>
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label>Room Number <span class="req">*</span></label>
+          <input pInputText formControlName="roomNumber" placeholder="e.g. 101, 3B-05" class="w-full"
+            [class.invalid-field]="form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched" />
+          @if (form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Floor <span class="req">*</span></label>
+          <input pInputText formControlName="floor" placeholder="e.g. Ground, 1st, 2nd" class="w-full"
+            [class.invalid-field]="form.get('floor')?.invalid && form.get('floor')?.touched" />
+          @if (form.get('floor')?.invalid && form.get('floor')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Wing / Block</label>
+          <input pInputText formControlName="wing" placeholder="e.g. North Wing, Block A" class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Classification -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-tags"></i> Classification</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Ward <span class="req">*</span></label>
+          <p-select formControlName="wardName" [options]="wards"
+            optionLabel="label" optionValue="value" placeholder="Select ward" styleClass="w-full"
+            [class.invalid-field]="form.get('wardName')?.invalid && form.get('wardName')?.touched"></p-select>
+          @if (form.get('wardName')?.invalid && form.get('wardName')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Room Type <span class="req">*</span></label>
+          <p-select formControlName="type" [options]="roomTypes"
+            optionLabel="label" optionValue="value" placeholder="Select type" styleClass="w-full"
+            [class.invalid-field]="form.get('type')?.invalid && form.get('type')?.touched"></p-select>
+          @if (form.get('type')?.invalid && form.get('type')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing & Capacity -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-dollar"></i> Capacity &amp; Pricing</h4>
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label>Bed Capacity <span class="req">*</span></label>
+          <input type="number" pInputText formControlName="capacity" min="1" class="w-full"
+            [class.invalid-field]="form.get('capacity')?.invalid && form.get('capacity')?.touched" />
+          @if (form.get('capacity')?.invalid && form.get('capacity')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Daily Rate ($) <span class="req">*</span></label>
+          <input type="number" pInputText formControlName="dailyRate" min="0" step="0.01" class="w-full"
+            [class.invalid-field]="form.get('dailyRate')?.invalid && form.get('dailyRate')?.touched" />
+          @if (form.get('dailyRate')?.invalid && form.get('dailyRate')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Telephone Extension</label>
+          <input pInputText formControlName="telephoneExt" placeholder="e.g. 1042" class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Amenities -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-star"></i> Amenities</h4>
+      <div class="amenities-grid">
+        <label class="amenity-check">
+          <input type="checkbox" formControlName="hasPrivateBathroom" class="cb" />
+          <span class="amenity-icon"><i class="pi pi-inbox"></i></span>
+          <span>Private Bathroom</span>
+        </label>
+        <label class="amenity-check">
+          <input type="checkbox" formControlName="hasTv" class="cb" />
+          <span class="amenity-icon"><i class="pi pi-desktop"></i></span>
+          <span>Television</span>
+        </label>
+        <label class="amenity-check">
+          <input type="checkbox" formControlName="hasAc" class="cb" />
+          <span class="amenity-icon"><i class="pi pi-sun"></i></span>
+          <span>Air Conditioning</span>
+        </label>
+        <label class="amenity-check">
+          <input type="checkbox" formControlName="hasRefrigerator" class="cb" />
+          <span class="amenity-icon"><i class="pi pi-box"></i></span>
+          <span>Refrigerator</span>
+        </label>
+        <label class="amenity-check">
+          <input type="checkbox" formControlName="hasWifi" class="cb" />
+          <span class="amenity-icon"><i class="pi pi-wifi"></i></span>
+          <span>Wi-Fi</span>
+        </label>
+        <label class="amenity-check">
+          <input type="checkbox" formControlName="hasRecliner" class="cb" />
+          <span class="amenity-icon"><i class="pi pi-user"></i></span>
+          <span>Recliner Chair</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="form-section">
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea pInputText formControlName="notes" rows="3"
+          placeholder="Special features, access requirements, maintenance notes..."
+          class="w-full notes-ta"></textarea>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button label="Add Room" icon="pi pi-check" (onClick)="submit()"></p-button>
+    </div>
+
+  </form>
+</p-dialog>

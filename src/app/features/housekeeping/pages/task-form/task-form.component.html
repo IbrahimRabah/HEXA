@@ -1,0 +1,103 @@
+<p-dialog
+  header="New Housekeeping Task"
+  [visible]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '680px', maxWidth: '95vw' }"
+  [contentStyle]="{ 'max-height': '72vh', 'overflow-y': 'auto' }"
+>
+  <form [formGroup]="form" class="hk-form" autocomplete="off">
+
+    <!-- Room & Assignment -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-building"></i> Room &amp; Assignment</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Room Number <span class="req">*</span></label>
+          <input pInputText formControlName="roomNumber" placeholder="e.g. 101, ICU-3" class="w-full"
+            [class.invalid-field]="form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched" />
+          @if (form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Floor / Wing</label>
+          <input pInputText formControlName="floorWing" placeholder="e.g. 1st Floor, North Wing" class="w-full" />
+        </div>
+        <div class="form-group span-2">
+          <label>Assigned To <span class="req">*</span></label>
+          <input pInputText formControlName="assignedTo" placeholder="Staff member name" class="w-full"
+            [class.invalid-field]="form.get('assignedTo')?.invalid && form.get('assignedTo')?.touched" />
+          @if (form.get('assignedTo')?.invalid && form.get('assignedTo')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Task Details -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-list-check"></i> Task Details</h4>
+
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <label>Task Type <span class="req">*</span></label>
+        <p-select formControlName="taskType" [options]="taskTypes"
+          optionLabel="label" optionValue="value" styleClass="w-full"></p-select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 1rem;">
+        <label>Priority</label>
+        <div class="priority-chips">
+          @for (p of priorities; track p.value) {
+            <button type="button" class="priority-chip"
+              [class.chip-high]="p.value === 'High'"
+              [class.chip-normal]="p.value === 'Normal'"
+              [class.chip-low]="p.value === 'Low'"
+              [class.chip-active]="form.get('priority')?.value === p.value"
+              (click)="form.get('priority')?.setValue(p.value)">
+              {{ p.label }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label>Scheduled Date <span class="req">*</span></label>
+          <input type="date" pInputText formControlName="scheduledDate" class="w-full"
+            [class.invalid-field]="form.get('scheduledDate')?.invalid && form.get('scheduledDate')?.touched" />
+          @if (form.get('scheduledDate')?.invalid && form.get('scheduledDate')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Scheduled Time</label>
+          <input type="time" pInputText formControlName="scheduledTime" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Est. Duration (min)</label>
+          <input type="number" pInputText formControlName="estimatedDuration" min="5" step="5" class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="form-section">
+      <div class="form-group">
+        <label>Notes / Special Instructions</label>
+        <textarea pInputText formControlName="notes" rows="3"
+          placeholder="e.g. Use bio-hazard protocol, patient discharge room, deep stain on floor..."
+          class="w-full notes-ta"></textarea>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button label="Create Task" icon="pi pi-check" (onClick)="submit()"></p-button>
+    </div>
+
+  </form>
+</p-dialog>

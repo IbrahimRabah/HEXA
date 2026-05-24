@@ -1,6 +1,8 @@
 <app-page-header title="Surgical Operations">
-  <p-button label="Schedule Operation" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Operation form coming soon.')"></p-button>
+  <p-button label="Schedule Operation" icon="pi pi-plus" (onClick)="showOpForm = true"></p-button>
 </app-page-header>
+
+<app-operation-form [(visible)]="showOpForm" (saved)="onOpSaved($event)"></app-operation-form>
 
 <div class="filters-bar">
   <p-iconfield>

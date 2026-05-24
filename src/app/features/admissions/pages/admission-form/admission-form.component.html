@@ -1,0 +1,149 @@
+<p-dialog
+  header="New Admission"
+  [visible]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '760px', maxWidth: '95vw' }"
+  [contentStyle]="{ 'max-height': '72vh', 'overflow-y': 'auto' }"
+>
+  <form [formGroup]="form" class="adm-form" autocomplete="off">
+
+    <!-- Patient Information -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-user"></i> Patient Information</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Patient Name <span class="req">*</span></label>
+          <input pInputText formControlName="patientName" placeholder="Full patient name" class="w-full"
+            [class.invalid-field]="form.get('patientName')?.invalid && form.get('patientName')?.touched" />
+          @if (form.get('patientName')?.invalid && form.get('patientName')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Patient ID</label>
+          <input pInputText formControlName="patientId" placeholder="e.g. PAT-0042" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" pInputText formControlName="dateOfBirth" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Gender</label>
+          <p-select formControlName="gender" [options]="genders"
+            optionLabel="label" optionValue="value" placeholder="Select gender" styleClass="w-full"></p-select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medical Details -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-heart"></i> Medical Details</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Admitting Doctor <span class="req">*</span></label>
+          <input pInputText formControlName="doctorName" placeholder="Dr. Full Name" class="w-full"
+            [class.invalid-field]="form.get('doctorName')?.invalid && form.get('doctorName')?.touched" />
+          @if (form.get('doctorName')?.invalid && form.get('doctorName')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Primary Diagnosis <span class="req">*</span></label>
+          <input pInputText formControlName="diagnosis" placeholder="e.g. Acute Appendicitis" class="w-full"
+            [class.invalid-field]="form.get('diagnosis')?.invalid && form.get('diagnosis')?.touched" />
+          @if (form.get('diagnosis')?.invalid && form.get('diagnosis')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 1rem;">
+        <label>Admission Type <span class="req">*</span></label>
+        <div class="priority-chips">
+          @for (t of admissionTypes; track t.value) {
+            <button type="button" class="priority-chip"
+              [class.chip-emergency]="t.value === 'Emergency'"
+              [class.chip-urgent]="t.value === 'Urgent'"
+              [class.chip-elective]="t.value === 'Elective'"
+              [class.chip-referral]="t.value === 'Referral'"
+              [class.chip-active]="form.get('admissionType')?.value === t.value"
+              (click)="form.get('admissionType')?.setValue(t.value)">
+              {{ t.label }}
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Room Assignment -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-building"></i> Room Assignment</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Ward <span class="req">*</span></label>
+          <p-select formControlName="wardName" [options]="wards"
+            optionLabel="label" optionValue="value" placeholder="Select ward" styleClass="w-full"
+            [class.invalid-field]="form.get('wardName')?.invalid && form.get('wardName')?.touched"></p-select>
+          @if (form.get('wardName')?.invalid && form.get('wardName')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Room Number <span class="req">*</span></label>
+          <input pInputText formControlName="roomNumber" placeholder="e.g. 101, 201-A" class="w-full"
+            [class.invalid-field]="form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched" />
+          @if (form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Admission Date <span class="req">*</span></label>
+          <input type="date" pInputText formControlName="admissionDate" class="w-full"
+            [class.invalid-field]="form.get('admissionDate')?.invalid && form.get('admissionDate')?.touched" />
+          @if (form.get('admissionDate')?.invalid && form.get('admissionDate')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Expected Discharge</label>
+          <input type="date" pInputText formControlName="expectedDischarge" class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Insurance (optional) -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-shield"></i> Insurance (Optional)</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Insurance Provider</label>
+          <input pInputText formControlName="insuranceProvider" placeholder="e.g. Bupa, AXA, Self-Pay" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Policy Number</label>
+          <input pInputText formControlName="policyNumber" placeholder="e.g. POL-123456" class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="form-section">
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea pInputText formControlName="notes" rows="3"
+          placeholder="Additional notes, allergies, special requirements..."
+          class="w-full notes-ta"></textarea>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button label="Admit Patient" icon="pi pi-check" (onClick)="submit()"></p-button>
+    </div>
+
+  </form>
+</p-dialog>

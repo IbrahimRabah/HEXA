@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
 import { TagModule } from 'primeng/tag';
 import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
+import { RoomFormComponent } from '../room-form/room-form.component';
 import { RoomsService } from '../../services/rooms.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { RoomStatus } from '../../../../shared/enums/status.enums';
@@ -21,7 +22,7 @@ const STATUS_COLOR: Record<string, string> = {
 @Component({
   selector: 'app-rooms-list',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, FormsModule, ButtonModule, SelectModule, TagModule, PageHeaderComponent],
+  imports: [CommonModule, CurrencyPipe, FormsModule, ButtonModule, SelectModule, TagModule, PageHeaderComponent, RoomFormComponent],
   templateUrl: './rooms-list.component.html',
   styleUrl: './rooms-list.component.css'
 })
@@ -29,9 +30,15 @@ export class RoomsListComponent implements OnInit {
   all: any[] = [];
   filtered: any[] = [];
   selectedWard: string | null = null;
+  showRoomForm = false;
   wardOptions: any[] = [];
 
   legendEntries = Object.values(RoomStatus).map(s => ({ status: s, color: STATUS_COLOR[s] || '#999' }));
+
+  onRoomSaved(room: any) {
+    this.all.unshift(room);
+    this.applyFilters();
+  }
 
   private roomsService = inject(RoomsService);
   toastService = inject(ToastService);

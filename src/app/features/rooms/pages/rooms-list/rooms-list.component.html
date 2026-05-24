@@ -1,6 +1,8 @@
 <app-page-header title="Room Management">
-  <p-button label="Add Room" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Room form coming soon.')"></p-button>
+  <p-button label="Add Room" icon="pi pi-plus" (onClick)="showRoomForm = true"></p-button>
 </app-page-header>
+
+<app-room-form [(visible)]="showRoomForm" (saved)="onRoomSaved($event)"></app-room-form>
 
 <div class="legend">
   @for (entry of legendEntries; track entry.status) {

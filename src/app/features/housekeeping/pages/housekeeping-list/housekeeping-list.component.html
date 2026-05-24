@@ -1,6 +1,9 @@
 <app-page-header title="Housekeeping Tasks">
-  <p-button label="New Task" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Task form coming soon.')"></p-button>
+  <p-button label="New Task" icon="pi pi-plus" (onClick)="showTaskForm = true"></p-button>
 </app-page-header>
+
+<app-task-form [(visible)]="showTaskForm" (saved)="onTaskSaved($event)"></app-task-form>
+
 <div class="card">
   <p-table [value]="tasks" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>

@@ -9,13 +9,14 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
 import { StatusTagComponent } from '../../../../shared/components/status-tag/status-tag.component';
+import { AdmissionFormComponent } from '../admission-form/admission-form.component';
 import { AdmissionService } from '../../services/admission.service';
 import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-admission-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, PageHeaderComponent, StatusTagComponent, AdmissionFormComponent],
   templateUrl: './admission-list.component.html',
   styleUrl: './admission-list.component.css'
 })
@@ -24,6 +25,12 @@ export class AdmissionListComponent implements OnInit {
   filtered: any[] = [];
   loading = false;
   searchTerm = '';
+  showAdmForm = false;
+
+  onAdmSaved(a: any) {
+    this.all.unshift(a);
+    this.applyFilters();
+  }
 
   private admissionService = inject(AdmissionService);
   toastService = inject(ToastService);

@@ -11,6 +11,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { TagModule } from 'primeng/tag';
 import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
 import { StatusTagComponent } from '../../../../shared/components/status-tag/status-tag.component';
+import { OperationFormComponent } from '../operation-form/operation-form.component';
 import { OperationsService } from '../../services/operations.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { OperationStatus } from '../../../../shared/enums/status.enums';
@@ -18,7 +19,7 @@ import { OperationStatus } from '../../../../shared/enums/status.enums';
 @Component({
   selector: 'app-operations-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, OperationFormComponent],
   templateUrl: './operations-list.component.html',
   styleUrl: './operations-list.component.css'
 })
@@ -27,6 +28,7 @@ export class OperationsListComponent implements OnInit {
   filtered: any[] = [];
   loading = false;
   searchTerm = '';
+  showOpForm = false;
 
   private opsService = inject(OperationsService);
   toastService = inject(ToastService);
@@ -38,6 +40,11 @@ export class OperationsListComponent implements OnInit {
       this.filtered = data;
       this.loading = false;
     });
+  }
+
+  onOpSaved(op: any) {
+    this.all.unshift(op);
+    this.applyFilters();
   }
 
   applyFilters() {
