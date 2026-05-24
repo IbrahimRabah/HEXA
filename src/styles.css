@@ -399,3 +399,102 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================ */
+/* Dark Mode — CSS Variable Overrides           */
+/* ============================================ */
+html {
+  transition: background-color 0.25s, color 0.25s;
+}
+
+.dark-mode {
+  --hc-bg: #0f172a;
+  --hc-bg-card: #1e293b;
+  --hc-border: #334155;
+  --hc-text: #f1f5f9;
+  --hc-text-secondary: #94a3b8;
+  --hc-text-muted: #475569;
+  --hc-primary-bg: rgba(37, 99, 235, 0.15);
+  --hc-secondary-bg: rgba(13, 148, 136, 0.12);
+  --hc-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --hc-shadow: 0 1px 3px rgba(0, 0, 0, 0.45), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --hc-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.45), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --hc-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.55), 0 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+.dark-mode body {
+  background: var(--hc-bg);
+  color: var(--hc-text);
+}
+
+/* Dark mode — Status Tags */
+.dark-mode .status-active,
+.dark-mode .status-available,
+.dark-mode .status-completed,
+.dark-mode .status-paid {
+  background: rgba(22, 163, 74, 0.18) !important;
+  color: #86efac !important;
+}
+
+.dark-mode .status-pending,
+.dark-mode .status-draft,
+.dark-mode .status-waiting {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #fcd34d !important;
+}
+
+.dark-mode .status-inprogress,
+.dark-mode .status-confirmed,
+.dark-mode .status-scheduled {
+  background: rgba(37, 99, 235, 0.2) !important;
+  color: #93c5fd !important;
+}
+
+.dark-mode .status-cancelled,
+.dark-mode .status-inactive,
+.dark-mode .status-outofservice {
+  background: rgba(220, 38, 38, 0.2) !important;
+  color: #fca5a5 !important;
+}
+
+.dark-mode .status-warning,
+.dark-mode .status-noshow,
+.dark-mode .status-overdue {
+  background: rgba(234, 88, 12, 0.15) !important;
+  color: #fdba74 !important;
+}
+
+/* Dark mode — Login Page Form Panel */
+.dark-mode .form-panel {
+  background: #0f172a;
+}
+.dark-mode .form-header h2 {
+  color: #f1f5f9;
+}
+.dark-mode .form-header p {
+  color: #94a3b8;
+}
+.dark-mode .form-label {
+  color: #cbd5e1;
+}
+.dark-mode .input-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+}
+.dark-mode .form-input {
+  color: #f1f5f9;
+}
+.dark-mode .form-input::placeholder {
+  color: #475569;
+}
+.dark-mode .mobile-logo {
+  color: #f1f5f9;
+}
+
+/* Dark mode — scrollbar */
+.dark-mode ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}

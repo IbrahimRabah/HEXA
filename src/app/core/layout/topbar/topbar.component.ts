@@ -6,6 +6,7 @@ import { MenuModule } from 'primeng/menu';
 import { Menu } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
 import { AuthService } from '../../services/auth.service';
+import { ThemeService } from '../../services/theme.service';
 
 const ROLE_COLORS: Record<string, string> = {
   Admin:           '#2563eb',
@@ -29,8 +30,14 @@ export class TopbarComponent {
   @ViewChild('userMenu') userMenu!: Menu;
 
   private authService = inject(AuthService);
+  private themeService = inject(ThemeService);
 
   readonly currentUser = this.authService.currentUser;
+  readonly isDark = this.themeService.isDark;
+
+  toggleTheme(): void {
+    this.themeService.toggle();
+  }
 
   readonly userMenuItems: MenuItem[] = [
     {

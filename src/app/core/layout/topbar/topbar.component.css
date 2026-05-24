@@ -115,3 +115,43 @@
 :host ::ng-deep .danger-item a .p-menuitem-icon {
   color: #dc2626 !important;
 }
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+:host-context(.dark-mode) .topbar {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+:host-context(.dark-mode) .icon-btn {
+  color: #94a3b8;
+}
+:host-context(.dark-mode) .icon-btn:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+:host-context(.dark-mode) .notif-badge {
+  border-color: #1e293b;
+}
+
+:host-context(.dark-mode) .brand-name {
+  color: #f1f5f9;
+}
+:host-context(.dark-mode) .brand-tagline {
+  color: #475569;
+}
+
+:host-context(.dark-mode) .user-section:hover,
+:host-context(.dark-mode) .user-section:focus {
+  background: #334155;
+  border-color: #475569;
+}
+:host-context(.dark-mode) .user-name {
+  color: #f1f5f9;
+}
+:host-context(.dark-mode) .chevron-icon {
+  color: #475569;
+}

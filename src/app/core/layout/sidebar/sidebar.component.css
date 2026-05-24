@@ -121,3 +121,41 @@
 .sidebar.collapsed .logo-icon {
   margin: 0 auto;
 }
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+:host-context(.dark-mode) .sidebar {
+  background: #1e293b;
+  border-color: #334155;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+}
+:host-context(.dark-mode) .sidebar-logo {
+  border-color: #334155;
+}
+:host-context(.dark-mode) .logo-text {
+  color: #f1f5f9;
+}
+:host-context(.dark-mode) .nav-section-label {
+  color: #475569;
+}
+:host-context(.dark-mode) .nav-section-divider {
+  background: #334155;
+}
+:host-context(.dark-mode) .nav-item {
+  color: #94a3b8;
+}
+:host-context(.dark-mode) .nav-item:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+:host-context(.dark-mode) .nav-item.active {
+  background: rgba(37, 99, 235, 0.2);
+  color: #93c5fd;
+}
+:host-context(.dark-mode) .nav-item.active .nav-icon {
+  color: #93c5fd;
+}
+:host-context(.dark-mode) .sidebar-nav::-webkit-scrollbar-thumb {
+  background: #334155;
+}

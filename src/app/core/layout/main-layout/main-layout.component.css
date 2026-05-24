@@ -17,4 +17,10 @@
   padding: 1.5rem;
   overflow-y: auto;
   background-color: #f8fafc;
+  transition: background-color 0.3s;
+}
+
+/* Dark Mode */
+:host-context(.dark-mode) .layout-main {
+  background-color: #0f172a;
 }

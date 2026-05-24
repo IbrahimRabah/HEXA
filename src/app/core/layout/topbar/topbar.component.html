@@ -19,6 +19,12 @@
       <span class="notif-badge">3</span>
     </button>
 
+    <button class="icon-btn theme-btn" (click)="toggleTheme()"
+      [title]="isDark() ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+      [attr.aria-label]="isDark() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+      <i [class]="isDark() ? 'pi pi-sun' : 'pi pi-moon'"></i>
+    </button>
+
     @if (currentUser()) {
       <div class="user-section" (click)="toggleUserMenu($event)" role="button" tabindex="0" (keydown.enter)="toggleUserMenu($event)">
         <div class="user-avatar" [style.background]="getRoleColor()">
