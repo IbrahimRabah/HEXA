@@ -1,6 +1,8 @@
 <app-page-header title="Billing & Invoices">
-  <p-button label="New Invoice" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Invoice form coming soon.')"></p-button>
+  <p-button label="New Invoice" icon="pi pi-plus" (onClick)="showInvoiceForm = true"></p-button>
 </app-page-header>
+
+<app-invoice-form [(visible)]="showInvoiceForm" (saved)="onInvoiceSaved($event)"></app-invoice-form>
 
 <div class="summary-bar">
   <div class="summary-item"><span class="count">{{ total.length }}</span><span class="label">Total Invoices</span></div>

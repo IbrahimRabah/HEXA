@@ -11,6 +11,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { TagModule } from 'primeng/tag';
 import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
 import { StatusTagComponent } from '../../../../shared/components/status-tag/status-tag.component';
+import { LabRequestFormComponent } from '../lab-request-form/lab-request-form.component';
 import { LabService } from '../../services/lab.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { LabRequestStatus } from '../../../../shared/enums/status.enums';
@@ -30,7 +31,7 @@ const STATUS_OPTIONS = [
 @Component({
   selector: 'app-lab-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, LabRequestFormComponent],
   templateUrl: './lab-list.component.html',
   styleUrl: './lab-list.component.css'
 })
@@ -43,6 +44,7 @@ export class LabListComponent implements OnInit {
   selectedStatus: string | null = null;
   priorityOptions = PRIORITY_OPTIONS;
   statusOptions = STATUS_OPTIONS;
+  showLabForm = false;
 
   private labService = inject(LabService);
   toastService = inject(ToastService);
@@ -54,6 +56,11 @@ export class LabListComponent implements OnInit {
       this.filtered = data;
       this.loading = false;
     });
+  }
+
+  onLabSaved(req: any) {
+    this.all.unshift(req);
+    this.applyFilters();
   }
 
   applyFilters() {

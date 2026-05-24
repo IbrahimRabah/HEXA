@@ -1,6 +1,8 @@
 <app-page-header title="Pharmacy — Medication Inventory">
-  <p-button label="Add Medication" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Medication form coming soon.')"></p-button>
+  <p-button label="Add Medication" icon="pi pi-plus" (onClick)="showMedForm = true"></p-button>
 </app-page-header>
+
+<app-medication-form [(visible)]="showMedForm" (saved)="onMedSaved($event)"></app-medication-form>
 
 <div class="filters-bar">
   <p-iconfield>

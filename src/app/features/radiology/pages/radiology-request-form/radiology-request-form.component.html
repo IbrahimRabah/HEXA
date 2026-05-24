@@ -1,0 +1,130 @@
+<p-dialog
+  header="New Radiology Request"
+  [visible]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '720px', maxWidth: '95vw' }"
+  [contentStyle]="{ 'max-height': '72vh', 'overflow-y': 'auto' }"
+>
+  <form [formGroup]="form" class="rad-form" autocomplete="off">
+
+    <!-- Patient & Physician -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-user"></i> Patient &amp; Physician</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Patient Name <span class="req">*</span></label>
+          <input pInputText formControlName="patientName" placeholder="Full patient name" class="w-full"
+            [class.invalid-field]="form.get('patientName')?.invalid && form.get('patientName')?.touched" />
+          @if (form.get('patientName')?.invalid && form.get('patientName')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Patient ID</label>
+          <input pInputText formControlName="patientId" placeholder="e.g. PAT-0042" class="w-full" />
+        </div>
+        <div class="form-group span-2">
+          <label>Requesting Doctor <span class="req">*</span></label>
+          <input pInputText formControlName="doctorName" placeholder="Dr. Full Name" class="w-full"
+            [class.invalid-field]="form.get('doctorName')?.invalid && form.get('doctorName')?.touched" />
+          @if (form.get('doctorName')?.invalid && form.get('doctorName')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Imaging Details -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-image"></i> Imaging Details</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Imaging Type <span class="req">*</span></label>
+          <p-select formControlName="imagingType" [options]="imagingTypes"
+            optionLabel="label" optionValue="value" placeholder="Select modality"
+            styleClass="w-full"
+            [class.invalid-field]="form.get('imagingType')?.invalid && form.get('imagingType')?.touched"></p-select>
+          @if (form.get('imagingType')?.invalid && form.get('imagingType')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Body Part / Region <span class="req">*</span></label>
+          <p-select formControlName="bodyPart" [options]="commonBodyParts"
+            optionLabel="label" optionValue="value" placeholder="Select or type region"
+            [editable]="true"
+            styleClass="w-full"
+            [class.invalid-field]="form.get('bodyPart')?.invalid && form.get('bodyPart')?.touched"></p-select>
+          @if (form.get('bodyPart')?.invalid && form.get('bodyPart')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+      </div>
+
+      <!-- Priority chips -->
+      <div class="form-group" style="margin-top: 1rem;">
+        <label>Priority <span class="req">*</span></label>
+        <div class="priority-chips">
+          @for (p of priorities; track p.value) {
+            <button type="button" class="priority-chip"
+              [class.chip-stat]="p.value === 'STAT'"
+              [class.chip-urgent]="p.value === 'Urgent'"
+              [class.chip-routine]="p.value === 'Routine'"
+              [class.chip-active]="form.get('priority')?.value === p.value"
+              (click)="form.get('priority')?.setValue(p.value)">
+              {{ p.label }}
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Toggles row -->
+      <div class="toggles-row" style="margin-top: 1rem;">
+        <label class="toggle-label">
+          <input type="checkbox" formControlName="contrastRequired" class="toggle-cb" />
+          <span class="toggle-text">Contrast Required</span>
+        </label>
+        <label class="toggle-label">
+          <input type="checkbox" formControlName="previousImagingAvailable" class="toggle-cb" />
+          <span class="toggle-text">Previous Imaging Available</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Clinical Info -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-file-edit"></i> Clinical Information</h4>
+      <div class="form-grid-2">
+        <div class="form-group span-2">
+          <label>Clinical Indication <span class="req">*</span></label>
+          <textarea pInputText formControlName="clinicalIndication" rows="3"
+            placeholder="Describe symptoms, clinical indication, and reason for imaging..."
+            class="w-full notes-ta"
+            [class.invalid-field]="form.get('clinicalIndication')?.invalid && form.get('clinicalIndication')?.touched"></textarea>
+          @if (form.get('clinicalIndication')?.invalid && form.get('clinicalIndication')?.touched) {
+            <small class="field-error">Clinical indication is required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>ICD-10 Code</label>
+          <input pInputText formControlName="icdCode" placeholder="e.g. M54.5, C34.1" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Special Instructions</label>
+          <input pInputText formControlName="specialInstructions"
+            placeholder="e.g. Patient is claustrophobic..." class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button label="Submit Request" icon="pi pi-send" (onClick)="submit()"></p-button>
+    </div>
+
+  </form>
+</p-dialog>

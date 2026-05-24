@@ -9,13 +9,14 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { TagModule } from 'primeng/tag';
 import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
+import { MedicationFormComponent } from '../medication-form/medication-form.component';
 import { PharmacyService } from '../../services/pharmacy.service';
 import { ToastService } from '../../../../core/services/toast.service';
 
 @Component({
   selector: 'app-pharmacy-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent],
+  imports: [CommonModule, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, MedicationFormComponent],
   templateUrl: './pharmacy-list.component.html',
   styleUrl: './pharmacy-list.component.css'
 })
@@ -24,6 +25,7 @@ export class PharmacyListComponent implements OnInit {
   filtered: any[] = [];
   loading = false;
   searchTerm = '';
+  showMedForm = false;
 
   private pharmacyService = inject(PharmacyService);
   toastService = inject(ToastService);
@@ -35,6 +37,11 @@ export class PharmacyListComponent implements OnInit {
       this.filtered = data;
       this.loading = false;
     });
+  }
+
+  onMedSaved(med: any) {
+    this.all.unshift(med);
+    this.applyFilters();
   }
 
   applyFilters() {

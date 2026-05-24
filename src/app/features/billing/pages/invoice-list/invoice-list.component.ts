@@ -10,6 +10,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
 import { StatusTagComponent } from '../../../../shared/components/status-tag/status-tag.component';
+import { InvoiceFormComponent } from '../invoice-form/invoice-form.component';
 import { BillingService } from '../../services/billing.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { InvoiceStatus } from '../../../../shared/enums/status.enums';
@@ -22,7 +23,7 @@ const STATUS_OPTIONS = [
 @Component({
   selector: 'app-invoice-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, CurrencyPipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, DatePipe, CurrencyPipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, PageHeaderComponent, StatusTagComponent, InvoiceFormComponent],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css'
 })
@@ -33,6 +34,7 @@ export class InvoiceListComponent implements OnInit {
   searchTerm = '';
   selectedStatus: string | null = null;
   statusOptions = STATUS_OPTIONS;
+  showInvoiceForm = false;
 
   get paidCount() { return this.total.filter(i => i.status === InvoiceStatus.Paid).length; }
   get pendingCount() { return this.total.filter(i => i.status !== InvoiceStatus.Paid && i.status !== InvoiceStatus.Cancelled).length; }
@@ -57,6 +59,11 @@ export class InvoiceListComponent implements OnInit {
       const matchStatus = !this.selectedStatus || i.status === this.selectedStatus;
       return matchSearch && matchStatus;
     });
+  }
+
+  onInvoiceSaved(inv: any) {
+    this.total.unshift(inv);
+    this.applyFilters();
   }
 
   markPaid(inv: any) {

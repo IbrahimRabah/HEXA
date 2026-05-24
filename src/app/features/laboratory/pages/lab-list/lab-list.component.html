@@ -1,6 +1,8 @@
 <app-page-header title="Laboratory Requests">
-  <p-button label="New Request" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Lab request form coming soon.')"></p-button>
+  <p-button label="New Request" icon="pi pi-plus" (onClick)="showLabForm = true"></p-button>
 </app-page-header>
+
+<app-lab-request-form [(visible)]="showLabForm" (saved)="onLabSaved($event)"></app-lab-request-form>
 
 <div class="filters-bar">
   <p-iconfield>

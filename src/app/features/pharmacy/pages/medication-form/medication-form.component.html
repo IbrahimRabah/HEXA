@@ -1,0 +1,126 @@
+<p-dialog
+  header="Add Medication"
+  [visible]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '740px', maxWidth: '95vw' }"
+  [contentStyle]="{ 'max-height': '72vh', 'overflow-y': 'auto' }"
+>
+  <form [formGroup]="form" class="med-form" autocomplete="off">
+
+    <!-- Product Information -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-box"></i> Product Information</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Trade / Brand Name <span class="req">*</span></label>
+          <input pInputText formControlName="name" placeholder="e.g. Augmentin" class="w-full"
+            [class.invalid-field]="form.get('name')?.invalid && form.get('name')?.touched" />
+          @if (form.get('name')?.invalid && form.get('name')?.touched) {
+            <small class="field-error">Brand name is required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Generic Name <span class="req">*</span></label>
+          <input pInputText formControlName="genericName" placeholder="e.g. Amoxicillin + Clavulanate" class="w-full"
+            [class.invalid-field]="form.get('genericName')?.invalid && form.get('genericName')?.touched" />
+          @if (form.get('genericName')?.invalid && form.get('genericName')?.touched) {
+            <small class="field-error">Generic name is required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Manufacturer</label>
+          <input pInputText formControlName="manufacturer" placeholder="e.g. GlaxoSmithKline" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Barcode</label>
+          <input pInputText formControlName="barcode" placeholder="Scan or enter barcode" class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Classification -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-tags"></i> Classification</h4>
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label>Category <span class="req">*</span></label>
+          <p-select formControlName="category" [options]="categories"
+            optionLabel="label" optionValue="value" placeholder="Select category"
+            styleClass="w-full"
+            [class.invalid-field]="form.get('category')?.invalid && form.get('category')?.touched"></p-select>
+          @if (form.get('category')?.invalid && form.get('category')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Dosage Form <span class="req">*</span></label>
+          <p-select formControlName="form" [options]="dosageForms"
+            optionLabel="label" optionValue="value" placeholder="Select form"
+            styleClass="w-full"
+            [class.invalid-field]="form.get('form')?.invalid && form.get('form')?.touched"></p-select>
+          @if (form.get('form')?.invalid && form.get('form')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Strength <span class="req">*</span></label>
+          <input pInputText formControlName="strength" placeholder="e.g. 500mg, 10mg/5mL" class="w-full"
+            [class.invalid-field]="form.get('strength')?.invalid && form.get('strength')?.touched" />
+          @if (form.get('strength')?.invalid && form.get('strength')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Inventory & Pricing -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-warehouse"></i> Inventory &amp; Pricing</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Unit Price ($) <span class="req">*</span></label>
+          <input type="number" pInputText formControlName="price" min="0" step="0.01" class="w-full"
+            [class.invalid-field]="form.get('price')?.invalid && form.get('price')?.touched" />
+          @if (form.get('price')?.invalid && form.get('price')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Shelf Location</label>
+          <input pInputText formControlName="shelfLocation" placeholder="e.g. A-12, Shelf 3" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Current Stock (units) <span class="req">*</span></label>
+          <input type="number" pInputText formControlName="stock" min="0" class="w-full"
+            [class.invalid-field]="form.get('stock')?.invalid && form.get('stock')?.touched" />
+          @if (form.get('stock')?.invalid && form.get('stock')?.touched) {
+            <small class="field-error">Required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Minimum Stock Level</label>
+          <input type="number" pInputText formControlName="minStock" min="0" class="w-full" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="form-section">
+      <div class="form-group">
+        <label>Notes / Storage Instructions</label>
+        <textarea pInputText formControlName="notes" rows="3"
+          placeholder="e.g. Store below 25°C, keep away from light..." class="w-full notes-ta"></textarea>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button label="Add Medication" icon="pi pi-check" (onClick)="submit()"></p-button>
+    </div>
+
+  </form>
+</p-dialog>

@@ -1,6 +1,8 @@
 <app-page-header title="Radiology Requests">
-  <p-button label="New Request" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Radiology request form coming soon.')"></p-button>
+  <p-button label="New Request" icon="pi pi-plus" (onClick)="showRadForm = true"></p-button>
 </app-page-header>
+
+<app-radiology-request-form [(visible)]="showRadForm" (saved)="onRadSaved($event)"></app-radiology-request-form>
 
 <div class="filters-bar">
   <p-iconfield>

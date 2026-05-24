@@ -1,0 +1,130 @@
+<p-dialog
+  header="New Invoice"
+  [visible]="visible"
+  (onHide)="close()"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [style]="{ width: '820px', maxWidth: '95vw' }"
+  [contentStyle]="{ 'max-height': '72vh', 'overflow-y': 'auto' }"
+>
+  <form [formGroup]="form" class="inv-form" autocomplete="off">
+
+    <!-- Patient & Invoice Info -->
+    <div class="form-section">
+      <h4 class="section-title"><i class="pi pi-user"></i> Patient &amp; Invoice Details</h4>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label>Patient Name <span class="req">*</span></label>
+          <input pInputText formControlName="patientName" placeholder="Full patient name" class="w-full"
+            [class.invalid-field]="form.get('patientName')?.invalid && form.get('patientName')?.touched" />
+          @if (form.get('patientName')?.invalid && form.get('patientName')?.touched) {
+            <small class="field-error">Patient name is required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Patient ID</label>
+          <input pInputText formControlName="patientId" placeholder="e.g. PAT-0042" class="w-full" />
+        </div>
+        <div class="form-group">
+          <label>Due Date <span class="req">*</span></label>
+          <input type="date" pInputText formControlName="dueDate" class="w-full"
+            [class.invalid-field]="form.get('dueDate')?.invalid && form.get('dueDate')?.touched" />
+          @if (form.get('dueDate')?.invalid && form.get('dueDate')?.touched) {
+            <small class="field-error">Due date is required</small>
+          }
+        </div>
+        <div class="form-group">
+          <label>Payment Method <span class="req">*</span></label>
+          <p-select formControlName="paymentMethod" [options]="paymentMethods"
+            optionLabel="label" optionValue="value" styleClass="w-full"></p-select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Line Items -->
+    <div class="form-section">
+      <div class="section-header-row">
+        <h4 class="section-title"><i class="pi pi-list"></i> Invoice Items</h4>
+        <button type="button" class="btn-add-item" (click)="addItem()">
+          <i class="pi pi-plus"></i> Add Item
+        </button>
+      </div>
+      <div class="items-table">
+        <div class="items-header">
+          <span class="col-desc">Description</span>
+          <span class="col-qty">Qty</span>
+          <span class="col-price">Unit Price</span>
+          <span class="col-amount">Amount</span>
+          <span class="col-remove"></span>
+        </div>
+        <div formArrayName="items">
+          @for (item of itemsArray.controls; track $index) {
+            <div class="item-row" [formGroupName]="$index">
+              <div class="col-desc">
+                <input pInputText formControlName="description" placeholder="Service or description" class="w-full"
+                  [class.invalid-field]="item.get('description')?.invalid && item.get('description')?.touched" />
+              </div>
+              <div class="col-qty">
+                <input type="number" pInputText formControlName="quantity" min="1" class="w-full text-right" />
+              </div>
+              <div class="col-price">
+                <input type="number" pInputText formControlName="unitPrice" min="0" step="0.01" class="w-full text-right" />
+              </div>
+              <div class="col-amount">{{ lineTotal($index) | currency }}</div>
+              <div class="col-remove">
+                <button type="button" class="btn-remove" (click)="removeItem($index)"
+                  [disabled]="itemsArray.length === 1" title="Remove item">
+                  <i class="pi pi-trash"></i>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Totals + Notes -->
+    <div class="form-section">
+      <div class="bottom-grid">
+        <div class="form-group notes-group">
+          <label>Notes</label>
+          <textarea pInputText formControlName="notes" rows="5"
+            placeholder="Optional notes or instructions..." class="w-full notes-ta"></textarea>
+        </div>
+        <div class="totals-box">
+          <div class="total-row">
+            <span>Subtotal</span>
+            <span>{{ subtotal | currency }}</span>
+          </div>
+          <div class="total-row">
+            <div class="adj-field">
+              <span>Discount ($)</span>
+              <input type="number" pInputText formControlName="discount" min="0" step="0.01" class="mini-input" />
+            </div>
+            <span class="text-red">−&nbsp;{{ discountAmt | currency }}</span>
+          </div>
+          <div class="total-row">
+            <div class="adj-field">
+              <span>Tax (%)</span>
+              <input type="number" pInputText formControlName="taxPct" min="0" max="100" step="0.1" class="mini-input" />
+            </div>
+            <span class="text-muted">+&nbsp;{{ taxAmt | currency }}</span>
+          </div>
+          <div class="totals-divider"></div>
+          <div class="total-row grand-total">
+            <strong>Total Due</strong>
+            <strong>{{ grandTotal | currency }}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="form-actions">
+      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button label="Create Invoice" icon="pi pi-check" (onClick)="submit()"></p-button>
+    </div>
+
+  </form>
+</p-dialog>

@@ -11,6 +11,7 @@ import { InputIconModule } from 'primeng/inputicon';
 import { TagModule } from 'primeng/tag';
 import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
 import { StatusTagComponent } from '../../../../shared/components/status-tag/status-tag.component';
+import { RadiologyRequestFormComponent } from '../radiology-request-form/radiology-request-form.component';
 import { RadiologyService } from '../../services/radiology.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { RadiologyRequestStatus } from '../../../../shared/enums/status.enums';
@@ -25,7 +26,7 @@ const PRIORITY_OPTIONS = [
 @Component({
   selector: 'app-radiology-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, RadiologyRequestFormComponent],
   templateUrl: './radiology-list.component.html',
   styleUrl: './radiology-list.component.css'
 })
@@ -36,6 +37,7 @@ export class RadiologyListComponent implements OnInit {
   searchTerm = '';
   selectedPriority: string | null = null;
   priorityOptions = PRIORITY_OPTIONS;
+  showRadForm = false;
 
   private radiologyService = inject(RadiologyService);
   toastService = inject(ToastService);
@@ -47,6 +49,11 @@ export class RadiologyListComponent implements OnInit {
       this.filtered = data;
       this.loading = false;
     });
+  }
+
+  onRadSaved(req: any) {
+    this.all.unshift(req);
+    this.applyFilters();
   }
 
   applyFilters() {
