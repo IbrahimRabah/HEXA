@@ -1,0 +1,64 @@
+<div class="cs-wrapper">
+
+  <!-- Animated background blobs -->
+  <div class="cs-blob cs-blob-1"></div>
+  <div class="cs-blob cs-blob-2"></div>
+
+  <div class="cs-card">
+
+    <!-- Icon ring -->
+    <div class="cs-icon-ring">
+      <div class="cs-icon-inner">
+        <i [class]="icon"></i>
+      </div>
+      <div class="cs-ring cs-ring-1"></div>
+      <div class="cs-ring cs-ring-2"></div>
+    </div>
+
+    <!-- ETA badge -->
+    @if (eta) {
+      <span class="cs-eta-badge">
+        <i class="pi pi-calendar"></i>
+        {{ eta }}
+      </span>
+    }
+
+    <!-- Heading -->
+    <h2 class="cs-title">{{ title }}</h2>
+    <p class="cs-subtitle">Under Development</p>
+    <p class="cs-description">{{ description }}</p>
+
+    <!-- Planned features list -->
+    @if (features.length > 0) {
+      <div class="cs-features">
+        <p class="cs-features-label">
+          <i class="pi pi-list"></i> What's coming
+        </p>
+        <ul class="cs-features-list">
+          @for (feat of features; track feat) {
+            <li>
+              <i class="pi pi-check-circle"></i>
+              <span>{{ feat }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+    <!-- Progress bar -->
+    <div class="cs-progress">
+      <div class="cs-progress-bar">
+        <div class="cs-progress-fill"></div>
+      </div>
+      <span class="cs-progress-label">In Progress</span>
+    </div>
+
+    <!-- Action -->
+    <button class="cs-btn" (click)="goToDashboard()">
+      <i class="pi pi-arrow-left"></i>
+      Back to Dashboard
+    </button>
+
+  </div>
+
+</div>

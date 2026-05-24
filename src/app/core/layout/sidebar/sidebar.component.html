@@ -12,7 +12,7 @@
 
   <!-- Navigation -->
   <div class="sidebar-nav">
-    @for (section of navSections; track section.label) {
+    @for (section of visibleSections(); track section.label) {
 
       @if (!collapsed) {
         <span class="nav-section-label">{{ section.label }}</span>

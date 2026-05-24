@@ -1,6 +1,13 @@
-<app-page-header title="Dental Clinic"></app-page-header>
-<div class="placeholder-card">
-  <i class="pi pi-star" style="font-size:3rem;color:var(--p-primary-color)"></i>
-  <h2>Dental Module</h2>
-  <p>This module is under development. Dental charts, treatment plans, and appointment scheduling for dental services will be available here.</p>
-</div>
+<app-coming-soon
+  title="Dental Clinic"
+  icon="pi pi-star"
+  description="Complete dental management including charting, periodontal assessments, treatment plans, and follow-up scheduling is in progress."
+  eta="Q3 2026"
+  [features]="[
+    'Dental charting & periodontal chart',
+    'X-Ray / imaging integration',
+    'Treatment plan & procedure tracking',
+    'Tooth-by-tooth status history',
+    'Follow-up & upcoming visit scheduling'
+  ]"
+></app-coming-soon>

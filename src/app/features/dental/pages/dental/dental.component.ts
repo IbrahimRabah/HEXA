@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { PageHeaderComponent } from '../../../../shared/components/page-header/page-header.component';
+import { ComingSoonComponent } from '../../../../shared/components/coming-soon/coming-soon.component';
 
 @Component({
   selector: 'app-dental',
   standalone: true,
-  imports: [PageHeaderComponent],
+  imports: [ComingSoonComponent],
   templateUrl: './dental.component.html',
   styleUrl: './dental.component.css'
 })
