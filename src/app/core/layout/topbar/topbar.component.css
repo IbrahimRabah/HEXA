@@ -1,0 +1,26 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 60px;
+  background-color: var(--p-surface-0);
+  border-bottom: 1px solid var(--p-surface-200);
+}
+
+.topbar-left,
+.topbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  color: var(--p-text-color);
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}

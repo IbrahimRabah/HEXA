@@ -1,0 +1,66 @@
+<app-page-header title="Reception & Check-in">
+  <p-button label="Refresh" icon="pi pi-refresh" severity="secondary" (onClick)="load()"></p-button>
+</app-page-header>
+
+<!-- Summary -->
+<div class="summary-bar">
+  <div class="summary-item">
+    <span class="count">{{ todayAppointments.length }}</span>
+    <span class="label">Today's Appointments</span>
+  </div>
+  <div class="summary-item">
+    <span class="count text-green">{{ checkedInCount }}</span>
+    <span class="label">Checked In</span>
+  </div>
+  <div class="summary-item">
+    <span class="count text-orange">{{ pendingCount }}</span>
+    <span class="label">Waiting</span>
+  </div>
+</div>
+
+<div class="card">
+  <p-table [value]="todayAppointments" [paginator]="true" [rows]="15" [loading]="loading" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th>Time</th>
+        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="doctorName">Doctor <p-sortIcon field="doctorName"></p-sortIcon></th>
+        <th>Specialty</th>
+        <th>Type</th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 160px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-apt>
+      <tr>
+        <td><strong>{{ apt.startTime }}</strong></td>
+        <td>
+          <div class="patient-name">{{ apt.patientName }}</div>
+        </td>
+        <td>{{ apt.doctorName }}</td>
+        <td>{{ apt.specialtyName }}</td>
+        <td><span class="type-tag">{{ apt.type }}</span></td>
+        <td><app-status-tag [status]="apt.status"></app-status-tag></td>
+        <td>
+          @if (apt.status === 'Pending' || apt.status === 'Confirmed') {
+            <p-button label="Check In" icon="pi pi-check" size="small" severity="success" (onClick)="checkIn(apt)"></p-button>
+          }
+          @if (apt.status === 'CheckedIn') {
+            <p-button label="Open Visit" icon="pi pi-external-link" size="small" severity="info" (onClick)="openVisit(apt)"></p-button>
+          }
+          @if (apt.status === 'NoShow') {
+            <span class="no-show">No Show</span>
+          }
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr>
+        <td colspan="7" class="empty-state">
+          <i class="pi pi-calendar-times" style="font-size:2rem"></i>
+          <p>No appointments for today.</p>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

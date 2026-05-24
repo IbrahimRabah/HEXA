@@ -1,0 +1,47 @@
+<app-page-header title="Admissions">
+  <p-button label="New Admission" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Admission form coming soon.')"></p-button>
+</app-page-header>
+
+<div class="filters-bar">
+  <p-iconfield>
+    <p-inputicon styleClass="pi pi-search"></p-inputicon>
+    <input pInputText [(ngModel)]="searchTerm" placeholder="Search patient, room..." (input)="applyFilters()" />
+  </p-iconfield>
+</div>
+
+<div class="card">
+  <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="admissionNumber">Admission # <p-sortIcon field="admissionNumber"></p-sortIcon></th>
+        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="admittingDoctorName">Doctor <p-sortIcon field="admittingDoctorName"></p-sortIcon></th>
+        <th>Room</th>
+        <th pSortableColumn="admissionDate">Admitted <p-sortIcon field="admissionDate"></p-sortIcon></th>
+        <th pSortableColumn="expectedDischarge">Expected Discharge <p-sortIcon field="expectedDischarge"></p-sortIcon></th>
+        <th>Diagnosis</th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-a>
+      <tr>
+        <td><strong>{{ a.admissionNumber }}</strong></td>
+        <td>{{ a.patientName }}</td>
+        <td>{{ a.admittingDoctorName }}</td>
+        <td>{{ a.roomNumber }} — {{ a.wardName }}</td>
+        <td>{{ a.admissionDate | date:'dd MMM yyyy' }}</td>
+        <td>{{ a.expectedDischarge | date:'dd MMM yyyy' }}</td>
+        <td>{{ a.diagnosis }}</td>
+        <td><app-status-tag [status]="a.status"></app-status-tag></td>
+        <td>
+          <p-button icon="pi pi-sign-out" [text]="true" [rounded]="true" severity="warn" size="small"
+            pTooltip="Discharge" (onClick)="toastService.showInfo('Info', 'Discharge form coming soon.')"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No admissions found.</td></tr>
+    </ng-template>
+  </p-table>
+</div>

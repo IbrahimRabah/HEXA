@@ -1,0 +1,58 @@
+<app-page-header title="Billing & Invoices">
+  <p-button label="New Invoice" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Invoice form coming soon.')"></p-button>
+</app-page-header>
+
+<div class="summary-bar">
+  <div class="summary-item"><span class="count">{{ total.length }}</span><span class="label">Total Invoices</span></div>
+  <div class="summary-item"><span class="count text-green">{{ paidCount }}</span><span class="label">Paid</span></div>
+  <div class="summary-item"><span class="count text-orange">{{ pendingCount }}</span><span class="label">Pending</span></div>
+  <div class="summary-item"><span class="count text-blue">{{ totalRevenue | currency }}</span><span class="label">Total Revenue</span></div>
+</div>
+
+<div class="filters-bar">
+  <p-iconfield>
+    <p-inputicon styleClass="pi pi-search"></p-inputicon>
+    <input pInputText [(ngModel)]="searchTerm" placeholder="Search patient, invoice #..." (input)="applyFilters()" />
+  </p-iconfield>
+  <p-select [(ngModel)]="selectedStatus" [options]="statusOptions" optionLabel="label" optionValue="value" placeholder="Status" (onChange)="applyFilters()"></p-select>
+</div>
+
+<div class="card">
+  <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="invoiceNumber">Invoice # <p-sortIcon field="invoiceNumber"></p-sortIcon></th>
+        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="total">Total <p-sortIcon field="total"></p-sortIcon></th>
+        <th pSortableColumn="paidAmount">Paid <p-sortIcon field="paidAmount"></p-sortIcon></th>
+        <th pSortableColumn="balanceDue">Balance <p-sortIcon field="balanceDue"></p-sortIcon></th>
+        <th pSortableColumn="dueDate">Due Date <p-sortIcon field="dueDate"></p-sortIcon></th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 120px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-inv>
+      <tr>
+        <td><strong>{{ inv.invoiceNumber }}</strong></td>
+        <td>{{ inv.patientName }}</td>
+        <td>{{ inv.total | currency }}</td>
+        <td>{{ inv.paidAmount | currency }}</td>
+        <td [style.color]="inv.balanceDue > 0 ? '#E53935' : 'inherit'">
+          {{ inv.balanceDue | currency }}
+        </td>
+        <td>{{ inv.dueDate | date:'dd MMM yyyy' }}</td>
+        <td><app-status-tag [status]="inv.status"></app-status-tag></td>
+        <td>
+          <p-button icon="pi pi-dollar" [text]="true" [rounded]="true" severity="success" size="small"
+            pTooltip="Record Payment" (onClick)="markPaid(inv)"
+            [disabled]="inv.status === 'Paid'"></p-button>
+          <p-button icon="pi pi-eye" [text]="true" [rounded]="true" severity="info" size="small"
+            pTooltip="View Invoice" (onClick)="toastService.showInfo('Info', 'Invoice view coming soon.')"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No invoices found.</td></tr>
+    </ng-template>
+  </p-table>
+</div>

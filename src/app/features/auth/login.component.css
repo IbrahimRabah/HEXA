@@ -1,0 +1,25 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--p-surface-50);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.field {
+  width: 100%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}

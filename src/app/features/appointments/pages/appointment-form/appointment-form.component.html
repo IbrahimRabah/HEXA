@@ -1,0 +1,55 @@
+<app-page-header [title]="isEdit ? 'Edit Appointment' : 'New Appointment'">
+  <p-button label="Back" icon="pi pi-arrow-left" severity="secondary" routerLink="/appointments"></p-button>
+</app-page-header>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p-card styleClass="mb-3">
+    <div class="form-grid">
+      <div class="field">
+        <label>Patient <span class="required">*</span></label>
+        <p-select formControlName="patientId" [options]="patientOptions" optionLabel="label" optionValue="value"
+          placeholder="Select patient" [filter]="true" filterBy="label" (onChange)="onPatientChange($event)"></p-select>
+        <small class="error" *ngIf="isInvalid('patientId')">Patient is required.</small>
+      </div>
+      <div class="field">
+        <label>Doctor <span class="required">*</span></label>
+        <p-select formControlName="doctorId" [options]="doctorOptions" optionLabel="label" optionValue="value"
+          placeholder="Select doctor" [filter]="true" (onChange)="onDoctorChange($event)"></p-select>
+        <small class="error" *ngIf="isInvalid('doctorId')">Doctor is required.</small>
+      </div>
+      <div class="field">
+        <label>Date <span class="required">*</span></label>
+        <p-datepicker formControlName="appointmentDate" [showIcon]="true" dateFormat="dd/mm/yy" [minDate]="today"></p-datepicker>
+        <small class="error" *ngIf="isInvalid('appointmentDate')">Date is required.</small>
+      </div>
+      <div class="field">
+        <label>Start Time <span class="required">*</span></label>
+        <p-select formControlName="startTime" [options]="timeSlots" placeholder="Select time"></p-select>
+        <small class="error" *ngIf="isInvalid('startTime')">Start time is required.</small>
+      </div>
+      <div class="field">
+        <label>End Time</label>
+        <p-select formControlName="endTime" [options]="timeSlots" placeholder="Select time"></p-select>
+      </div>
+      <div class="field">
+        <label>Type <span class="required">*</span></label>
+        <p-select formControlName="type" [options]="typeOptions" optionLabel="label" optionValue="value" placeholder="Select type"></p-select>
+        <small class="error" *ngIf="isInvalid('type')">Type is required.</small>
+      </div>
+      <div class="field col-span-2">
+        <label>Reason for Visit</label>
+        <input pInputText formControlName="reason" placeholder="Brief reason for visit" />
+      </div>
+      <div class="field col-span-2">
+        <label>Notes</label>
+        <textarea pTextarea formControlName="notes" rows="3" placeholder="Additional notes..." style="width:100%"></textarea>
+      </div>
+    </div>
+  </p-card>
+
+  <div class="form-actions">
+    <p-button label="Cancel" icon="pi pi-times" severity="secondary" type="button" routerLink="/appointments"></p-button>
+    <p-button [label]="isEdit ? 'Update' : 'Schedule Appointment'" icon="pi pi-check" type="submit"
+      [disabled]="form.invalid || saving" [loading]="saving"></p-button>
+  </div>
+</form>

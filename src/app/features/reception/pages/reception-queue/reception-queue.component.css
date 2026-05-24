@@ -1,0 +1,61 @@
+.summary-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.summary-item {
+  flex: 1;
+  background: var(--p-content-background);
+  border: 1px solid var(--p-content-border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.count {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: var(--p-text-muted-color);
+}
+
+.text-green { color: #2E7D32; }
+.text-orange { color: #E65100; }
+
+.card {
+  background: var(--p-content-background);
+  border: 1px solid var(--p-content-border-color);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.patient-name {
+  font-weight: 600;
+}
+
+.type-tag {
+  background: var(--p-surface-100);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.no-show {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: var(--p-text-muted-color);
+}
+
+.empty-state p {
+  margin-top: 0.5rem;
+}

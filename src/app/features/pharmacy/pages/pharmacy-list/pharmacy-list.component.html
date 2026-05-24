@@ -1,0 +1,48 @@
+<app-page-header title="Pharmacy — Medication Inventory">
+  <p-button label="Add Medication" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Medication form coming soon.')"></p-button>
+</app-page-header>
+
+<div class="filters-bar">
+  <p-iconfield>
+    <p-inputicon styleClass="pi pi-search"></p-inputicon>
+    <input pInputText [(ngModel)]="searchTerm" placeholder="Search medications..." (input)="applyFilters()" />
+  </p-iconfield>
+</div>
+
+<div class="card">
+  <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="name">Medication <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="genericName">Generic Name <p-sortIcon field="genericName"></p-sortIcon></th>
+        <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+        <th pSortableColumn="form">Form <p-sortIcon field="form"></p-sortIcon></th>
+        <th pSortableColumn="strength">Strength <p-sortIcon field="strength"></p-sortIcon></th>
+        <th pSortableColumn="stock">Stock <p-sortIcon field="stock"></p-sortIcon></th>
+        <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+        <th style="width: 100px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-m>
+      <tr>
+        <td><strong>{{ m.name }}</strong></td>
+        <td>{{ m.genericName }}</td>
+        <td>{{ m.category }}</td>
+        <td>{{ m.form }}</td>
+        <td>{{ m.strength }}</td>
+        <td>
+          <p-tag [value]="m.stock + ' units'"
+            [severity]="m.stock < 100 ? 'danger' : m.stock < 500 ? 'warn' : 'success'"></p-tag>
+        </td>
+        <td>{{ m.price | currency }}</td>
+        <td>
+          <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info" size="small"
+            pTooltip="Edit" (onClick)="toastService.showInfo('Info', 'Edit coming soon.')"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No medications found.</td></tr>
+    </ng-template>
+  </p-table>
+</div>

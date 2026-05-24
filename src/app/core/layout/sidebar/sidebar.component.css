@@ -1,0 +1,21 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: var(--p-surface-0);
+  border-right: 1px solid var(--p-surface-200);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-container {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--p-surface-200);
+}
+
+.logo-container h2 {
+  margin: 0;
+  color: var(--p-primary-color);
+  font-size: 1.5rem;
+}

@@ -1,0 +1,51 @@
+<app-page-header title="Laboratory Requests">
+  <p-button label="New Request" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Lab request form coming soon.')"></p-button>
+</app-page-header>
+
+<div class="filters-bar">
+  <p-iconfield>
+    <p-inputicon styleClass="pi pi-search"></p-inputicon>
+    <input pInputText [(ngModel)]="searchTerm" placeholder="Search patient, test..." (input)="applyFilters()" />
+  </p-iconfield>
+  <p-select [(ngModel)]="selectedPriority" [options]="priorityOptions" optionLabel="label" optionValue="value" placeholder="Priority" (onChange)="applyFilters()"></p-select>
+  <p-select [(ngModel)]="selectedStatus" [options]="statusOptions" optionLabel="label" optionValue="value" placeholder="Status" (onChange)="applyFilters()"></p-select>
+</div>
+
+<div class="card">
+  <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="requestDate">Date <p-sortIcon field="requestDate"></p-sortIcon></th>
+        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="doctorName">Doctor <p-sortIcon field="doctorName"></p-sortIcon></th>
+        <th pSortableColumn="testName">Test <p-sortIcon field="testName"></p-sortIcon></th>
+        <th>Code</th>
+        <th pSortableColumn="priority">Priority <p-sortIcon field="priority"></p-sortIcon></th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 120px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-r>
+      <tr>
+        <td>{{ r.requestDate | date:'dd MMM HH:mm' }}</td>
+        <td><strong>{{ r.patientName }}</strong></td>
+        <td>{{ r.doctorName }}</td>
+        <td>{{ r.testName }}</td>
+        <td><code>{{ r.testCode }}</code></td>
+        <td>
+          <p-tag [value]="r.priority" [severity]="r.priority === 'STAT' ? 'danger' : r.priority === 'Urgent' ? 'warn' : 'info'"></p-tag>
+        </td>
+        <td><app-status-tag [status]="r.status"></app-status-tag></td>
+        <td>
+          <p-button icon="pi pi-check-circle" [text]="true" [rounded]="true" severity="success" size="small"
+            pTooltip="Mark Result Ready" (onClick)="markReady(r)"></p-button>
+          <p-button icon="pi pi-eye" [text]="true" [rounded]="true" severity="info" size="small"
+            pTooltip="View Results" (onClick)="toastService.showInfo('Info', 'Results view coming soon.')"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No lab requests found.</td></tr>
+    </ng-template>
+  </p-table>
+</div>

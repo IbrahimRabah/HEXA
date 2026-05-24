@@ -1,0 +1,60 @@
+<app-page-header title="Nursing Queue">
+  <p-button label="Refresh" icon="pi pi-refresh" severity="secondary" (onClick)="load()"></p-button>
+</app-page-header>
+
+<div class="summary-bar">
+  <div class="summary-item"><span class="count">{{ assessments.length }}</span><span class="label">In Queue</span></div>
+  <div class="summary-item"><span class="count text-orange">{{ waitingCount }}</span><span class="label">Waiting</span></div>
+  <div class="summary-item"><span class="count text-blue">{{ assessingCount }}</span><span class="label">Under Assessment</span></div>
+  <div class="summary-item"><span class="count text-green">{{ readyCount }}</span><span class="label">Ready for Doctor</span></div>
+</div>
+
+<div class="card">
+  <p-table [value]="assessments" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th>Date/Time</th>
+        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th>Nurse</th>
+        <th>Vitals</th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 140px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-a>
+      <tr>
+        <td>{{ a.assessmentDate | date:'HH:mm' }}</td>
+        <td><strong>{{ a.patientName }}</strong></td>
+        <td>{{ a.nurseName || '—' }}</td>
+        <td>
+          @if (a.vitalSigns) {
+            <span class="vitals-summary">
+              BP {{ a.vitalSigns.bloodPressureSystolic }}/{{ a.vitalSigns.bloodPressureDiastolic }} &bull;
+              T {{ a.vitalSigns.temperature }}°C &bull;
+              HR {{ a.vitalSigns.pulse }} &bull;
+              SpO₂ {{ a.vitalSigns.spO2 }}%
+            </span>
+          } @else {
+            <span class="text-muted">No vitals recorded</span>
+          }
+        </td>
+        <td><app-status-tag [status]="a.status"></app-status-tag></td>
+        <td>
+          <p-button icon="pi pi-heart" [text]="true" [rounded]="true" severity="info" size="small"
+            pTooltip="Record Vitals" (onClick)="recordVitals(a)"></p-button>
+          <p-button icon="pi pi-send" [text]="true" [rounded]="true" severity="success" size="small"
+            pTooltip="Mark Ready for Doctor" (onClick)="markReady(a)"
+            [disabled]="a.status === 'ReadyForDoctor' || a.status === 'Completed'"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr>
+        <td colspan="6" class="empty-state">
+          <i class="pi pi-heart" style="font-size:2rem"></i>
+          <p>No patients in nursing queue.</p>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

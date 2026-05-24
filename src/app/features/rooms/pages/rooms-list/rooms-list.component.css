@@ -1,0 +1,71 @@
+.legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.filter-bar {
+  margin-bottom: 1rem;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.room-card {
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.room-number {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.room-ward {
+  font-size: 0.75rem;
+  color: var(--p-text-muted-color);
+}
+
+.room-type {
+  font-size: 0.8rem;
+}
+
+.room-status {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.room-rate {
+  font-size: 0.8rem;
+  color: var(--p-text-muted-color);
+}
+
+.room-occ {
+  font-size: 0.8rem;
+}
+
+.room-actions {
+  margin-top: 0.5rem;
+}

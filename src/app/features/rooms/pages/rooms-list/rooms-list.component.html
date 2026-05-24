@@ -1,0 +1,40 @@
+<app-page-header title="Room Management">
+  <p-button label="Add Room" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Room form coming soon.')"></p-button>
+</app-page-header>
+
+<div class="legend">
+  @for (entry of legendEntries; track entry.status) {
+    <div class="legend-item">
+      <span class="dot" [style.background]="entry.color"></span>
+      <span>{{ entry.status }} ({{ countByStatus(entry.status) }})</span>
+    </div>
+  }
+</div>
+
+<div class="filter-bar">
+  <p-select [(ngModel)]="selectedWard" [options]="wardOptions" optionLabel="label" optionValue="value"
+    placeholder="All Wards" (onChange)="applyFilters()"></p-select>
+</div>
+
+<div class="rooms-grid">
+  @for (room of filtered; track room.id) {
+    <div class="room-card" [style.border-color]="getColor(room.status)" [style.background]="getColor(room.status) + '22'">
+      <div class="room-number">{{ room.roomNumber }}</div>
+      <div class="room-ward">{{ room.wardName }}</div>
+      <div class="room-type">{{ room.type }}</div>
+      <div class="room-status" [style.color]="getColor(room.status)">{{ room.status }}</div>
+      <div class="room-rate">{{ room.dailyRate | currency }}/day</div>
+      <div class="room-occ">{{ room.currentOccupancy }}/{{ room.capacity }} occupied</div>
+      <div class="room-actions">
+        @if (room.status === 'Cleaning' || room.status === 'Sanitizing') {
+          <p-button label="Mark Available" size="small" severity="success" [text]="true"
+            (onClick)="markAvailable(room)"></p-button>
+        }
+        @if (room.status === 'Available') {
+          <p-button label="Set Cleaning" size="small" severity="warn" [text]="true"
+            (onClick)="setStatus(room, 'Cleaning')"></p-button>
+        }
+      </div>
+    </div>
+  }
+</div>

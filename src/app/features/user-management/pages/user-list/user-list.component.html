@@ -1,0 +1,51 @@
+<app-page-header title="User Management">
+  <p-button label="New User" icon="pi pi-user-plus" (onClick)="toastService.showInfo('Info', 'User form coming soon.')"></p-button>
+</app-page-header>
+
+<div class="filters-bar">
+  <p-iconfield>
+    <p-inputicon styleClass="pi pi-search"></p-inputicon>
+    <input pInputText [(ngModel)]="searchTerm" placeholder="Search users..." (input)="applyFilters()" />
+  </p-iconfield>
+</div>
+
+<div class="card">
+  <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th></th>
+        <th pSortableColumn="fullName">Name <p-sortIcon field="fullName"></p-sortIcon></th>
+        <th pSortableColumn="username">Username <p-sortIcon field="username"></p-sortIcon></th>
+        <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+        <th>Role</th>
+        <th>Status</th>
+        <th style="width: 120px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-u>
+      <tr>
+        <td>
+          <p-avatar [label]="u.firstName?.charAt(0)" shape="circle"
+            [style]="{'background-color': '#6366F1', 'color': '#fff'}"></p-avatar>
+        </td>
+        <td><strong>{{ u.fullName }}</strong></td>
+        <td>{{ u.username }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.role?.name || '—' }}</td>
+        <td>
+          <p-tag [value]="u.isActive ? 'Active' : 'Inactive'" [severity]="u.isActive ? 'success' : 'secondary'"></p-tag>
+        </td>
+        <td>
+          <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info" size="small"
+            pTooltip="Edit User" (onClick)="toastService.showInfo('Info', 'Edit form coming soon.')"></p-button>
+          <p-button [icon]="u.isActive ? 'pi pi-ban' : 'pi pi-check-circle'" [text]="true" [rounded]="true"
+            [severity]="u.isActive ? 'danger' : 'success'" size="small"
+            [pTooltip]="u.isActive ? 'Deactivate' : 'Activate'" (onClick)="toggleActive(u)"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No users found.</td></tr>
+    </ng-template>
+  </p-table>
+</div>

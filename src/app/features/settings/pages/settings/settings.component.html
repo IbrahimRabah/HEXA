@@ -1,0 +1,45 @@
+<app-page-header title="System Settings">
+</app-page-header>
+
+<p-tabs value="0">
+  <p-tablist>
+    <p-tab value="0">General</p-tab>
+    <p-tab value="1">Notifications</p-tab>
+    <p-tab value="2">Security</p-tab>
+  </p-tablist>
+  <p-tabpanels>
+    <p-tabpanel value="0">
+      <div class="settings-section">
+        <h3>Hospital Information</h3>
+        <div class="settings-grid">
+          <div class="form-field"><label>Hospital Name</label><input pInputText [(ngModel)]="settings.hospitalName" /></div>
+          <div class="form-field"><label>License Number</label><input pInputText [(ngModel)]="settings.licenseNumber" /></div>
+          <div class="form-field"><label>Phone</label><input pInputText [(ngModel)]="settings.phone" /></div>
+          <div class="form-field"><label>Email</label><input pInputText [(ngModel)]="settings.email" /></div>
+          <div class="form-field full-width"><label>Address</label><input pInputText [(ngModel)]="settings.address" /></div>
+          <div class="form-field">
+            <label>Currency</label>
+            <p-select [(ngModel)]="settings.currency" [options]="currencies" optionLabel="label" optionValue="value"></p-select>
+          </div>
+          <div class="form-field">
+            <label>Date Format</label>
+            <p-select [(ngModel)]="settings.dateFormat" [options]="dateFormats" optionLabel="label" optionValue="value"></p-select>
+          </div>
+        </div>
+        <div class="settings-actions">
+          <p-button label="Save Changes" icon="pi pi-save" (onClick)="save()"></p-button>
+        </div>
+      </div>
+    </p-tabpanel>
+    <p-tabpanel value="1">
+      <div class="settings-section">
+        <p class="placeholder-text">Notification settings coming soon.</p>
+      </div>
+    </p-tabpanel>
+    <p-tabpanel value="2">
+      <div class="settings-section">
+        <p class="placeholder-text">Security settings coming soon.</p>
+      </div>
+    </p-tabpanel>
+  </p-tabpanels>
+</p-tabs>

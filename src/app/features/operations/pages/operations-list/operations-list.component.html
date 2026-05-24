@@ -1,0 +1,51 @@
+<app-page-header title="Surgical Operations">
+  <p-button label="Schedule Operation" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Operation form coming soon.')"></p-button>
+</app-page-header>
+
+<div class="filters-bar">
+  <p-iconfield>
+    <p-inputicon styleClass="pi pi-search"></p-inputicon>
+    <input pInputText [(ngModel)]="searchTerm" placeholder="Search patient, procedure..." (input)="applyFilters()" />
+  </p-iconfield>
+</div>
+
+<div class="card">
+  <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="scheduledDate">Date <p-sortIcon field="scheduledDate"></p-sortIcon></th>
+        <th>Time</th>
+        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="procedureName">Procedure <p-sortIcon field="procedureName"></p-sortIcon></th>
+        <th pSortableColumn="surgeonName">Surgeon <p-sortIcon field="surgeonName"></p-sortIcon></th>
+        <th>OR</th>
+        <th>Duration</th>
+        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 120px">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-op>
+      <tr>
+        <td>{{ op.scheduledDate | date:'dd MMM yyyy' }}</td>
+        <td>{{ op.scheduledTime }}</td>
+        <td><strong>{{ op.patientName }}</strong></td>
+        <td>{{ op.procedureName }}</td>
+        <td>{{ op.surgeonName }}</td>
+        <td>{{ op.operationRoomName }}</td>
+        <td>{{ op.estimatedDuration }} min</td>
+        <td><app-status-tag [status]="op.status"></app-status-tag></td>
+        <td>
+          <p-button icon="pi pi-play" [text]="true" [rounded]="true" severity="success" size="small"
+            pTooltip="Start Operation" (onClick)="startOp(op)"
+            [disabled]="op.status !== 'Scheduled'"></p-button>
+          <p-button icon="pi pi-check" [text]="true" [rounded]="true" severity="info" size="small"
+            pTooltip="Mark Complete" (onClick)="completeOp(op)"
+            [disabled]="op.status !== 'InProgress'"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No operations scheduled.</td></tr>
+    </ng-template>
+  </p-table>
+</div>

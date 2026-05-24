@@ -1,0 +1,147 @@
+<app-page-header title="Dashboard"></app-page-header>
+
+<!-- KPI Cards -->
+<div class="kpi-grid">
+  <div class="kpi-card kpi-blue">
+    <div class="kpi-icon"><i class="pi pi-calendar"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">{{ data.kpis.todayAppointments }}</div>
+      <div class="kpi-label">Today's Appointments</div>
+    </div>
+  </div>
+  <div class="kpi-card kpi-green">
+    <div class="kpi-icon"><i class="pi pi-users"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">{{ data.kpis.totalPatients }}</div>
+      <div class="kpi-label">Total Patients</div>
+    </div>
+  </div>
+  <div class="kpi-card kpi-orange">
+    <div class="kpi-icon"><i class="pi pi-user-plus"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">{{ data.kpis.newPatientsToday }}</div>
+      <div class="kpi-label">New Patients Today</div>
+    </div>
+  </div>
+  <div class="kpi-card kpi-teal">
+    <div class="kpi-icon"><i class="pi pi-home"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">{{ data.kpis.roomOccupancyRate }}%</div>
+      <div class="kpi-label">Room Occupancy</div>
+    </div>
+  </div>
+  <div class="kpi-card kpi-purple">
+    <div class="kpi-icon"><i class="pi pi-filter"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">{{ data.kpis.pendingLabRequests }}</div>
+      <div class="kpi-label">Pending Lab Requests</div>
+    </div>
+  </div>
+  <div class="kpi-card kpi-indigo">
+    <div class="kpi-icon"><i class="pi pi-camera"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">{{ data.kpis.pendingRadiologyRequests }}</div>
+      <div class="kpi-label">Pending Radiology</div>
+    </div>
+  </div>
+  <div class="kpi-card kpi-emerald">
+    <div class="kpi-icon"><i class="pi pi-dollar"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">${{ data.kpis.todayRevenue | number }}</div>
+      <div class="kpi-label">Today's Revenue</div>
+    </div>
+  </div>
+  <div class="kpi-card kpi-cyan">
+    <div class="kpi-icon"><i class="pi pi-chart-line"></i></div>
+    <div class="kpi-content">
+      <div class="kpi-value">${{ data.kpis.monthRevenue | number }}</div>
+      <div class="kpi-label">Month Revenue</div>
+    </div>
+  </div>
+</div>
+
+<!-- Content Row -->
+<div class="dashboard-grid">
+  <!-- Recent Appointments -->
+  <p-card header="Today's Appointments" styleClass="dashboard-card">
+    <p-table [value]="data.recentAppointments" [tableStyle]="{'min-width': '100%'}">
+      <ng-template #header>
+        <tr>
+          <th>Time</th>
+          <th>Patient</th>
+          <th>Doctor</th>
+          <th>Status</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-apt>
+        <tr>
+          <td><strong>{{ apt.time }}</strong></td>
+          <td>{{ apt.patientName }}</td>
+          <td>{{ apt.doctorName }}</td>
+          <td><app-status-tag [status]="apt.status"></app-status-tag></td>
+        </tr>
+      </ng-template>
+      <ng-template #emptymessage>
+        <tr><td colspan="4" class="text-center p-4">No appointments today.</td></tr>
+      </ng-template>
+    </p-table>
+    <div class="card-footer">
+      <a routerLink="/appointments" class="view-all-link">View all appointments <i class="pi pi-arrow-right"></i></a>
+    </div>
+  </p-card>
+
+  <!-- Room Status -->
+  <p-card header="Room Status Summary" styleClass="dashboard-card">
+    <div class="room-status-grid">
+      <div class="room-status-item status-available">
+        <div class="room-status-count">{{ data.roomStatusSummary.available }}</div>
+        <div class="room-status-label">Available</div>
+      </div>
+      <div class="room-status-item status-occupied">
+        <div class="room-status-count">{{ data.roomStatusSummary.occupied }}</div>
+        <div class="room-status-label">Occupied</div>
+      </div>
+      <div class="room-status-item status-cleaning">
+        <div class="room-status-count">{{ data.roomStatusSummary.cleaning }}</div>
+        <div class="room-status-label">Cleaning</div>
+      </div>
+      <div class="room-status-item status-maintenance">
+        <div class="room-status-count">{{ data.roomStatusSummary.maintenance }}</div>
+        <div class="room-status-label">Maintenance</div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <a routerLink="/rooms" class="view-all-link">View all rooms <i class="pi pi-arrow-right"></i></a>
+    </div>
+  </p-card>
+</div>
+
+<!-- Quick Access -->
+<p-card header="Quick Actions" styleClass="mt-3">
+  <div class="quick-actions">
+    <a routerLink="/patients/new" class="quick-action-btn">
+      <i class="pi pi-user-plus"></i>
+      <span>New Patient</span>
+    </a>
+    <a routerLink="/appointments/new" class="quick-action-btn">
+      <i class="pi pi-calendar-plus"></i>
+      <span>New Appointment</span>
+    </a>
+    <a routerLink="/reception" class="quick-action-btn">
+      <i class="pi pi-check-circle"></i>
+      <span>Check-in</span>
+    </a>
+    <a routerLink="/nursing" class="quick-action-btn">
+      <i class="pi pi-heart"></i>
+      <span>Nursing Queue</span>
+    </a>
+    <a routerLink="/laboratory" class="quick-action-btn">
+      <i class="pi pi-filter"></i>
+      <span>Lab Requests</span>
+    </a>
+    <a routerLink="/billing" class="quick-action-btn">
+      <i class="pi pi-dollar"></i>
+      <span>Billing</span>
+    </a>
+  </div>
+</p-card>

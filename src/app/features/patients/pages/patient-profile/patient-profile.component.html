@@ -1,0 +1,128 @@
+<app-page-header [title]="patient?.fullName || 'Patient Profile'">
+  <p-button label="Back" icon="pi pi-arrow-left" severity="secondary" routerLink="/patients" size="small"></p-button>
+  <p-button label="Edit" icon="pi pi-pencil" [routerLink]="['/patients', patient?.id, 'edit']" size="small" styleClass="ml-2"></p-button>
+</app-page-header>
+
+@if (loading) {
+  <div class="loading-state">Loading patient profile...</div>
+}
+
+@if (!loading && patient) {
+  <!-- Profile Header Card -->
+  <p-card styleClass="mb-3">
+    <div class="profile-header">
+      <div class="avatar-placeholder">
+        <i class="pi pi-user"></i>
+      </div>
+      <div class="profile-info">
+        <h2 class="patient-name">{{ patient.fullName }}</h2>
+        <div class="profile-meta">
+          <span class="meta-item"><i class="pi pi-id-card"></i> {{ patient.mrn }}</span>
+          <span class="meta-item"><i class="pi pi-calendar"></i> {{ patient.dateOfBirth | date:'dd MMM yyyy' }}</span>
+          <span class="meta-item"><i class="pi pi-user"></i> {{ patient.gender }}</span>
+          <span class="meta-item"><i class="pi pi-phone"></i> {{ patient.phone }}</span>
+        </div>
+        <div class="profile-badges">
+          <app-status-tag [status]="patient.status"></app-status-tag>
+          @if (patient.bloodType) {
+            <span class="blood-badge">{{ patient.bloodType }}</span>
+          }
+          @if (patient.insuranceProvider) {
+            <span class="insurance-badge"><i class="pi pi-shield"></i> {{ patient.insuranceProvider }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </p-card>
+
+  <!-- Tabs -->
+  <p-tabs value="0">
+    <!-- Overview Tab -->
+    <p-tabpanel header="Overview" value="0">
+      <div class="detail-grid">
+        <p-card header="Contact Information">
+          <div class="detail-list">
+            <div class="detail-row"><span class="label">Phone</span><span>{{ patient.phone }}</span></div>
+            <div class="detail-row"><span class="label">Email</span><span>{{ patient.email || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">Address</span><span>{{ patient.address || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">Nationality</span><span>{{ patient.nationality || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">National ID</span><span>{{ patient.nationalId || 'N/A' }}</span></div>
+          </div>
+        </p-card>
+        <p-card header="Emergency Contact">
+          <div class="detail-list">
+            <div class="detail-row"><span class="label">Name</span><span>{{ patient.emergencyContactName || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">Phone</span><span>{{ patient.emergencyContactPhone || 'N/A' }}</span></div>
+          </div>
+        </p-card>
+        <p-card header="Insurance">
+          <div class="detail-list">
+            <div class="detail-row"><span class="label">Provider</span><span>{{ patient.insuranceProvider || 'Self-pay' }}</span></div>
+            <div class="detail-row"><span class="label">Number</span><span>{{ patient.insuranceNumber || 'N/A' }}</span></div>
+          </div>
+        </p-card>
+      </div>
+    </p-tabpanel>
+
+    <!-- Medical History Tab -->
+    <p-tabpanel header="Medical History" value="1">
+      <div class="detail-grid">
+        <p-card header="Allergies">
+          @if (patient.allergies.length) {
+            <div class="chip-list">
+              @for (a of patient.allergies; track a) {
+                <span class="chip chip-danger">{{ a }}</span>
+              }
+            </div>
+          } @else {
+            <p class="text-muted">No known allergies.</p>
+          }
+        </p-card>
+        <p-card header="Chronic Diseases">
+          @if (patient.chronicDiseases.length) {
+            <div class="chip-list">
+              @for (d of patient.chronicDiseases; track d) {
+                <span class="chip chip-warning">{{ d }}</span>
+              }
+            </div>
+          } @else {
+            <p class="text-muted">No chronic diseases.</p>
+          }
+        </p-card>
+        <p-card header="Fixed Medications">
+          @if (patient.fixedMedications.length) {
+            <div class="chip-list">
+              @for (m of patient.fixedMedications; track m) {
+                <span class="chip chip-info">{{ m }}</span>
+              }
+            </div>
+          } @else {
+            <p class="text-muted">No fixed medications.</p>
+          }
+        </p-card>
+        @if (patient.notes) {
+          <p-card header="Notes">
+            <p>{{ patient.notes }}</p>
+          </p-card>
+        }
+      </div>
+    </p-tabpanel>
+
+    <!-- Activity Tab -->
+    <p-tabpanel header="Activity" value="2">
+      <div class="detail-list">
+        <div class="detail-row"><span class="label">Created At</span><span>{{ patient.createdAt | date:'dd MMM yyyy HH:mm' }}</span></div>
+        <div class="detail-row"><span class="label">Last Updated</span><span>{{ patient.updatedAt | date:'dd MMM yyyy HH:mm' }}</span></div>
+        <div class="detail-row"><span class="label">Created By</span><span>{{ patient.createdBy }}</span></div>
+      </div>
+    </p-tabpanel>
+  </p-tabs>
+}
+
+@if (!loading && !patient) {
+  <div class="empty-state">
+    <i class="pi pi-user-minus"></i>
+    <p>Patient not found.</p>
+    <p-button label="Back to Patients" routerLink="/patients"></p-button>
+  </div>
+}

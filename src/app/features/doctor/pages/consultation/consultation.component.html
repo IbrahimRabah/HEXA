@@ -1,0 +1,115 @@
+<app-page-header [title]="visit ? 'Consultation — ' + visit.patientName : 'Consultation'">
+  <p-button label="Back" icon="pi pi-arrow-left" severity="secondary" (onClick)="cancel()"></p-button>
+</app-page-header>
+
+@if (visit) {
+  <div class="patient-banner">
+    <div class="info-row">
+      <span class="label">Patient:</span><strong>{{ visit.patientName }}</strong>
+      <span class="label">Visit #:</span><span>{{ visit.visitNumber }}</span>
+      <span class="label">Token:</span><span>{{ visit.queueToken || '—' }}</span>
+      <span class="label">Doctor:</span><span>{{ visit.doctorName }}</span>
+      <span class="label">Status:</span><app-status-tag [status]="visit.status"></app-status-tag>
+    </div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p-tabs value="0">
+      <p-tablist>
+        <p-tab value="0">Presenting Complaint</p-tab>
+        <p-tab value="1">Physical Exam</p-tab>
+        <p-tab value="2">Diagnosis</p-tab>
+        <p-tab value="3">Prescription</p-tab>
+        <p-tab value="4">Orders</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <div class="tab-content">
+            <div class="form-field">
+              <label>Chief Complaint</label>
+              <textarea pTextarea formControlName="chiefComplaint" rows="3" placeholder="Patient's main complaint..."></textarea>
+            </div>
+            <div class="form-field">
+              <label>History of Present Illness (HPI)</label>
+              <textarea pTextarea formControlName="hpiNotes" rows="5" placeholder="Detailed history..."></textarea>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <div class="tab-content">
+            <div class="form-field">
+              <label>Physical Examination Notes</label>
+              <textarea pTextarea formControlName="physicalExamNotes" rows="8" placeholder="Document physical exam findings..."></textarea>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+          <div class="tab-content">
+            <div formArrayName="diagnoses">
+              @for (diag of diagnosesArray.controls; track $index) {
+                <div [formGroupName]="$index" class="array-row">
+                  <input pInputText formControlName="code" placeholder="ICD Code (e.g. J06.9)" />
+                  <input pInputText formControlName="description" placeholder="Description" class="flex-grow" />
+                  <p-select formControlName="type" [options]="[{label:'Primary',value:'Primary'},{label:'Secondary',value:'Secondary'}]" optionLabel="label" optionValue="value"></p-select>
+                  <p-button icon="pi pi-trash" severity="danger" [text]="true" [rounded]="true" (onClick)="removeDiagnosis($index)"></p-button>
+                </div>
+              }
+            </div>
+            <p-button label="Add Diagnosis" icon="pi pi-plus" severity="secondary" size="small" (onClick)="addDiagnosis()"></p-button>
+            <div class="form-field" style="margin-top: 1rem">
+              <label>Clinical Notes</label>
+              <textarea pTextarea formControlName="clinicalNotes" rows="4" placeholder="Additional clinical notes..."></textarea>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="3">
+          <div class="tab-content">
+            <div formArrayName="prescriptions">
+              @for (rx of prescriptionsArray.controls; track $index) {
+                <div [formGroupName]="$index" class="rx-row">
+                  <div class="rx-grid">
+                    <input pInputText formControlName="medicationName" placeholder="Medication name" />
+                    <input pInputText formControlName="dosage" placeholder="Dosage (e.g. 500mg)" />
+                    <input pInputText formControlName="frequency" placeholder="Frequency (e.g. TID)" />
+                    <input pInputText formControlName="duration" placeholder="Duration (e.g. 7 days)" />
+                    <p-select formControlName="route" [options]="routeOptions" optionLabel="label" optionValue="value" placeholder="Route"></p-select>
+                    <p-button icon="pi pi-trash" severity="danger" [text]="true" [rounded]="true" (onClick)="removeRx($index)"></p-button>
+                  </div>
+                  <input pInputText formControlName="instructions" placeholder="Special instructions (optional)" class="full-width" />
+                </div>
+              }
+            </div>
+            <p-button label="Add Medication" icon="pi pi-plus" severity="secondary" size="small" (onClick)="addRx()"></p-button>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="4">
+          <div class="tab-content">
+            <div class="form-field">
+              <label>Lab Orders</label>
+              <textarea pTextarea formControlName="labOrders" rows="3" placeholder="e.g. CBC, BMP, HbA1c..."></textarea>
+            </div>
+            <div class="form-field">
+              <label>Radiology Orders</label>
+              <textarea pTextarea formControlName="radiologyOrders" rows="3" placeholder="e.g. Chest X-Ray PA, CT Head without contrast..."></textarea>
+            </div>
+            <div class="form-field">
+              <label>Follow-up Instructions</label>
+              <textarea pTextarea formControlName="followUpNotes" rows="3" placeholder="Follow-up plan, referrals..."></textarea>
+            </div>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+
+    <div class="form-actions">
+      <p-button label="Cancel" severity="secondary" (onClick)="cancel()"></p-button>
+      <p-button label="Save &amp; Keep Open" icon="pi pi-save" severity="info" type="button" (onClick)="onSubmit(false)"></p-button>
+      <p-button label="Save &amp; Complete" icon="pi pi-check" type="button" (onClick)="onSubmit(true)"></p-button>
+    </div>
+  </form>
+} @else {
+  <div class="empty-state">
+    <i class="pi pi-exclamation-circle" style="font-size: 2rem"></i>
+    <p>Visit not found.</p>
+  </div>
+}

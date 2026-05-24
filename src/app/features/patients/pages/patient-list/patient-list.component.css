@@ -1,0 +1,9 @@
+﻿.card { background: var(--p-content-background); border: 1px solid var(--p-content-border-color); border-radius: 8px; padding: 1rem; }
+.filters-bar { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.filters-bar input { width: 280px; }
+.mrn-badge { font-family: monospace; font-size: 0.8rem; background: var(--p-surface-100); padding: 2px 6px; border-radius: 4px; }
+.patient-name { font-weight: 600; }
+.patient-sub { font-size: 0.8rem; color: var(--p-text-muted-color); }
+.blood-type { font-weight: 600; color: #c62828; }
+.empty-state { text-align: center; padding: 3rem; color: var(--p-text-muted-color); }
+.empty-state p { margin-top: 0.5rem; }

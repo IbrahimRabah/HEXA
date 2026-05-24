@@ -1,0 +1,23 @@
+export const ROUTE_PATHS = {
+  DASHBOARD: 'dashboard',
+  PATIENTS: 'patients',
+  APPOINTMENTS: 'appointments',
+  RECEPTION: 'reception',
+  NURSING: 'nursing',
+  DOCTOR: 'doctor',
+  LABORATORY: 'laboratory',
+  RADIOLOGY: 'radiology',
+  PHARMACY: 'pharmacy',
+  BILLING: 'billing',
+  OPERATIONS: 'operations',
+  ADMISSIONS: 'admissions',
+  ROOMS: 'rooms',
+  HOUSEKEEPING: 'housekeeping',
+  OPHTHALMOLOGY: 'ophthalmology',
+  DENTAL: 'dental',
+  AUDIT: 'audit',
+  REPORTS: 'reports',
+  SETTINGS: 'settings',
+  USER_MANAGEMENT: 'user-management',
+  LOGIN: 'login'
+};

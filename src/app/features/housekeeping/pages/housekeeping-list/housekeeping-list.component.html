@@ -1,0 +1,37 @@
+<app-page-header title="Housekeeping Tasks">
+  <p-button label="New Task" icon="pi pi-plus" (onClick)="toastService.showInfo('Info', 'Task form coming soon.')"></p-button>
+</app-page-header>
+<div class="card">
+  <p-table [value]="tasks" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
+    <ng-template #header>
+      <tr>
+        <th>Room</th>
+        <th>Task Type</th>
+        <th>Assigned To</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Notes</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-t>
+      <tr>
+        <td><strong>{{ t.roomNumber }}</strong></td>
+        <td>{{ t.taskType }}</td>
+        <td>{{ t.assignedTo }}</td>
+        <td>
+          <p-tag [value]="t.priority" [severity]="t.priority === 'High' ? 'danger' : t.priority === 'Normal' ? 'info' : 'secondary'"></p-tag>
+        </td>
+        <td><app-status-tag [status]="t.status"></app-status-tag></td>
+        <td>{{ t.notes || '—' }}</td>
+        <td>
+          <p-button icon="pi pi-check" [text]="true" [rounded]="true" severity="success" size="small"
+            pTooltip="Mark Complete" (onClick)="complete(t)" [disabled]="t.status === 'Completed'"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template #emptymessage>
+      <tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No tasks found.</td></tr>
+    </ng-template>
+  </p-table>
+</div>
