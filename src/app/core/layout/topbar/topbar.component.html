@@ -1,10 +1,37 @@
-<div class="topbar">
+<header class="topbar">
+
+  <!-- Left: hamburger + brand -->
   <div class="topbar-left">
-    <p-button icon="pi pi-bars" [text]="true" [rounded]="true"></p-button>
-    <span class="title">Hexa Care Platform</span>
+    <button class="icon-btn toggle-btn" (click)="onToggleSidebar()" title="Toggle Sidebar" aria-label="Toggle Sidebar">
+      <i class="pi pi-bars"></i>
+    </button>
+    <div class="brand">
+      <span class="brand-name">Hexa<span class="brand-accent">Care</span></span>
+      <span class="brand-tagline">Healthcare Platform</span>
+    </div>
   </div>
+
+  <!-- Right: notifications + user -->
   <div class="topbar-right">
-    <p-button icon="pi pi-bell" [text]="true" [rounded]="true" class="mr-2"></p-button>
-    <p-avatar icon="pi pi-user" shape="circle"></p-avatar>
+
+    <button class="icon-btn notif-btn" title="Notifications" aria-label="Notifications">
+      <i class="pi pi-bell"></i>
+      <span class="notif-badge">3</span>
+    </button>
+
+    @if (currentUser()) {
+      <div class="user-section" (click)="toggleUserMenu($event)" role="button" tabindex="0" (keydown.enter)="toggleUserMenu($event)">
+        <div class="user-avatar" [style.background]="getRoleColor()">
+          {{ getUserInitials() }}
+        </div>
+        <div class="user-info">
+          <span class="user-name">{{ currentUser()?.name }}</span>
+          <span class="user-role" [style.color]="getRoleColor()">{{ currentUser()?.role }}</span>
+        </div>
+        <i class="pi pi-chevron-down chevron-icon"></i>
+      </div>
+      <p-menu #userMenu [model]="userMenuItems" [popup]="true" appendTo="body"></p-menu>
+    }
+
   </div>
-</div>
+</header>

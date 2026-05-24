@@ -1,21 +1,172 @@
-<div class="login-wrapper">
-  <p-card header="Hexa Care Login" [style]="{ width: '400px' }">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-      <div class="field">
-        <p-floatlabel>
-          <input pInputText id="username" formControlName="username" class="w-full" />
-          <label for="username">Username</label>
-        </p-floatlabel>
+<div class="login-page">
+
+  <!-- ===== Left Branding Panel ===== -->
+  <div class="branding-panel">
+    <div class="brand-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="branding-content">
+      <div class="brand-logo">
+        <div class="logo-icon"><i class="pi pi-heart"></i></div>
+        <span class="logo-text">Hexa<span class="logo-accent">Care</span></span>
       </div>
-      <div class="field mt-4">
-        <p-floatlabel>
-          <p-password id="password" formControlName="password" [toggleMask]="true" [feedback]="false" styleClass="w-full" inputStyleClass="w-full"></p-password>
-          <label for="password">Password</label>
-        </p-floatlabel>
+
+      <h1 class="brand-title">Healthcare<br>Operating<br>Platform</h1>
+      <p class="brand-subtitle">
+        A complete clinical and administrative solution for modern healthcare facilities.
+      </p>
+
+      <ul class="features-list">
+        <li>
+          <span class="feature-icon"><i class="pi pi-check-circle"></i></span>
+          <span>Unified patient records &amp; medical ID</span>
+        </li>
+        <li>
+          <span class="feature-icon"><i class="pi pi-check-circle"></i></span>
+          <span>Multi-department workflow management</span>
+        </li>
+        <li>
+          <span class="feature-icon"><i class="pi pi-check-circle"></i></span>
+          <span>Real-time analytics &amp; dashboards</span>
+        </li>
+        <li>
+          <span class="feature-icon"><i class="pi pi-check-circle"></i></span>
+          <span>Role-based secure access control</span>
+        </li>
+      </ul>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-value">1,240+</span>
+          <span class="stat-label">Patients</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">15+</span>
+          <span class="stat-label">Departments</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">99.9%</span>
+          <span class="stat-label">Uptime</span>
+        </div>
       </div>
-      <div class="mt-4">
-        <p-button type="submit" label="Login" [disabled]="loginForm.invalid" class="w-full" styleClass="w-full"></p-button>
+    </div>
+  </div>
+
+  <!-- ===== Right Form Panel ===== -->
+  <div class="form-panel">
+    <div class="form-container">
+
+      <!-- Mobile logo (visible on small screens) -->
+      <div class="mobile-logo">
+        <div class="logo-icon-sm"><i class="pi pi-heart"></i></div>
+        <span>Hexa<span>Care</span></span>
       </div>
-    </form>
-  </p-card>
+
+      <div class="form-header">
+        <h2>Welcome Back</h2>
+        <p>Sign in to your account to continue</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" autocomplete="off">
+
+        <!-- Error Alert -->
+        @if (errorMessage()) {
+          <div class="error-alert" role="alert">
+            <i class="pi pi-exclamation-circle"></i>
+            <span>{{ errorMessage() }}</span>
+          </div>
+        }
+
+        <!-- Username Field -->
+        <div class="form-group">
+          <label for="username" class="form-label">Username</label>
+          <div
+            class="input-wrapper"
+            [class.input-error]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+          >
+            <span class="input-icon"><i class="pi pi-user"></i></span>
+            <input
+              id="username"
+              type="text"
+              formControlName="username"
+              class="form-input"
+              placeholder="Enter your username"
+              autocomplete="username"
+            />
+          </div>
+          @if (loginForm.get('username')?.invalid && loginForm.get('username')?.touched) {
+            <span class="field-error">Username is required</span>
+          }
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <div
+            class="input-wrapper"
+            [class.input-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          >
+            <span class="input-icon"><i class="pi pi-lock"></i></span>
+            <input
+              id="password"
+              [type]="showPassword() ? 'text' : 'password'"
+              formControlName="password"
+              class="form-input"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+            />
+            <button type="button" class="toggle-password" (click)="togglePassword()" [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'">
+              <i [class]="showPassword() ? 'pi pi-eye-slash' : 'pi pi-eye'"></i>
+            </button>
+          </div>
+          @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+            <span class="field-error">Password is required</span>
+          }
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn-submit"
+          [class.loading]="isLoading()"
+          [disabled]="loginForm.invalid || isLoading()"
+        >
+          @if (isLoading()) {
+            <i class="pi pi-spin pi-spinner"></i>
+            <span>Signing In...</span>
+          } @else {
+            <i class="pi pi-sign-in"></i>
+            <span>Sign In</span>
+          }
+        </button>
+
+        <!-- Test Credentials Panel -->
+        <div class="test-credentials">
+          <button type="button" class="btn-test-toggle" (click)="toggleTestUsers()">
+            <i class="pi pi-info-circle"></i>
+            <span>Test Credentials</span>
+            <i [class]="showTestUsers() ? 'pi pi-chevron-up' : 'pi pi-chevron-down'" class="chevron"></i>
+          </button>
+          @if (showTestUsers()) {
+            <div class="credentials-grid">
+              @for (cred of testCredentials; track cred.username) {
+                <button type="button" class="cred-card" (click)="fillCredentials(cred.username, cred.password)">
+                  <span class="cred-role">{{ cred.role }}</span>
+                  <span class="cred-username">{{ cred.username }} / {{ cred.password }}</span>
+                </button>
+              }
+            </div>
+          }
+        </div>
+
+      </form>
+
+      <div class="form-footer">
+        <p>&#169; 2026 Hexa Care &middot; All rights reserved</p>
+      </div>
+    </div>
+  </div>
+
 </div>

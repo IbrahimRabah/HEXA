@@ -1,6 +1,40 @@
-<div class="sidebar">
-  <div class="logo-container">
-    <h2>Hexa Care</h2>
+<nav class="sidebar" [class.collapsed]="collapsed">
+
+  <!-- Logo -->
+  <div class="sidebar-logo">
+    <div class="logo-icon">
+      <i class="pi pi-heart"></i>
+    </div>
+    @if (!collapsed) {
+      <span class="logo-text">Hexa<span class="logo-accent">Care</span></span>
+    }
   </div>
-  <p-panelMenu [model]="menuItems" [style]="{'width':'100%'}"></p-panelMenu>
-</div>
+
+  <!-- Navigation -->
+  <div class="sidebar-nav">
+    @for (section of navSections; track section.label) {
+
+      @if (!collapsed) {
+        <span class="nav-section-label">{{ section.label }}</span>
+      } @else {
+        <div class="nav-section-divider"></div>
+      }
+
+      @for (item of section.items; track item.route) {
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="nav-item"
+          [title]="collapsed ? item.label : ''"
+        >
+          <i [class]="item.icon + ' nav-icon'"></i>
+          @if (!collapsed) {
+            <span class="nav-label">{{ item.label }}</span>
+          }
+        </a>
+      }
+
+    }
+  </div>
+
+</nav>
