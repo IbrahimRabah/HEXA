@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
@@ -16,7 +17,7 @@ import { ToastService } from '../../../../core/services/toast.service';
 @Component({
   selector: 'app-admission-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, PageHeaderComponent, StatusTagComponent, AdmissionFormComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, TranslatePipe, PageHeaderComponent, StatusTagComponent, AdmissionFormComponent],
   templateUrl: './admission-list.component.html',
   styleUrl: './admission-list.component.css'
 })

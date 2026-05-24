@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
 import { TooltipModule } from 'primeng/tooltip';
@@ -26,7 +27,7 @@ const PRIORITY_OPTIONS = [
 @Component({
   selector: 'app-radiology-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, RadiologyRequestFormComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, RadiologyRequestFormComponent, TranslatePipe],
   templateUrl: './radiology-list.component.html',
   styleUrl: './radiology-list.component.css'
 })

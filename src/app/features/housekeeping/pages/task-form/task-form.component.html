@@ -1,5 +1,5 @@
 <p-dialog
-  header="New Housekeeping Task"
+  [header]="'HOUSEKEEPING.NEW_TASK' | translate"
   [visible]="visible"
   (onHide)="close()"
   [modal]="true"
@@ -12,26 +12,26 @@
 
     <!-- Room & Assignment -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-building"></i> Room &amp; Assignment</h4>
+      <h4 class="section-title"><i class="pi pi-building"></i> {{ 'HOUSEKEEPING.ROOM_ASSIGNMENT_SECTION' | translate }}</h4>
       <div class="form-grid-2">
         <div class="form-group">
-          <label>Room Number <span class="req">*</span></label>
+          <label>{{ 'HOUSEKEEPING.ROOM_NUMBER' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="roomNumber" placeholder="e.g. 101, ICU-3" class="w-full"
             [class.invalid-field]="form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched" />
           @if (form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Floor / Wing</label>
+          <label>{{ 'HOUSEKEEPING.FLOOR_WING' | translate }}</label>
           <input pInputText formControlName="floorWing" placeholder="e.g. 1st Floor, North Wing" class="w-full" />
         </div>
         <div class="form-group span-2">
-          <label>Assigned To <span class="req">*</span></label>
+          <label>{{ 'HOUSEKEEPING.ASSIGNED_TO' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="assignedTo" placeholder="Staff member name" class="w-full"
             [class.invalid-field]="form.get('assignedTo')?.invalid && form.get('assignedTo')?.touched" />
           @if (form.get('assignedTo')?.invalid && form.get('assignedTo')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
       </div>
@@ -39,16 +39,16 @@
 
     <!-- Task Details -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-list-check"></i> Task Details</h4>
+      <h4 class="section-title"><i class="pi pi-list-check"></i> {{ 'HOUSEKEEPING.TASK_DETAILS_SECTION' | translate }}</h4>
 
       <div class="form-group" style="margin-bottom: 1rem;">
-        <label>Task Type <span class="req">*</span></label>
+        <label>{{ 'HOUSEKEEPING.TASK_TYPE' | translate }} <span class="req">*</span></label>
         <p-select formControlName="taskType" [options]="taskTypes"
           optionLabel="label" optionValue="value" styleClass="w-full"></p-select>
       </div>
 
       <div class="form-group" style="margin-bottom: 1rem;">
-        <label>Priority</label>
+        <label>{{ 'COMMON.PRIORITY' | translate }}</label>
         <div class="priority-chips">
           @for (p of priorities; track p.value) {
             <button type="button" class="priority-chip"
@@ -57,7 +57,7 @@
               [class.chip-low]="p.value === 'Low'"
               [class.chip-active]="form.get('priority')?.value === p.value"
               (click)="form.get('priority')?.setValue(p.value)">
-              {{ p.label }}
+              {{ ('PRIORITY.' + p.value) | translate }}
             </button>
           }
         </div>
@@ -65,19 +65,19 @@
 
       <div class="form-grid-3">
         <div class="form-group">
-          <label>Scheduled Date <span class="req">*</span></label>
+          <label>{{ 'HOUSEKEEPING.SCHEDULED_DATE' | translate }} <span class="req">*</span></label>
           <input type="date" pInputText formControlName="scheduledDate" class="w-full"
             [class.invalid-field]="form.get('scheduledDate')?.invalid && form.get('scheduledDate')?.touched" />
           @if (form.get('scheduledDate')?.invalid && form.get('scheduledDate')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Scheduled Time</label>
+          <label>{{ 'HOUSEKEEPING.SCHEDULED_TIME' | translate }}</label>
           <input type="time" pInputText formControlName="scheduledTime" class="w-full" />
         </div>
         <div class="form-group">
-          <label>Est. Duration (min)</label>
+          <label>{{ 'HOUSEKEEPING.EST_DURATION' | translate }}</label>
           <input type="number" pInputText formControlName="estimatedDuration" min="5" step="5" class="w-full" />
         </div>
       </div>
@@ -86,7 +86,7 @@
     <!-- Notes -->
     <div class="form-section">
       <div class="form-group">
-        <label>Notes / Special Instructions</label>
+        <label>{{ 'HOUSEKEEPING.NOTES_SPECIAL' | translate }}</label>
         <textarea pInputText formControlName="notes" rows="3"
           placeholder="e.g. Use bio-hazard protocol, patient discharge room, deep stain on floor..."
           class="w-full notes-ta"></textarea>
@@ -95,8 +95,8 @@
 
     <!-- Actions -->
     <div class="form-actions">
-      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
-      <p-button label="Create Task" icon="pi pi-check" (onClick)="submit()"></p-button>
+      <p-button [label]="'COMMON.CANCEL' | translate" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button [label]="'HOUSEKEEPING.CREATE_TASK' | translate" icon="pi pi-check" (onClick)="submit()"></p-button>
     </div>
 
   </form>

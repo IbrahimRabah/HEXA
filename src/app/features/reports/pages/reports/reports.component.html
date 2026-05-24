@@ -3,7 +3,7 @@
 
 @for (category of categories; track category) {
   <div class="category-section">
-    <h3 class="category-title">{{ category }}</h3>
+    <h3 class="category-title">{{ category | translate }}</h3>
     <div class="reports-grid">
       @for (report of getByCategory(category); track report.title) {
         <div class="report-card">
@@ -13,8 +13,8 @@
             <div class="report-desc">{{ report.description }}</div>
           </div>
           <div class="report-actions">
-            <p-button label="View" icon="pi pi-eye" size="small" severity="info" [text]="true"></p-button>
-            <p-button label="Export" icon="pi pi-download" size="small" severity="secondary" [text]="true"></p-button>
+            <p-button [label]="'COMMON.VIEW' | translate" icon="pi pi-eye" size="small" severity="info" [text]="true"></p-button>
+            <p-button [label]="'COMMON.EXPORT' | translate" icon="pi pi-download" size="small" severity="secondary" [text]="true"></p-button>
           </div>
         </div>
       }

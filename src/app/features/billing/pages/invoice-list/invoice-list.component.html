@@ -1,36 +1,36 @@
 <app-page-header title="PAGES.BILLING">
-  <p-button label="New Invoice" icon="pi pi-plus" (onClick)="showInvoiceForm = true"></p-button>
+  <p-button [label]="'BILLING.NEW' | translate" icon="pi pi-plus" (onClick)="showInvoiceForm = true"></p-button>
 </app-page-header>
 
 <app-invoice-form [(visible)]="showInvoiceForm" (saved)="onInvoiceSaved($event)"></app-invoice-form>
 
 <div class="summary-bar">
-  <div class="summary-item"><span class="count">{{ total.length }}</span><span class="label">Total Invoices</span></div>
-  <div class="summary-item"><span class="count text-green">{{ paidCount }}</span><span class="label">Paid</span></div>
-  <div class="summary-item"><span class="count text-orange">{{ pendingCount }}</span><span class="label">Pending</span></div>
-  <div class="summary-item"><span class="count text-blue">{{ totalRevenue | currency }}</span><span class="label">Total Revenue</span></div>
+  <div class="summary-item"><span class="count">{{ total.length }}</span><span class="label">{{ 'BILLING.TOTAL_INVOICES' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-green">{{ paidCount }}</span><span class="label">{{ 'BILLING.PAID_COL' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-orange">{{ pendingCount }}</span><span class="label">{{ 'STATUS.PENDING' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-blue">{{ totalRevenue | currency }}</span><span class="label">{{ 'BILLING.TOTAL_REVENUE' | translate }}</span></div>
 </div>
 
 <div class="filters-bar">
   <p-iconfield>
     <p-inputicon styleClass="pi pi-search"></p-inputicon>
-    <input pInputText [(ngModel)]="searchTerm" placeholder="Search patient, invoice #..." (input)="applyFilters()" />
+    <input pInputText [(ngModel)]="searchTerm" [placeholder]="'BILLING.SEARCH_PLACEHOLDER' | translate" (input)="applyFilters()" />
   </p-iconfield>
-  <p-select [(ngModel)]="selectedStatus" [options]="statusOptions" optionLabel="label" optionValue="value" placeholder="Status" (onChange)="applyFilters()"></p-select>
+  <p-select [(ngModel)]="selectedStatus" [options]="statusOptions" optionLabel="label" optionValue="value" [placeholder]="'COMMON.ALL_STATUSES' | translate" (onChange)="applyFilters()"></p-select>
 </div>
 
 <div class="card">
   <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th pSortableColumn="invoiceNumber">Invoice # <p-sortIcon field="invoiceNumber"></p-sortIcon></th>
-        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
-        <th pSortableColumn="total">Total <p-sortIcon field="total"></p-sortIcon></th>
-        <th pSortableColumn="paidAmount">Paid <p-sortIcon field="paidAmount"></p-sortIcon></th>
-        <th pSortableColumn="balanceDue">Balance <p-sortIcon field="balanceDue"></p-sortIcon></th>
-        <th pSortableColumn="dueDate">Due Date <p-sortIcon field="dueDate"></p-sortIcon></th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th style="width: 120px">Actions</th>
+        <th pSortableColumn="invoiceNumber">{{ 'BILLING.INVOICE_NO' | translate }} <p-sortIcon field="invoiceNumber"></p-sortIcon></th>
+        <th pSortableColumn="patientName">{{ 'COMMON.PATIENT' | translate }} <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="total">{{ 'COMMON.TOTAL' | translate }} <p-sortIcon field="total"></p-sortIcon></th>
+        <th pSortableColumn="paidAmount">{{ 'BILLING.PAID_COL' | translate }} <p-sortIcon field="paidAmount"></p-sortIcon></th>
+        <th pSortableColumn="balanceDue">{{ 'BILLING.BALANCE' | translate }} <p-sortIcon field="balanceDue"></p-sortIcon></th>
+        <th pSortableColumn="dueDate">{{ 'BILLING.DUE_DATE' | translate }} <p-sortIcon field="dueDate"></p-sortIcon></th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 120px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-inv>
@@ -46,15 +46,16 @@
         <td><app-status-tag [status]="inv.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-dollar" [text]="true" [rounded]="true" severity="success" size="small"
-            pTooltip="Record Payment" (onClick)="markPaid(inv)"
+            [pTooltip]="'BILLING.RECORD_PAYMENT' | translate" (onClick)="markPaid(inv)"
             [disabled]="inv.status === 'Paid'"></p-button>
           <p-button icon="pi pi-eye" [text]="true" [rounded]="true" severity="info" size="small"
-            pTooltip="View Invoice" (onClick)="toastService.showInfo('Info', 'Invoice view coming soon.')"></p-button>
+            [pTooltip]="'BILLING.VIEW_INVOICE' | translate" (onClick)="toastService.showInfo('Info', 'Invoice view coming soon.')"></p-button>
         </td>
       </tr>
     </ng-template>
     <ng-template #emptymessage>
-      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No invoices found.</td></tr>
+      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">{{ 'BILLING.NO_FOUND' | translate }}</td></tr>
     </ng-template>
   </p-table>
 </div>
+

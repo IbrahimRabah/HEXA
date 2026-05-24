@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
 import { TooltipModule } from 'primeng/tooltip';
@@ -14,7 +15,7 @@ import { NursingAssessment } from '../../../../shared/models/nursing.model';
 @Component({
   selector: 'app-nursing-queue',
   standalone: true,
-  imports: [CommonModule, DatePipe, RouterModule, TableModule, ButtonModule, TooltipModule, CardModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, DatePipe, RouterModule, TableModule, ButtonModule, TooltipModule, CardModule, PageHeaderComponent, StatusTagComponent, TranslatePipe],
   templateUrl: './nursing-queue.component.html',
   styleUrl: './nursing-queue.component.css'
 })

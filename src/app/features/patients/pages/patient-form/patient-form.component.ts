@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { CardModule } from 'primeng/card';
@@ -20,7 +21,7 @@ import { Gender } from '../../../../shared/enums/status.enums';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule, CardModule, InputTextModule,
     SelectModule, DatePickerModule, TextareaModule, ButtonModule, AutoCompleteModule,
-    DividerModule, PageHeaderComponent],
+    DividerModule, PageHeaderComponent, TranslatePipe],
   templateUrl: './patient-form.component.html',
   styleUrl: './patient-form.component.css'
 })

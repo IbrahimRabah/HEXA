@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -12,7 +13,7 @@ import { inject } from '@angular/core';
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonModule, InputTextModule, SelectModule, TabsModule, PageHeaderComponent],
+  imports: [CommonModule, FormsModule, ButtonModule, InputTextModule, SelectModule, TabsModule, TranslatePipe, PageHeaderComponent],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.css'
 })

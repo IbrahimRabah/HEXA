@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
 import { TooltipModule } from 'primeng/tooltip';
@@ -16,7 +17,7 @@ import { ToastService } from '../../../../core/services/toast.service';
 @Component({
   selector: 'app-pharmacy-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, MedicationFormComponent],
+  imports: [CommonModule, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, MedicationFormComponent, TranslatePipe],
   templateUrl: './pharmacy-list.component.html',
   styleUrl: './pharmacy-list.component.css'
 })

@@ -1,5 +1,5 @@
 <p-dialog
-  header="New Lab Request"
+  [header]="'LABORATORY.NEW' | translate"
   [visible]="visible"
   (onHide)="close()"
   [modal]="true"
@@ -12,43 +12,43 @@
 
     <!-- Patient & Doctor -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-user"></i> Patient &amp; Physician</h4>
+      <h4 class="section-title"><i class="pi pi-user"></i> {{ 'LABORATORY.PATIENT_PHYSICIAN' | translate }}</h4>
       <div class="form-grid-2">
         <div class="form-group">
-          <label>Patient Name <span class="req">*</span></label>
+          <label>{{ 'COMMON.NAME' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="patientName" placeholder="Full patient name" class="w-full"
             [class.invalid-field]="form.get('patientName')?.invalid && form.get('patientName')?.touched" />
           @if (form.get('patientName')?.invalid && form.get('patientName')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Patient ID</label>
+          <label>{{ 'LABORATORY.PATIENT_ID' | translate }}</label>
           <input pInputText formControlName="patientId" placeholder="e.g. PAT-0042" class="w-full" />
         </div>
         <div class="form-group">
-          <label>Requesting Doctor <span class="req">*</span></label>
+          <label>{{ 'LABORATORY.REQUESTING_DOCTOR' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="doctorName" placeholder="Dr. Full Name" class="w-full"
             [class.invalid-field]="form.get('doctorName')?.invalid && form.get('doctorName')?.touched" />
           @if (form.get('doctorName')?.invalid && form.get('doctorName')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Sample Type <span class="req">*</span></label>
+          <label>{{ 'LABORATORY.SAMPLE_TYPE' | translate }} <span class="req">*</span></label>
           <p-select formControlName="sampleType" [options]="sampleTypes"
-            optionLabel="label" optionValue="value" placeholder="Select sample type"
+            optionLabel="label" optionValue="value" [placeholder]="'LABORATORY.SELECT_SAMPLE_TYPE' | translate"
             styleClass="w-full"
             [class.invalid-field]="form.get('sampleType')?.invalid && form.get('sampleType')?.touched"></p-select>
           @if (form.get('sampleType')?.invalid && form.get('sampleType')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
       </div>
 
       <!-- Priority chips -->
       <div class="form-group" style="margin-top: 1rem;">
-        <label>Priority <span class="req">*</span></label>
+        <label>{{ 'COMMON.PRIORITY' | translate }} <span class="req">*</span></label>
         <div class="priority-chips">
           @for (p of priorities; track p.value) {
             <button type="button" class="priority-chip"
@@ -57,7 +57,7 @@
               [class.chip-routine]="p.value === 'Routine'"
               [class.chip-active]="form.get('priority')?.value === p.value"
               (click)="form.get('priority')?.setValue(p.value)">
-              {{ p.label }}
+              {{ ('PRIORITY.' + p.value + '_LABEL') | translate }}
             </button>
           }
         </div>
@@ -67,16 +67,16 @@
     <!-- Tests -->
     <div class="form-section">
       <div class="section-header-row">
-        <h4 class="section-title"><i class="pi pi-flask"></i> Requested Tests</h4>
+        <h4 class="section-title"><i class="pi pi-flask"></i> {{ 'LABORATORY.REQUESTED_TESTS' | translate }}</h4>
         <button type="button" class="btn-add-item" (click)="addTest()">
-          <i class="pi pi-plus"></i> Add Test
+          <i class="pi pi-plus"></i> {{ 'LABORATORY.ADD_TEST' | translate }}
         </button>
       </div>
       <div class="tests-table">
         <div class="tests-header">
-          <span class="col-tname">Test Name</span>
-          <span class="col-tcode">Code</span>
-          <span class="col-tcat">Category</span>
+          <span class="col-tname">{{ 'LABORATORY.TEST_NAME' | translate }}</span>
+          <span class="col-tcode">{{ 'COMMON.CODE' | translate }}</span>
+          <span class="col-tcat">{{ 'PHARMACY.CATEGORY' | translate }}</span>
           <span class="col-tremove"></span>
         </div>
         <div formArrayName="tests">
@@ -107,16 +107,16 @@
 
     <!-- Clinical Info -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-file-edit"></i> Clinical Information</h4>
+      <h4 class="section-title"><i class="pi pi-file-edit"></i> {{ 'LABORATORY.CLINICAL_INFO_SECTION' | translate }}</h4>
       <div class="form-grid-2">
         <div class="form-group span-2">
-          <label>Clinical Notes / Indication</label>
+          <label>{{ 'LABORATORY.CLINICAL_NOTES_LABEL' | translate }}</label>
           <textarea pInputText formControlName="clinicalNotes" rows="3"
             placeholder="Describe symptoms, clinical indication, or reason for tests..."
             class="w-full notes-ta"></textarea>
         </div>
         <div class="form-group">
-          <label>ICD-10 Code</label>
+          <label>{{ 'LABORATORY.ICD_CODE' | translate }}</label>
           <input pInputText formControlName="icdCode" placeholder="e.g. Z00.00, I10" class="w-full" />
         </div>
       </div>
@@ -124,8 +124,8 @@
 
     <!-- Actions -->
     <div class="form-actions">
-      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
-      <p-button label="Submit Request" icon="pi pi-send" (onClick)="submit()"></p-button>
+      <p-button [label]="'COMMON.CANCEL' | translate" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button [label]="'LABORATORY.SUBMIT' | translate" icon="pi pi-send" (onClick)="submit()"></p-button>
     </div>
 
   </form>

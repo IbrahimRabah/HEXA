@@ -1,111 +1,111 @@
-<app-page-header [title]="isEdit ? 'Edit Patient' : 'New Patient'">
-  <p-button label="Cancel" icon="pi pi-times" severity="secondary" routerLink="/patients"></p-button>
+<app-page-header [title]="isEdit ? 'PATIENTS.EDIT' : 'PATIENTS.NEW'">
+  <p-button [label]="'COMMON.CANCEL' | translate" icon="pi pi-times" severity="secondary" routerLink="/patients"></p-button>
 </app-page-header>
 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <!-- Personal Info -->
-  <p-card header="Personal Information" styleClass="mb-3">
+  <p-card [header]="'PATIENTS.PERSONAL_INFO' | translate" styleClass="mb-3">
     <div class="form-grid">
       <div class="field">
-        <label>First Name <span class="required">*</span></label>
-        <input pInputText formControlName="firstName" placeholder="First name" />
-        <small class="error" *ngIf="isInvalid('firstName')">First name is required.</small>
+        <label>{{ 'PATIENTS.FIRST_NAME' | translate }} <span class="required">*</span></label>
+        <input pInputText formControlName="firstName" [placeholder]="'PATIENTS.FIRST_NAME' | translate" />
+        <small class="error" *ngIf="isInvalid('firstName')">{{ 'PATIENTS.FIRST_NAME' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}.</small>
       </div>
       <div class="field">
-        <label>Last Name <span class="required">*</span></label>
-        <input pInputText formControlName="lastName" placeholder="Last name" />
-        <small class="error" *ngIf="isInvalid('lastName')">Last name is required.</small>
+        <label>{{ 'PATIENTS.LAST_NAME' | translate }} <span class="required">*</span></label>
+        <input pInputText formControlName="lastName" [placeholder]="'PATIENTS.LAST_NAME' | translate" />
+        <small class="error" *ngIf="isInvalid('lastName')">{{ 'PATIENTS.LAST_NAME' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}.</small>
       </div>
       <div class="field">
-        <label>Date of Birth <span class="required">*</span></label>
+        <label>{{ 'PATIENTS.DATE_OF_BIRTH' | translate }} <span class="required">*</span></label>
         <p-datepicker formControlName="dateOfBirth" [showIcon]="true" dateFormat="dd/mm/yy" [maxDate]="today"></p-datepicker>
-        <small class="error" *ngIf="isInvalid('dateOfBirth')">Date of birth is required.</small>
+        <small class="error" *ngIf="isInvalid('dateOfBirth')">{{ 'PATIENTS.DATE_OF_BIRTH' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}.</small>
       </div>
       <div class="field">
-        <label>Gender <span class="required">*</span></label>
-        <p-select formControlName="gender" [options]="genderOptions" optionLabel="label" optionValue="value" placeholder="Select gender"></p-select>
-        <small class="error" *ngIf="isInvalid('gender')">Gender is required.</small>
+        <label>{{ 'COMMON.GENDER' | translate }} <span class="required">*</span></label>
+        <p-select formControlName="gender" [options]="genderOptions" optionLabel="label" optionValue="value" [placeholder]="'PATIENTS.SELECT_GENDER' | translate"></p-select>
+        <small class="error" *ngIf="isInvalid('gender')">{{ 'COMMON.GENDER' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}.</small>
       </div>
       <div class="field">
-        <label>Nationality</label>
+        <label>{{ 'PATIENTS.NATIONALITY' | translate }}</label>
         <input pInputText formControlName="nationality" placeholder="e.g. US" />
       </div>
       <div class="field">
-        <label>National ID</label>
-        <input pInputText formControlName="nationalId" placeholder="National ID number" />
+        <label>{{ 'PATIENTS.NATIONAL_ID' | translate }}</label>
+        <input pInputText formControlName="nationalId" [placeholder]="'PATIENTS.NATIONAL_ID' | translate" />
       </div>
       <div class="field">
-        <label>Blood Type</label>
-        <p-select formControlName="bloodType" [options]="bloodTypeOptions" placeholder="Select blood type"></p-select>
+        <label>{{ 'COMMON.BLOOD_TYPE' | translate }}</label>
+        <p-select formControlName="bloodType" [options]="bloodTypeOptions" [placeholder]="'PATIENTS.SELECT_BLOOD_TYPE' | translate"></p-select>
       </div>
     </div>
   </p-card>
 
   <!-- Contact Info -->
-  <p-card header="Contact Information" styleClass="mb-3">
+  <p-card [header]="'PATIENTS.CONTACT_INFO' | translate" styleClass="mb-3">
     <div class="form-grid">
       <div class="field">
-        <label>Phone <span class="required">*</span></label>
+        <label>{{ 'COMMON.PHONE' | translate }} <span class="required">*</span></label>
         <input pInputText formControlName="phone" placeholder="+1 555-0000" />
-        <small class="error" *ngIf="isInvalid('phone')">Phone is required.</small>
+        <small class="error" *ngIf="isInvalid('phone')">{{ 'COMMON.PHONE' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}.</small>
       </div>
       <div class="field">
-        <label>Email</label>
+        <label>{{ 'COMMON.EMAIL' | translate }}</label>
         <input pInputText formControlName="email" placeholder="email@example.com" type="email" />
-        <small class="error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Enter a valid email.</small>
+        <small class="error" *ngIf="form.get('email')?.invalid && form.get('email')?.touched">{{ 'COMMON.EMAIL' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}.</small>
       </div>
       <div class="field col-span-2">
-        <label>Address</label>
+        <label>{{ 'COMMON.ADDRESS' | translate }}</label>
         <input pInputText formControlName="address" placeholder="Full address" />
       </div>
     </div>
   </p-card>
 
   <!-- Emergency Contact -->
-  <p-card header="Emergency Contact" styleClass="mb-3">
+  <p-card [header]="'PATIENTS.EMERGENCY_CONTACT_SECTION' | translate" styleClass="mb-3">
     <div class="form-grid">
       <div class="field">
-        <label>Contact Name</label>
+        <label>{{ 'PATIENTS.CONTACT_NAME' | translate }}</label>
         <input pInputText formControlName="emergencyContactName" placeholder="Full name" />
       </div>
       <div class="field">
-        <label>Contact Phone</label>
+        <label>{{ 'PATIENTS.CONTACT_PHONE' | translate }}</label>
         <input pInputText formControlName="emergencyContactPhone" placeholder="+1 555-0000" />
       </div>
     </div>
   </p-card>
 
   <!-- Insurance -->
-  <p-card header="Insurance" styleClass="mb-3">
+  <p-card [header]="'PATIENTS.INSURANCE_SECTION' | translate" styleClass="mb-3">
     <div class="form-grid">
       <div class="field">
-        <label>Insurance Provider</label>
+        <label>{{ 'PATIENTS.INSURANCE_PROVIDER' | translate }}</label>
         <input pInputText formControlName="insuranceProvider" placeholder="Provider name" />
       </div>
       <div class="field">
-        <label>Insurance Number</label>
+        <label>{{ 'PATIENTS.INSURANCE_NUMBER' | translate }}</label>
         <input pInputText formControlName="insuranceNumber" placeholder="Policy/member number" />
       </div>
     </div>
   </p-card>
 
   <!-- Medical Info -->
-  <p-card header="Medical Information" styleClass="mb-3">
+  <p-card [header]="'PATIENTS.MEDICAL_INFO' | translate" styleClass="mb-3">
     <div class="form-grid">
       <div class="field col-span-2">
-        <label>Allergies</label>
+        <label>{{ 'PATIENTS.ALLERGIES' | translate }}</label>
         <p-autocomplete formControlName="allergies" [multiple]="true" placeholder="Type and press Enter"></p-autocomplete>
       </div>
       <div class="field col-span-2">
-        <label>Chronic Diseases</label>
+        <label>{{ 'PATIENTS.CHRONIC_DISEASES' | translate }}</label>
         <p-autocomplete formControlName="chronicDiseases" [multiple]="true" placeholder="Type and press Enter"></p-autocomplete>
       </div>
       <div class="field col-span-2">
-        <label>Fixed Medications</label>
+        <label>{{ 'PATIENTS.FIXED_MEDICATIONS' | translate }}</label>
         <p-autocomplete formControlName="fixedMedications" [multiple]="true" placeholder="Type and press Enter"></p-autocomplete>
       </div>
       <div class="field col-span-2">
-        <label>Notes</label>
+        <label>{{ 'COMMON.NOTES' | translate }}</label>
         <textarea pTextarea formControlName="notes" rows="3" placeholder="Additional notes..." style="width:100%"></textarea>
       </div>
     </div>
@@ -113,8 +113,8 @@
 
   <!-- Actions -->
   <div class="form-actions">
-    <p-button label="Cancel" icon="pi pi-times" severity="secondary" type="button" routerLink="/patients"></p-button>
-    <p-button [label]="isEdit ? 'Update Patient' : 'Save Patient'" icon="pi pi-check" type="submit"
+    <p-button [label]="'COMMON.CANCEL' | translate" icon="pi pi-times" severity="secondary" type="button" routerLink="/patients"></p-button>
+    <p-button [label]="isEdit ? ('PATIENTS.UPDATE' | translate) : ('PATIENTS.SAVE' | translate)" icon="pi pi-check" type="submit"
       [disabled]="form.invalid || saving" [loading]="saving"></p-button>
   </div>
 </form>

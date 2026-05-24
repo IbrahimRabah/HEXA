@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { TabsModule } from 'primeng/tabs';
@@ -16,7 +17,7 @@ import { Patient } from '../../../../shared/models/patient.model';
   selector: 'app-patient-profile',
   standalone: true,
   imports: [CommonModule, RouterModule, CardModule, TabsModule, TagModule,
-    ButtonModule, BadgeModule, DividerModule, PageHeaderComponent, StatusTagComponent],
+    ButtonModule, BadgeModule, DividerModule, PageHeaderComponent, StatusTagComponent, TranslatePipe],
   templateUrl: './patient-profile.component.html',
   styleUrl: './patient-profile.component.css'
 })

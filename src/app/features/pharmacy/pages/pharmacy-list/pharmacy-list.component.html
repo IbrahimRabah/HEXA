@@ -1,5 +1,5 @@
 <app-page-header title="PAGES.PHARMACY">
-  <p-button label="Add Medication" icon="pi pi-plus" (onClick)="showMedForm = true"></p-button>
+  <p-button [label]="'PHARMACY.NEW' | translate" icon="pi pi-plus" (onClick)="showMedForm = true"></p-button>
 </app-page-header>
 
 <app-medication-form [(visible)]="showMedForm" (saved)="onMedSaved($event)"></app-medication-form>
@@ -7,7 +7,7 @@
 <div class="filters-bar">
   <p-iconfield>
     <p-inputicon styleClass="pi pi-search"></p-inputicon>
-    <input pInputText [(ngModel)]="searchTerm" placeholder="Search medications..." (input)="applyFilters()" />
+    <input pInputText [(ngModel)]="searchTerm" [placeholder]="'PHARMACY.SEARCH_PLACEHOLDER' | translate" (input)="applyFilters()" />
   </p-iconfield>
 </div>
 
@@ -15,14 +15,14 @@
   <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th pSortableColumn="name">Medication <p-sortIcon field="name"></p-sortIcon></th>
-        <th pSortableColumn="genericName">Generic Name <p-sortIcon field="genericName"></p-sortIcon></th>
-        <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
-        <th pSortableColumn="form">Form <p-sortIcon field="form"></p-sortIcon></th>
-        <th pSortableColumn="strength">Strength <p-sortIcon field="strength"></p-sortIcon></th>
-        <th pSortableColumn="stock">Stock <p-sortIcon field="stock"></p-sortIcon></th>
-        <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
-        <th style="width: 100px">Actions</th>
+        <th pSortableColumn="name">{{ 'PHARMACY.MEDICATION_NAME' | translate }} <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="genericName">{{ 'PHARMACY.GENERIC_NAME' | translate }} <p-sortIcon field="genericName"></p-sortIcon></th>
+        <th pSortableColumn="category">{{ 'PHARMACY.CATEGORY' | translate }} <p-sortIcon field="category"></p-sortIcon></th>
+        <th pSortableColumn="form">{{ 'COMMON.FORM' | translate }} <p-sortIcon field="form"></p-sortIcon></th>
+        <th pSortableColumn="strength">{{ 'PHARMACY.STRENGTH' | translate }} <p-sortIcon field="strength"></p-sortIcon></th>
+        <th pSortableColumn="stock">{{ 'PHARMACY.STOCK' | translate }} <p-sortIcon field="stock"></p-sortIcon></th>
+        <th pSortableColumn="price">{{ 'PHARMACY.UNIT_PRICE' | translate }} <p-sortIcon field="price"></p-sortIcon></th>
+        <th style="width: 100px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-m>
@@ -39,12 +39,13 @@
         <td>{{ m.price | currency }}</td>
         <td>
           <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="info" size="small"
-            pTooltip="Edit" (onClick)="toastService.showInfo('Info', 'Edit coming soon.')"></p-button>
+            [pTooltip]="'COMMON.EDIT' | translate" (onClick)="toastService.showInfo('Info', 'Edit coming soon.')"></p-button>
         </td>
       </tr>
     </ng-template>
     <ng-template #emptymessage>
-      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No medications found.</td></tr>
+      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">{{ 'PHARMACY.NO_FOUND' | translate }}</td></tr>
     </ng-template>
   </p-table>
 </div>
+

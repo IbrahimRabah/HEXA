@@ -1,5 +1,5 @@
 <p-dialog
-  header="New Invoice"
+  [header]="'BILLING.NEW' | translate"
   [visible]="visible"
   (onHide)="close()"
   [modal]="true"
@@ -12,30 +12,30 @@
 
     <!-- Patient & Invoice Info -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-user"></i> Patient &amp; Invoice Details</h4>
+      <h4 class="section-title"><i class="pi pi-user"></i> {{ 'BILLING.PATIENT_INVOICE_DETAILS' | translate }}</h4>
       <div class="form-grid-2">
         <div class="form-group">
-          <label>Patient Name <span class="req">*</span></label>
+          <label>{{ 'COMMON.NAME' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="patientName" placeholder="Full patient name" class="w-full"
             [class.invalid-field]="form.get('patientName')?.invalid && form.get('patientName')?.touched" />
           @if (form.get('patientName')?.invalid && form.get('patientName')?.touched) {
-            <small class="field-error">Patient name is required</small>
+            <small class="field-error">{{ 'COMMON.NAME' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Patient ID</label>
+          <label>{{ 'BILLING.PATIENT_ID' | translate }}</label>
           <input pInputText formControlName="patientId" placeholder="e.g. PAT-0042" class="w-full" />
         </div>
         <div class="form-group">
-          <label>Due Date <span class="req">*</span></label>
+          <label>{{ 'BILLING.DUE_DATE' | translate }} <span class="req">*</span></label>
           <input type="date" pInputText formControlName="dueDate" class="w-full"
             [class.invalid-field]="form.get('dueDate')?.invalid && form.get('dueDate')?.touched" />
           @if (form.get('dueDate')?.invalid && form.get('dueDate')?.touched) {
-            <small class="field-error">Due date is required</small>
+            <small class="field-error">{{ 'BILLING.DUE_DATE' | translate }} {{ 'COMMON.REQUIRED' | translate | lowercase }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Payment Method <span class="req">*</span></label>
+          <label>{{ 'BILLING.PAYMENT_METHOD' | translate }} <span class="req">*</span></label>
           <p-select formControlName="paymentMethod" [options]="paymentMethods"
             optionLabel="label" optionValue="value" styleClass="w-full"></p-select>
         </div>
@@ -45,17 +45,17 @@
     <!-- Line Items -->
     <div class="form-section">
       <div class="section-header-row">
-        <h4 class="section-title"><i class="pi pi-list"></i> Invoice Items</h4>
+        <h4 class="section-title"><i class="pi pi-list"></i> {{ 'BILLING.INVOICE_ITEMS_SECTION' | translate }}</h4>
         <button type="button" class="btn-add-item" (click)="addItem()">
-          <i class="pi pi-plus"></i> Add Item
+          <i class="pi pi-plus"></i> {{ 'BILLING.ADD_ITEM' | translate }}
         </button>
       </div>
       <div class="items-table">
         <div class="items-header">
-          <span class="col-desc">Description</span>
-          <span class="col-qty">Qty</span>
-          <span class="col-price">Unit Price</span>
-          <span class="col-amount">Amount</span>
+          <span class="col-desc">{{ 'BILLING.ITEM_DESCRIPTION' | translate }}</span>
+          <span class="col-qty">{{ 'BILLING.QUANTITY' | translate }}</span>
+          <span class="col-price">{{ 'BILLING.UNIT_PRICE' | translate }}</span>
+          <span class="col-amount">{{ 'BILLING.AMOUNT_COL' | translate }}</span>
           <span class="col-remove"></span>
         </div>
         <div formArrayName="items">
@@ -88,32 +88,32 @@
     <div class="form-section">
       <div class="bottom-grid">
         <div class="form-group notes-group">
-          <label>Notes</label>
+          <label>{{ 'COMMON.NOTES' | translate }}</label>
           <textarea pInputText formControlName="notes" rows="5"
             placeholder="Optional notes or instructions..." class="w-full notes-ta"></textarea>
         </div>
         <div class="totals-box">
           <div class="total-row">
-            <span>Subtotal</span>
+            <span>{{ 'BILLING.SUBTOTAL' | translate }}</span>
             <span>{{ subtotal | currency }}</span>
           </div>
           <div class="total-row">
             <div class="adj-field">
-              <span>Discount ($)</span>
+              <span>{{ 'BILLING.DISCOUNT_LABEL' | translate }}</span>
               <input type="number" pInputText formControlName="discount" min="0" step="0.01" class="mini-input" />
             </div>
             <span class="text-red">−&nbsp;{{ discountAmt | currency }}</span>
           </div>
           <div class="total-row">
             <div class="adj-field">
-              <span>Tax (%)</span>
+              <span>{{ 'BILLING.TAX_LABEL' | translate }}</span>
               <input type="number" pInputText formControlName="taxPct" min="0" max="100" step="0.1" class="mini-input" />
             </div>
             <span class="text-muted">+&nbsp;{{ taxAmt | currency }}</span>
           </div>
           <div class="totals-divider"></div>
           <div class="total-row grand-total">
-            <strong>Total Due</strong>
+            <strong>{{ 'BILLING.TOTAL_DUE' | translate }}</strong>
             <strong>{{ grandTotal | currency }}</strong>
           </div>
         </div>
@@ -122,8 +122,8 @@
 
     <!-- Actions -->
     <div class="form-actions">
-      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
-      <p-button label="Create Invoice" icon="pi pi-check" (onClick)="submit()"></p-button>
+      <p-button [label]="'COMMON.CANCEL' | translate" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button [label]="'BILLING.CREATE' | translate" icon="pi pi-check" (onClick)="submit()"></p-button>
     </div>
 
   </form>

@@ -6,56 +6,56 @@
     <div class="kpi-icon"><i class="pi pi-calendar"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">{{ data.kpis.todayAppointments }}</div>
-      <div class="kpi-label">Today's Appointments</div>
+      <div class="kpi-label">{{ 'DASHBOARD.TODAY_APPOINTMENTS' | translate }}</div>
     </div>
   </div>
   <div class="kpi-card kpi-green">
     <div class="kpi-icon"><i class="pi pi-users"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">{{ data.kpis.totalPatients }}</div>
-      <div class="kpi-label">Total Patients</div>
+      <div class="kpi-label">{{ 'DASHBOARD.TOTAL_PATIENTS' | translate }}</div>
     </div>
   </div>
   <div class="kpi-card kpi-orange">
     <div class="kpi-icon"><i class="pi pi-user-plus"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">{{ data.kpis.newPatientsToday }}</div>
-      <div class="kpi-label">New Patients Today</div>
+      <div class="kpi-label">{{ 'DASHBOARD.NEW_PATIENTS_TODAY' | translate }}</div>
     </div>
   </div>
   <div class="kpi-card kpi-teal">
     <div class="kpi-icon"><i class="pi pi-home"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">{{ data.kpis.roomOccupancyRate }}%</div>
-      <div class="kpi-label">Room Occupancy</div>
+      <div class="kpi-label">{{ 'DASHBOARD.ROOM_OCCUPANCY' | translate }}</div>
     </div>
   </div>
   <div class="kpi-card kpi-purple">
     <div class="kpi-icon"><i class="pi pi-filter"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">{{ data.kpis.pendingLabRequests }}</div>
-      <div class="kpi-label">Pending Lab Requests</div>
+      <div class="kpi-label">{{ 'DASHBOARD.PENDING_LAB' | translate }}</div>
     </div>
   </div>
   <div class="kpi-card kpi-indigo">
     <div class="kpi-icon"><i class="pi pi-camera"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">{{ data.kpis.pendingRadiologyRequests }}</div>
-      <div class="kpi-label">Pending Radiology</div>
+      <div class="kpi-label">{{ 'DASHBOARD.PENDING_RADIOLOGY' | translate }}</div>
     </div>
   </div>
   <div class="kpi-card kpi-emerald">
     <div class="kpi-icon"><i class="pi pi-dollar"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">${{ data.kpis.todayRevenue | number }}</div>
-      <div class="kpi-label">Today's Revenue</div>
+      <div class="kpi-label">{{ 'DASHBOARD.TODAY_REVENUE' | translate }}</div>
     </div>
   </div>
   <div class="kpi-card kpi-cyan">
     <div class="kpi-icon"><i class="pi pi-chart-line"></i></div>
     <div class="kpi-content">
       <div class="kpi-value">${{ data.kpis.monthRevenue | number }}</div>
-      <div class="kpi-label">Month Revenue</div>
+      <div class="kpi-label">{{ 'DASHBOARD.MONTH_REVENUE' | translate }}</div>
     </div>
   </div>
 </div>
@@ -63,14 +63,14 @@
 <!-- Content Row -->
 <div class="dashboard-grid">
   <!-- Recent Appointments -->
-  <p-card header="Today's Appointments" styleClass="dashboard-card">
+  <p-card [header]="'DASHBOARD.TODAY_APPOINTMENTS' | translate" styleClass="dashboard-card">
     <p-table [value]="data.recentAppointments" [tableStyle]="{'min-width': '100%'}">
       <ng-template #header>
         <tr>
-          <th>Time</th>
-          <th>Patient</th>
-          <th>Doctor</th>
-          <th>Status</th>
+          <th>{{ 'COMMON.TIME' | translate }}</th>
+          <th>{{ 'COMMON.PATIENT' | translate }}</th>
+          <th>{{ 'COMMON.DOCTOR' | translate }}</th>
+          <th>{{ 'COMMON.STATUS' | translate }}</th>
         </tr>
       </ng-template>
       <ng-template #body let-apt>
@@ -82,66 +82,67 @@
         </tr>
       </ng-template>
       <ng-template #emptymessage>
-        <tr><td colspan="4" class="text-center p-4">No appointments today.</td></tr>
+        <tr><td colspan="4" class="text-center p-4">{{ 'COMMON.NO_DATA' | translate }}</td></tr>
       </ng-template>
     </p-table>
     <div class="card-footer">
-      <a routerLink="/appointments" class="view-all-link">View all appointments <i class="pi pi-arrow-right"></i></a>
+      <a routerLink="/appointments" class="view-all-link">{{ 'DASHBOARD.VIEW_ALL_APPOINTMENTS' | translate }} <i class="pi pi-arrow-right"></i></a>
     </div>
   </p-card>
 
   <!-- Room Status -->
-  <p-card header="Room Status Summary" styleClass="dashboard-card">
+  <p-card [header]="'DASHBOARD.ROOM_STATUS_CARD' | translate" styleClass="dashboard-card">
     <div class="room-status-grid">
       <div class="room-status-item status-available">
         <div class="room-status-count">{{ data.roomStatusSummary.available }}</div>
-        <div class="room-status-label">Available</div>
+        <div class="room-status-label">{{ 'STATUS.AVAILABLE' | translate }}</div>
       </div>
       <div class="room-status-item status-occupied">
         <div class="room-status-count">{{ data.roomStatusSummary.occupied }}</div>
-        <div class="room-status-label">Occupied</div>
+        <div class="room-status-label">{{ 'STATUS.OCCUPIED' | translate }}</div>
       </div>
       <div class="room-status-item status-cleaning">
         <div class="room-status-count">{{ data.roomStatusSummary.cleaning }}</div>
-        <div class="room-status-label">Cleaning</div>
+        <div class="room-status-label">{{ 'STATUS.CLEANING' | translate }}</div>
       </div>
       <div class="room-status-item status-maintenance">
         <div class="room-status-count">{{ data.roomStatusSummary.maintenance }}</div>
-        <div class="room-status-label">Maintenance</div>
+        <div class="room-status-label">{{ 'STATUS.MAINTENANCE' | translate }}</div>
       </div>
     </div>
     <div class="card-footer">
-      <a routerLink="/rooms" class="view-all-link">View all rooms <i class="pi pi-arrow-right"></i></a>
+      <a routerLink="/rooms" class="view-all-link">{{ 'DASHBOARD.VIEW_ALL_ROOMS' | translate }} <i class="pi pi-arrow-right"></i></a>
     </div>
   </p-card>
 </div>
 
 <!-- Quick Access -->
-<p-card header="Quick Actions" styleClass="mt-3">
+<p-card [header]="'DASHBOARD.QUICK_ACTIONS' | translate" styleClass="mt-3">
   <div class="quick-actions">
     <a routerLink="/patients/new" class="quick-action-btn">
       <i class="pi pi-user-plus"></i>
-      <span>New Patient</span>
+      <span>{{ 'PATIENTS.NEW' | translate }}</span>
     </a>
     <a routerLink="/appointments/new" class="quick-action-btn">
       <i class="pi pi-calendar-plus"></i>
-      <span>New Appointment</span>
+      <span>{{ 'APPOINTMENTS.NEW' | translate }}</span>
     </a>
     <a routerLink="/reception" class="quick-action-btn">
       <i class="pi pi-check-circle"></i>
-      <span>Check-in</span>
+      <span>{{ 'DASHBOARD.CHECKIN' | translate }}</span>
     </a>
     <a routerLink="/nursing" class="quick-action-btn">
       <i class="pi pi-heart"></i>
-      <span>Nursing Queue</span>
+      <span>{{ 'DASHBOARD.NURSING_QUEUE' | translate }}</span>
     </a>
     <a routerLink="/laboratory" class="quick-action-btn">
       <i class="pi pi-filter"></i>
-      <span>Lab Requests</span>
+      <span>{{ 'DASHBOARD.LAB_REQUESTS' | translate }}</span>
     </a>
     <a routerLink="/billing" class="quick-action-btn">
       <i class="pi pi-dollar"></i>
-      <span>Billing</span>
+      <span>{{ 'DASHBOARD.BILLING' | translate }}</span>
     </a>
   </div>
 </p-card>
+

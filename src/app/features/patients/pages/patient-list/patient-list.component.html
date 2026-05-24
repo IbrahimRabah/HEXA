@@ -1,14 +1,14 @@
 ﻿<app-page-header title="PAGES.PATIENTS">
-  <p-button label="New Patient" icon="pi pi-plus" routerLink="new"></p-button>
+  <p-button [label]="'PATIENTS.NEW' | translate" icon="pi pi-plus" routerLink="new"></p-button>
 </app-page-header>
 
 <div class="card">
   <div class="filters-bar">
     <p-iconfield>
       <p-inputicon styleClass="pi pi-search"></p-inputicon>
-      <input pInputText [(ngModel)]="searchTerm" placeholder="Search by name, MRN, phone..." (input)="applyFilter()" />
+      <input pInputText [(ngModel)]="searchTerm" [placeholder]="'PATIENTS.SEARCH_PLACEHOLDER' | translate" (input)="applyFilter()" />
     </p-iconfield>
-    <p-select [options]="statusOptions" [(ngModel)]="statusFilter" placeholder="All Statuses"
+    <p-select [options]="statusOptions" [(ngModel)]="statusFilter" [placeholder]="'COMMON.ALL_STATUSES' | translate"
       (onChange)="applyFilter()" [showClear]="true" optionLabel="label" optionValue="value"></p-select>
   </div>
 
@@ -16,13 +16,13 @@
     [tableStyle]="{'min-width': '100%'}" [loading]="loading" dataKey="id">
     <ng-template #header>
       <tr>
-        <th pSortableColumn="mrn" style="width: 100px">MRN <p-sortIcon field="mrn"></p-sortIcon></th>
-        <th pSortableColumn="fullName">Name <p-sortIcon field="fullName"></p-sortIcon></th>
-        <th pSortableColumn="gender">Gender <p-sortIcon field="gender"></p-sortIcon></th>
-        <th>Phone</th>
-        <th>Blood Type</th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th style="width: 130px">Actions</th>
+        <th pSortableColumn="mrn" style="width: 100px">{{ 'COMMON.MRN' | translate }} <p-sortIcon field="mrn"></p-sortIcon></th>
+        <th pSortableColumn="fullName">{{ 'COMMON.NAME' | translate }} <p-sortIcon field="fullName"></p-sortIcon></th>
+        <th pSortableColumn="gender">{{ 'COMMON.GENDER' | translate }} <p-sortIcon field="gender"></p-sortIcon></th>
+        <th>{{ 'COMMON.PHONE' | translate }}</th>
+        <th>{{ 'COMMON.BLOOD_TYPE' | translate }}</th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 130px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-patient>
@@ -38,11 +38,11 @@
         <td><app-status-tag [status]="patient.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-eye" [text]="true" [rounded]="true" severity="info" size="small"
-            (onClick)="viewPatient(patient)" pTooltip="View Profile"></p-button>
+            (onClick)="viewPatient(patient)" [pTooltip]="'COMMON.VIEW_PROFILE' | translate"></p-button>
           <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="secondary" size="small"
-            (onClick)="editPatient(patient)" pTooltip="Edit"></p-button>
+            (onClick)="editPatient(patient)" [pTooltip]="'COMMON.EDIT' | translate"></p-button>
           <p-button icon="pi pi-trash" [text]="true" [rounded]="true" severity="danger" size="small"
-            (onClick)="confirmDelete(patient)" pTooltip="Delete"></p-button>
+            (onClick)="confirmDelete(patient)" [pTooltip]="'COMMON.DELETE' | translate"></p-button>
         </td>
       </tr>
     </ng-template>
@@ -50,9 +50,10 @@
       <tr>
         <td colspan="7" class="empty-state">
           <i class="pi pi-users" style="font-size: 2rem; color: var(--p-text-muted-color)"></i>
-          <p>No patients found.</p>
+          <p>{{ 'PATIENTS.NO_FOUND' | translate }}</p>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+

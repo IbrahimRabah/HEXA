@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { CardModule } from 'primeng/card';
@@ -18,7 +19,7 @@ import { DOCTORS_MOCK } from '../../../../mock-data/doctors.mock';
   selector: 'app-appointment-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule, CardModule, InputTextModule,
-    SelectModule, DatePickerModule, TextareaModule, ButtonModule, PageHeaderComponent],
+    SelectModule, DatePickerModule, TextareaModule, ButtonModule, PageHeaderComponent, TranslatePipe],
   templateUrl: './appointment-form.component.html',
   styleUrl: './appointment-form.component.css'
 })

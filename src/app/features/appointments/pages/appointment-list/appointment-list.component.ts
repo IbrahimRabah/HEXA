@@ -18,13 +18,14 @@ import { AppointmentService } from '../../services/appointment.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { Appointment } from '../../../../shared/models/appointment.model';
 import { AppointmentStatus } from '../../../../shared/enums/status.enums';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-appointment-list',
   standalone: true,
   imports: [CommonModule, DatePipe, FormsModule, RouterModule, TableModule, ButtonModule, TooltipModule,
     SelectModule, DatePickerModule, IconFieldModule, InputIconModule,
-    InputTextModule, ConfirmDialogModule, PageHeaderComponent, StatusTagComponent],
+    InputTextModule, ConfirmDialogModule, PageHeaderComponent, StatusTagComponent, TranslatePipe],
   templateUrl: './appointment-list.component.html',
   styleUrl: './appointment-list.component.css'
 })

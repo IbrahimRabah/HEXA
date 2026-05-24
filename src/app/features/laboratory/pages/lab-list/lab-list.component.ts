@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
 import { TooltipModule } from 'primeng/tooltip';
@@ -31,7 +32,7 @@ const STATUS_OPTIONS = [
 @Component({
   selector: 'app-lab-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, LabRequestFormComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, LabRequestFormComponent, TranslatePipe],
   templateUrl: './lab-list.component.html',
   styleUrl: './lab-list.component.css'
 })

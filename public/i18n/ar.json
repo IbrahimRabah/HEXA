@@ -117,7 +117,22 @@
     "PRINT": "طباعة",
     "REFRESH": "تحديث",
     "VIEW": "عرض",
-    "DOWNLOAD": "تحميل"
+    "DOWNLOAD": "تحميل",
+    "TIME": "الوقت",
+    "MRN": "رقم السجل",
+    "TOKEN": "الرقم",
+    "SPECIALTY": "التخصص",
+    "TEST": "الفحص",
+    "CODE": "الكود",
+    "BALANCE": "الرصيد",
+    "FORM": "الشكل",
+    "BLOOD_TYPE": "فصيلة الدم",
+    "ALL_STATUSES": "كل الحالات",
+    "ALL_TYPES": "كل الأنواع",
+    "ALL_PRIORITIES": "كل الأولويات",
+    "FILTER_BY_DATE": "تصفية بالتاريخ",
+    "VIEW_PROFILE": "عرض الملف",
+    "NO_RECORDS": "لا توجد سجلات."
   },
 
   "STATUS": {
@@ -146,7 +161,30 @@
     "EMERGENCY": "طارئ",
     "ELECTIVE": "اختياري",
     "STAT": "فوري",
-    "ROUTINE": "روتيني"
+    "ROUTINE": "روتيني",
+    "STAT_LABEL": "إسعاف — فوري",
+    "URGENT_LABEL": "عاجل — خلال 4 ساعات",
+    "ROUTINE_LABEL": "روتيني — عادي",
+    "REFERRAL": "إحالة"
+  },
+
+  "DASHBOARD": {
+    "TODAY_APPOINTMENTS": "مواعيد اليوم",
+    "TOTAL_PATIENTS": "إجمالي المرضى",
+    "NEW_PATIENTS_TODAY": "مرضى جدد اليوم",
+    "ROOM_OCCUPANCY": "إشغال الغرف",
+    "PENDING_LAB": "طلبات مختبر معلقة",
+    "PENDING_RADIOLOGY": "طلبات أشعة معلقة",
+    "TODAY_REVENUE": "إيرادات اليوم",
+    "MONTH_REVENUE": "إيرادات الشهر",
+    "ROOM_STATUS_CARD": "ملخص حالة الغرف",
+    "QUICK_ACTIONS": "الإجراءات السريعة",
+    "VIEW_ALL_APPOINTMENTS": "عرض كل المواعيد",
+    "VIEW_ALL_ROOMS": "عرض كل الغرف",
+    "CHECKIN": "تسجيل الدخول",
+    "NURSING_QUEUE": "قائمة التمريض",
+    "LAB_REQUESTS": "طلبات المختبر",
+    "BILLING": "الفواتير"
   },
 
   "PATIENTS": {
@@ -159,7 +197,43 @@
     "BLOOD_GROUP": "فصيلة الدم",
     "INSURANCE": "التأمين",
     "LAST_VISIT": "آخر زيارة",
-    "TOTAL_VISITS": "إجمالي الزيارات"
+    "TOTAL_VISITS": "إجمالي الزيارات",
+    "NO_FOUND": "لم يُعثر على مرضى.",
+    "EDIT": "تعديل مريض",
+    "PROFILE": "ملف المريض",
+    "SAVE": "حفظ المريض",
+    "UPDATE": "تحديث المريض",
+    "BACK": "رجوع",
+    "PERSONAL_INFO": "المعلومات الشخصية",
+    "CONTACT_INFO": "معلومات الاتصال",
+    "EMERGENCY_CONTACT_SECTION": "جهة الاتصال الطارئة",
+    "INSURANCE_SECTION": "التأمين",
+    "MEDICAL_INFO": "المعلومات الطبية",
+    "FIRST_NAME": "الاسم الأول",
+    "LAST_NAME": "اسم العائلة",
+    "NATIONALITY": "الجنسية",
+    "NATIONAL_ID": "الهوية الوطنية",
+    "INSURANCE_PROVIDER": "مزود التأمين",
+    "INSURANCE_NUMBER": "رقم التأمين",
+    "ALLERGIES": "الحساسية",
+    "CHRONIC_DISEASES": "الأمراض المزمنة",
+    "FIXED_MEDICATIONS": "الأدوية الثابتة",
+    "CONTACT_NAME": "اسم جهة الاتصال",
+    "CONTACT_PHONE": "هاتف جهة الاتصال",
+    "NO_ALLERGIES": "لا توجد حساسية معروفة.",
+    "NO_CHRONIC": "لا توجد أمراض مزمنة.",
+    "NO_MEDICATIONS": "لا توجد أدوية ثابتة.",
+    "NOT_FOUND_PROFILE": "لم يُعثر على المريض.",
+    "BACK_TO_LIST": "العودة إلى المرضى",
+    "OVERVIEW_TAB": "نظرة عامة",
+    "MEDICAL_HISTORY_TAB": "التاريخ الطبي",
+    "ACTIVITY_TAB": "النشاط",
+    "CREATED_BY": "أنشئ بواسطة",
+    "LAST_UPDATED": "آخر تحديث",
+    "SELF_PAY": "دفع ذاتي",
+    "SELECT_GENDER": "اختر الجنس",
+    "SELECT_BLOOD_TYPE": "اختر فصيلة الدم",
+    "LOADING_PROFILE": "جاري تحميل ملف المريض..."
   },
 
   "APPOINTMENTS": {
@@ -171,7 +245,22 @@
     "DEPARTMENT": "القسم",
     "DATE_TIME": "التاريخ والوقت",
     "REASON": "السبب",
-    "TYPE": "النوع"
+    "TYPE": "النوع",
+    "SPECIALTY": "التخصص",
+    "CHECK_IN": "تسجيل الحضور",
+    "NO_FOUND": "لم يُعثر على مواعيد.",
+    "EDIT": "تعديل موعد",
+    "SCHEDULE": "جدولة موعد",
+    "UPDATE": "تحديث",
+    "START_TIME": "وقت البداية",
+    "END_TIME": "وقت النهاية",
+    "REASON_FOR_VISIT": "سبب الزيارة",
+    "BACK": "رجوع",
+    "SELECT_PATIENT": "اختر مريضاً",
+    "SELECT_DOCTOR": "اختر طبيباً",
+    "SELECT_TIME": "اختر الوقت",
+    "SELECT_TYPE": "اختر النوع",
+    "VISIT_REASON_PH": "سبب موجز للزيارة"
   },
 
   "ADMISSIONS": {
@@ -184,7 +273,21 @@
     "ATTENDING_DOCTOR": "الطبيب المعالج",
     "DIAGNOSIS": "التشخيص",
     "ADMISSION_TYPE": "نوع القبول",
-    "DISCHARGE": "الخروج"
+    "DISCHARGE": "الخروج",
+    "PATIENT_INFO": "معلومات المريض",
+    "PATIENT_ID": "معرّف المريض",
+    "DATE_OF_BIRTH": "تاريخ الميلاد",
+    "MEDICAL_DETAILS": "التفاصيل الطبية",
+    "ADMITTING_DOCTOR": "الطبيب المقبّل",
+    "PRIMARY_DIAGNOSIS": "التشخيص الأولي",
+    "ROOM_ASSIGNMENT": "تعيين الغرفة",
+    "ROOM_NUMBER": "رقم الغرفة",
+    "ADMISSION_DATE": "تاريخ الدخول",
+    "EXPECTED_DISCHARGE": "الخروج المتوقع",
+    "INSURANCE_OPTIONAL": "التأمين (اختياري)",
+    "POLICY_NUMBER": "رقم الوثيقة",
+    "ADMIT_BUTTON": "قبول المريض",
+    "NO_FOUND": "لم يُعثر على قبول."
   },
 
   "BILLING": {
@@ -202,7 +305,25 @@
     "ITEM_DESCRIPTION": "الصنف / الوصف",
     "QUANTITY": "الكمية",
     "UNIT_PRICE": "سعر الوحدة",
-    "ADD_LINE": "إضافة بند"
+    "ADD_LINE": "إضافة بند",
+    "SEARCH_PLACEHOLDER": "ابحث عن مريض أو رقم فاتورة...",
+    "TOTAL_INVOICES": "إجمالي الفواتير",
+    "TOTAL_REVENUE": "إجمالي الإيرادات",
+    "PAID_COL": "مدفوع",
+    "BALANCE": "الرصيد",
+    "NO_FOUND": "لا توجد فواتير.",
+    "RECORD_PAYMENT": "تسجيل الدفع",
+    "VIEW_INVOICE": "عرض الفاتورة",
+    "PATIENT_INVOICE_DETAILS": "تفاصيل المريض والفاتورة",
+    "PATIENT_ID": "معرف المريض",
+    "PAYMENT_METHOD": "طريقة الدفع",
+    "INVOICE_ITEMS_SECTION": "بنود الفاتورة",
+    "ADD_ITEM": "إضافة بند",
+    "AMOUNT_COL": "المبلغ",
+    "DISCOUNT_LABEL": "الخصم ($)",
+    "TAX_LABEL": "الضريبة (%)",
+    "TOTAL_DUE": "الإجمالي المستحق",
+    "CREATE": "إنشاء فاتورة"
   },
 
   "PHARMACY": {
@@ -218,7 +339,24 @@
     "UNIT_PRICE": "سعر الوحدة",
     "EXPIRY_DATE": "تاريخ الانتهاء",
     "MANUFACTURER": "الشركة المصنعة",
-    "REORDER_LEVEL": "مستوى إعادة الطلب"
+    "REORDER_LEVEL": "مستوى إعادة الطلب",
+    "NO_FOUND": "لا توجد أدوية.",
+    "PRODUCT_INFO": "معلومات المنتج",
+    "TRADE_NAME": "الاسم التجاري / العلامة التجارية",
+    "BARCODE": "الباركود",
+    "CLASSIFICATION": "التصنيف",
+    "DOSAGE_FORM_LABEL": "شكل الجرعة",
+    "INVENTORY_PRICING": "المخزون والأسعار",
+    "UNIT_PRICE_LABEL": "سعر الوحدة ($)",
+    "SHELF_LOCATION": "موقع الرف",
+    "CURRENT_STOCK": "المخزون الحالي (وحدة)",
+    "MIN_STOCK": "الحد الأدنى للمخزون",
+    "NOTES_STORAGE": "ملاحظات / تعليمات التخزين",
+    "ADD_BUTTON": "إضافة دواء",
+    "BRAND_NAME_REQ": "اسم العلامة التجارية مطلوب",
+    "GENERIC_NAME_REQ": "الاسم العلمي مطلوب",
+    "SELECT_CATEGORY": "اختر الفئة",
+    "SELECT_FORM": "اختر الشكل"
   },
 
   "LABORATORY": {
@@ -229,7 +367,22 @@
     "SAMPLE_TYPE": "نوع العينة",
     "COLLECTED_AT": "وقت الأخذ",
     "RESULTS": "النتائج",
-    "NOTES": "الملاحظات"
+    "NOTES": "الملاحظات",
+    "NO_FOUND": "لا توجد طلبات مختبر.",
+    "SEARCH_PLACEHOLDER": "ابحث عن مريض أو فحص...",
+    "MARK_READY": "تعيين النتيجة جاهزة",
+    "VIEW_RESULTS": "عرض النتائج",
+    "PATIENT_PHYSICIAN": "المريض والطبيب",
+    "PATIENT_ID": "معرف المريض",
+    "REQUESTING_DOCTOR": "الطبيب الطالب",
+    "SELECT_SAMPLE_TYPE": "اختر نوع العينة",
+    "REQUESTED_TESTS": "الفحوصات المطلوبة",
+    "TEST_NAME": "اسم الفحص",
+    "CLINICAL_INFO_SECTION": "المعلومات السريرية",
+    "CLINICAL_NOTES_LABEL": "الملاحظات السريرية / المؤشر",
+    "ICD_CODE": "كود ICD-10",
+    "SUBMIT": "إرسال الطلب",
+    "ADD_TEST": "إضافة فحص"
   },
 
   "RADIOLOGY": {
@@ -240,7 +393,21 @@
     "BODY_PART": "منطقة الجسم",
     "CONTRAST": "مع صبغة تباين",
     "FINDINGS": "النتائج",
-    "RADIOLOGIST": "طبيب الأشعة"
+    "RADIOLOGIST": "طبيب الأشعة",
+    "NO_FOUND": "لا توجد طلبات أشعة.",
+    "SEARCH_PLACEHOLDER": "ابحث عن مريض أو نوع تصوير...",
+    "MARK_IMAGING": "تعيين التصوير قيد التقدم",
+    "MARK_READY": "تعيين النتيجة جاهزة",
+    "PATIENT_PHYSICIAN": "المريض والطبيب",
+    "PATIENT_ID": "معرف المريض",
+    "REQUESTING_DOCTOR": "الطبيب الطالب",
+    "IMAGING_DETAILS": "تفاصيل التصوير",
+    "BODY_PART_REGION": "جزء الجسم / المنطقة",
+    "PREVIOUS_IMAGING": "التصوير السابق متاح",
+    "CLINICAL_INFO_SECTION": "المعلومات السريرية",
+    "CLINICAL_INDICATION_LABEL": "المؤشر السريري",
+    "SPECIAL_INSTRUCTIONS": "تعليمات خاصة",
+    "SUBMIT": "إرسال الطلب"
   },
 
   "OPERATIONS": {
@@ -252,7 +419,20 @@
     "OR_ROOM": "غرفة العمليات",
     "SCHEDULED_DATE": "تاريخ العملية",
     "DURATION": "المدة (دقيقة)",
-    "ANESTHESIA": "نوع التخدير"
+    "ANESTHESIA": "نوع التخدير",
+    "PATIENT_SURGICAL_TEAM": "المريض والفريق الجراحي",
+    "PATIENT_ID": "معرّف المريض",
+    "LEAD_SURGEON": "الجراح الرئيسي",
+    "PROCEDURE_DETAILS": "تفاصيل الإجراء",
+    "PROCEDURE_NAME": "اسم الإجراء",
+    "DIAGNOSIS_INDICATION": "التشخيص / المؤشر",
+    "OPERATING_ROOM": "غرفة العمليات",
+    "SCHEDULING_SECTION": "الجدولة",
+    "EST_DURATION": "المدة التقديرية (دقيقة)",
+    "PREOP_NOTES": "ملاحظات ما قبل العملية / تعليمات خاصة",
+    "OR_COL": "غ.ع.",
+    "DURATION_COL": "المدة",
+    "NO_OPERATIONS": "لا توجد عمليات مجدولة."
   },
 
   "ROOMS": {
@@ -264,7 +444,27 @@
     "OCCUPANCY": "الإشغال",
     "PRICE_PER_NIGHT": "السعر / الليلة",
     "AMENITIES": "المرافق",
-    "BED_COUNT": "عدد الأسرة"
+    "BED_COUNT": "عدد الأسرة",
+    "ROOM_LOCATION": "موقع الغرفة",
+    "FLOOR_LABEL": "الطابق",
+    "WING_BLOCK": "الجناح / المبنى",
+    "CLASSIFICATION": "التصنيف",
+    "ROOM_TYPE_LABEL": "نوع الغرفة",
+    "CAPACITY_PRICING": "الطاقة والتسعير",
+    "BED_CAPACITY": "سعة الأسرّة",
+    "DAILY_RATE": "السعر اليومي ($)",
+    "TELEPHONE_EXT": "الرقم الداخلي",
+    "PRIVATE_BATHROOM": "حمام خاص",
+    "TELEVISION": "تلفزيون",
+    "AIR_CONDITIONING": "تكييف هواء",
+    "REFRIGERATOR": "ثلاجة",
+    "WIFI": "واي فاي",
+    "RECLINER": "كرسي استلقاء",
+    "ADD_BUTTON": "إضافة غرفة",
+    "MARK_AVAILABLE": "تعيين كمتاحة",
+    "SET_CLEANING": "إرسال للتنظيف",
+    "OCCUPIED_LABEL": "مشغول",
+    "NO_ROOMS": "لم تُعثر على غرف."
   },
 
   "HOUSEKEEPING": {
@@ -276,7 +476,15 @@
     "SCHEDULED_TIME": "وقت الجدولة",
     "DURATION": "المدة (دقيقة)",
     "FLOOR_WING": "الطابق / الجناح",
-    "ROOM_NUMBER": "رقم الغرفة"
+    "ROOM_NUMBER": "رقم الغرفة",
+    "NEW_TASK": "مهمة تنظيف جديدة",
+    "ROOM_ASSIGNMENT_SECTION": "الغرفة والمسؤول",
+    "TASK_DETAILS_SECTION": "تفاصيل المهمة",
+    "NOTES_SPECIAL": "ملاحظات / تعليمات خاصة",
+    "CREATE_TASK": "إنشاء مهمة",
+    "NO_TASKS": "لم تُعثر على مهام.",
+    "EST_DURATION": "المدة التقديرية (دقيقة)",
+    "MARK_COMPLETE": "تعيين مكتمل"
   },
 
   "NURSING": {
@@ -286,7 +494,18 @@
     "ASSIGNED_NURSE": "الممرضة المعينة",
     "BED": "السرير",
     "VITAL_SIGNS": "العلامات الحيوية",
-    "MEDICATION_DUE": "الدواء المستحق"
+    "MEDICATION_DUE": "الدواء المستحق",
+    "IN_QUEUE": "في الطابور",
+    "WAITING": "في الانتظار",
+    "UNDER_ASSESSMENT": "قيد التقييم",
+    "READY_FOR_DOCTOR": "جاهز للطبيب",
+    "DATE_TIME": "التاريخ/الوقت",
+    "NURSE": "الممرض/ة",
+    "VITALS_COL": "العلامات الحيوية",
+    "NO_VITALS": "لا علامات حيوية مسجلة",
+    "NO_PATIENTS": "لا يوجد مرضى في قائمة التمريض.",
+    "RECORD_VITALS": "تسجيل العلامات الحيوية",
+    "MARK_READY": "تعيين جاهز للطبيب"
   },
 
   "DOCTOR": {
@@ -295,7 +514,14 @@
     "CHIEF_COMPLAINT": "الشكوى الرئيسية",
     "DIAGNOSIS": "التشخيص",
     "PRESCRIPTION": "الوصفة الطبية",
-    "FOLLOW_UP": "المتابعة"
+    "FOLLOW_UP": "المتابعة",
+    "TOTAL_TODAY": "إجمالي اليوم",
+    "WAITING": "في الانتظار",
+    "IN_CONSULTATION": "في الاستشارة",
+    "NO_SPECIFIED": "غير محدد",
+    "NO_PATIENTS": "لا يوجد مرضى في طابور الاستشارات.",
+    "OPEN_CONSULTATION": "فتح الاستشارة",
+    "MARK_COMPLETE": "تعيين مكتمل"
   },
 
   "RECEPTION": {
@@ -304,7 +530,21 @@
     "QUEUE_NO": "رقم الدور",
     "ARRIVED_AT": "وقت الوصول",
     "WAITING_TIME": "وقت الانتظار",
-    "TRIAGE": "الفرز"
+    "TRIAGE": "الفرز",
+    "TODAY_APPOINTMENTS": "مواعيد اليوم",
+    "CHECKED_IN": "تم تسجيل الدخول",
+    "WAITING_LABEL": "في الانتظار",
+    "TIME_COL": "الوقت",
+    "PATIENT_COL": "المريض",
+    "DOCTOR_COL": "الطبيب",
+    "SPECIALTY_COL": "التخصص",
+    "TYPE_COL": "النوع",
+    "STATUS_COL": "الحالة",
+    "CHECK_IN": "تسجيل الدخول",
+    "OPEN_VISIT": "فتح الزيارة",
+    "NO_SHOW_LABEL": "لم يحضر",
+    "NO_APPOINTMENTS": "لا مواعيد لليوم.",
+    "REFRESH": "تحديث"
   },
 
   "AUDIT": {
@@ -314,7 +554,9 @@
     "USER": "المستخدم",
     "IP_ADDRESS": "عنوان IP",
     "TIMESTAMP": "الوقت",
-    "DETAILS": "التفاصيل"
+    "DETAILS": "التفاصيل",
+    "DESCRIPTION_COL": "الوصف",
+    "NO_LOGS": "لم تُعثر على سجلات."
   },
 
   "REPORTS": {
@@ -324,7 +566,11 @@
     "FROM": "من",
     "TO": "إلى",
     "EXPORT_PDF": "تصدير PDF",
-    "EXPORT_EXCEL": "تصدير Excel"
+    "EXPORT_EXCEL": "تصدير Excel",
+    "CATEGORY_CLINICAL": "سريري",
+    "CATEGORY_FINANCIAL": "مالي",
+    "CATEGORY_OPERATIONS": "العمليات",
+    "CATEGORY_ADMINISTRATION": "الإدارة"
   },
 
   "SETTINGS": {
@@ -334,7 +580,14 @@
     "LANGUAGE": "اللغة",
     "TIMEZONE": "المنطقة الزمنية",
     "CURRENCY": "العملة",
-    "SAVE_CHANGES": "حفظ التغييرات"
+    "SAVE_CHANGES": "حفظ التغييرات",
+    "NOTIFICATIONS": "الإشعارات",
+    "SECURITY": "الأمان",
+    "HOSPITAL_INFO": "معلومات المستشفى",
+    "LICENSE_NUMBER": "رقم الترخيص",
+    "DATE_FORMAT": "تنسيق التاريخ",
+    "NOTIFICATIONS_COMING": "إعدادات الإشعارات ستتوفر قريبًا.",
+    "SECURITY_COMING": "إعدادات الأمان ستتوفر قريبًا."
   },
 
   "AUTH": {

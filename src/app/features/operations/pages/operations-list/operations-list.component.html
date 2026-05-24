@@ -1,5 +1,5 @@
 <app-page-header title="PAGES.OPERATIONS">
-  <p-button label="Schedule Operation" icon="pi pi-plus" (onClick)="showOpForm = true"></p-button>
+  <p-button [label]="'OPERATIONS.NEW' | translate" icon="pi pi-plus" (onClick)="showOpForm = true"></p-button>
 </app-page-header>
 
 <app-operation-form [(visible)]="showOpForm" (saved)="onOpSaved($event)"></app-operation-form>
@@ -15,15 +15,15 @@
   <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th pSortableColumn="scheduledDate">Date <p-sortIcon field="scheduledDate"></p-sortIcon></th>
-        <th>Time</th>
-        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
-        <th pSortableColumn="procedureName">Procedure <p-sortIcon field="procedureName"></p-sortIcon></th>
-        <th pSortableColumn="surgeonName">Surgeon <p-sortIcon field="surgeonName"></p-sortIcon></th>
-        <th>OR</th>
-        <th>Duration</th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th style="width: 120px">Actions</th>
+        <th pSortableColumn="scheduledDate">{{ 'COMMON.DATE' | translate }} <p-sortIcon field="scheduledDate"></p-sortIcon></th>
+        <th>{{ 'COMMON.TIME' | translate }}</th>
+        <th pSortableColumn="patientName">{{ 'COMMON.PATIENT' | translate }} <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="procedureName">{{ 'OPERATIONS.PROCEDURE' | translate }} <p-sortIcon field="procedureName"></p-sortIcon></th>
+        <th pSortableColumn="surgeonName">{{ 'OPERATIONS.SURGEON' | translate }} <p-sortIcon field="surgeonName"></p-sortIcon></th>
+        <th>{{ 'OPERATIONS.OR_COL' | translate }}</th>
+        <th>{{ 'OPERATIONS.DURATION_COL' | translate }}</th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 120px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-op>
@@ -38,16 +38,16 @@
         <td><app-status-tag [status]="op.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-play" [text]="true" [rounded]="true" severity="success" size="small"
-            pTooltip="Start Operation" (onClick)="startOp(op)"
+            [pTooltip]="'OPERATIONS.NEW' | translate" (onClick)="startOp(op)"
             [disabled]="op.status !== 'Scheduled'"></p-button>
           <p-button icon="pi pi-check" [text]="true" [rounded]="true" severity="info" size="small"
-            pTooltip="Mark Complete" (onClick)="completeOp(op)"
+            [pTooltip]="'HOUSEKEEPING.MARK_COMPLETE' | translate" (onClick)="completeOp(op)"
             [disabled]="op.status !== 'InProgress'"></p-button>
         </td>
       </tr>
     </ng-template>
     <ng-template #emptymessage>
-      <tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No operations scheduled.</td></tr>
+      <tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">{{ 'OPERATIONS.NO_OPERATIONS' | translate }}</td></tr>
     </ng-template>
   </p-table>
 </div>

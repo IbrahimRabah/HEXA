@@ -1,10 +1,10 @@
-<app-page-header [title]="patient?.fullName || 'Patient Profile'">
-  <p-button label="Back" icon="pi pi-arrow-left" severity="secondary" routerLink="/patients" size="small"></p-button>
-  <p-button label="Edit" icon="pi pi-pencil" [routerLink]="['/patients', patient?.id, 'edit']" size="small" styleClass="ml-2"></p-button>
+<app-page-header [title]="patient?.fullName || 'PATIENTS.PROFILE'">
+  <p-button [label]="'PATIENTS.BACK' | translate" icon="pi pi-arrow-left" severity="secondary" routerLink="/patients" size="small"></p-button>
+  <p-button [label]="'COMMON.EDIT' | translate" icon="pi pi-pencil" [routerLink]="['/patients', patient?.id, 'edit']" size="small" styleClass="ml-2"></p-button>
 </app-page-header>
 
 @if (loading) {
-  <div class="loading-state">Loading patient profile...</div>
+  <div class="loading-state">{{ 'PATIENTS.LOADING_PROFILE' | translate }}</div>
 }
 
 @if (!loading && patient) {
@@ -38,36 +38,38 @@
   <!-- Tabs -->
   <p-tabs value="0">
     <!-- Overview Tab -->
-    <p-tabpanel header="Overview" value="0">
+    <p-tabpanel value="0">
+      <ng-template pTemplate="header">{{ 'PATIENTS.OVERVIEW_TAB' | translate }}</ng-template>
       <div class="detail-grid">
-        <p-card header="Contact Information">
+        <p-card [header]="'PATIENTS.CONTACT_INFO' | translate">
           <div class="detail-list">
-            <div class="detail-row"><span class="label">Phone</span><span>{{ patient.phone }}</span></div>
-            <div class="detail-row"><span class="label">Email</span><span>{{ patient.email || 'N/A' }}</span></div>
-            <div class="detail-row"><span class="label">Address</span><span>{{ patient.address || 'N/A' }}</span></div>
-            <div class="detail-row"><span class="label">Nationality</span><span>{{ patient.nationality || 'N/A' }}</span></div>
-            <div class="detail-row"><span class="label">National ID</span><span>{{ patient.nationalId || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'COMMON.PHONE' | translate }}</span><span>{{ patient.phone }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'COMMON.EMAIL' | translate }}</span><span>{{ patient.email || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'COMMON.ADDRESS' | translate }}</span><span>{{ patient.address || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'PATIENTS.NATIONALITY' | translate }}</span><span>{{ patient.nationality || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'PATIENTS.NATIONAL_ID' | translate }}</span><span>{{ patient.nationalId || 'N/A' }}</span></div>
           </div>
         </p-card>
-        <p-card header="Emergency Contact">
+        <p-card [header]="'PATIENTS.EMERGENCY_CONTACT_SECTION' | translate">
           <div class="detail-list">
-            <div class="detail-row"><span class="label">Name</span><span>{{ patient.emergencyContactName || 'N/A' }}</span></div>
-            <div class="detail-row"><span class="label">Phone</span><span>{{ patient.emergencyContactPhone || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'COMMON.NAME' | translate }}</span><span>{{ patient.emergencyContactName || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'COMMON.PHONE' | translate }}</span><span>{{ patient.emergencyContactPhone || 'N/A' }}</span></div>
           </div>
         </p-card>
-        <p-card header="Insurance">
+        <p-card [header]="'PATIENTS.INSURANCE_SECTION' | translate">
           <div class="detail-list">
-            <div class="detail-row"><span class="label">Provider</span><span>{{ patient.insuranceProvider || 'Self-pay' }}</span></div>
-            <div class="detail-row"><span class="label">Number</span><span>{{ patient.insuranceNumber || 'N/A' }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'PATIENTS.INSURANCE_PROVIDER' | translate }}</span><span>{{ patient.insuranceProvider || ('PATIENTS.SELF_PAY' | translate) }}</span></div>
+            <div class="detail-row"><span class="label">{{ 'PATIENTS.INSURANCE_NUMBER' | translate }}</span><span>{{ patient.insuranceNumber || 'N/A' }}</span></div>
           </div>
         </p-card>
       </div>
     </p-tabpanel>
 
     <!-- Medical History Tab -->
-    <p-tabpanel header="Medical History" value="1">
+    <p-tabpanel value="1">
+      <ng-template pTemplate="header">{{ 'PATIENTS.MEDICAL_HISTORY_TAB' | translate }}</ng-template>
       <div class="detail-grid">
-        <p-card header="Allergies">
+        <p-card [header]="'PATIENTS.ALLERGIES' | translate">
           @if (patient.allergies.length) {
             <div class="chip-list">
               @for (a of patient.allergies; track a) {
@@ -75,10 +77,10 @@
               }
             </div>
           } @else {
-            <p class="text-muted">No known allergies.</p>
+            <p class="text-muted">{{ 'PATIENTS.NO_ALLERGIES' | translate }}</p>
           }
         </p-card>
-        <p-card header="Chronic Diseases">
+        <p-card [header]="'PATIENTS.CHRONIC_DISEASES' | translate">
           @if (patient.chronicDiseases.length) {
             <div class="chip-list">
               @for (d of patient.chronicDiseases; track d) {
@@ -86,10 +88,10 @@
               }
             </div>
           } @else {
-            <p class="text-muted">No chronic diseases.</p>
+            <p class="text-muted">{{ 'PATIENTS.NO_CHRONIC' | translate }}</p>
           }
         </p-card>
-        <p-card header="Fixed Medications">
+        <p-card [header]="'PATIENTS.FIXED_MEDICATIONS' | translate">
           @if (patient.fixedMedications.length) {
             <div class="chip-list">
               @for (m of patient.fixedMedications; track m) {
@@ -97,11 +99,11 @@
               }
             </div>
           } @else {
-            <p class="text-muted">No fixed medications.</p>
+            <p class="text-muted">{{ 'PATIENTS.NO_MEDICATIONS' | translate }}</p>
           }
         </p-card>
         @if (patient.notes) {
-          <p-card header="Notes">
+          <p-card [header]="'COMMON.NOTES' | translate">
             <p>{{ patient.notes }}</p>
           </p-card>
         }
@@ -109,11 +111,12 @@
     </p-tabpanel>
 
     <!-- Activity Tab -->
-    <p-tabpanel header="Activity" value="2">
+    <p-tabpanel value="2">
+      <ng-template pTemplate="header">{{ 'PATIENTS.ACTIVITY_TAB' | translate }}</ng-template>
       <div class="detail-list">
-        <div class="detail-row"><span class="label">Created At</span><span>{{ patient.createdAt | date:'dd MMM yyyy HH:mm' }}</span></div>
-        <div class="detail-row"><span class="label">Last Updated</span><span>{{ patient.updatedAt | date:'dd MMM yyyy HH:mm' }}</span></div>
-        <div class="detail-row"><span class="label">Created By</span><span>{{ patient.createdBy }}</span></div>
+        <div class="detail-row"><span class="label">{{ 'COMMON.CREATED_AT' | translate }}</span><span>{{ patient.createdAt | date:'dd MMM yyyy HH:mm' }}</span></div>
+        <div class="detail-row"><span class="label">{{ 'PATIENTS.LAST_UPDATED' | translate }}</span><span>{{ patient.updatedAt | date:'dd MMM yyyy HH:mm' }}</span></div>
+        <div class="detail-row"><span class="label">{{ 'PATIENTS.CREATED_BY' | translate }}</span><span>{{ patient.createdBy }}</span></div>
       </div>
     </p-tabpanel>
   </p-tabs>
@@ -122,7 +125,7 @@
 @if (!loading && !patient) {
   <div class="empty-state">
     <i class="pi pi-user-minus"></i>
-    <p>Patient not found.</p>
-    <p-button label="Back to Patients" routerLink="/patients"></p-button>
+    <p>{{ 'PATIENTS.NOT_FOUND_PROFILE' | translate }}</p>
+    <p-button [label]="'PATIENTS.BACK_TO_LIST' | translate" routerLink="/patients"></p-button>
   </div>
 }

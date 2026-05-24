@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
 import { TooltipModule } from 'primeng/tooltip';
@@ -23,7 +24,7 @@ const STATUS_OPTIONS = [
 @Component({
   selector: 'app-invoice-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, CurrencyPipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, PageHeaderComponent, StatusTagComponent, InvoiceFormComponent],
+  imports: [CommonModule, DatePipe, CurrencyPipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, PageHeaderComponent, StatusTagComponent, InvoiceFormComponent, TranslatePipe],
   templateUrl: './invoice-list.component.html',
   styleUrl: './invoice-list.component.css'
 })

@@ -17,6 +17,7 @@ import { StatusTagComponent } from '../../../../shared/components/status-tag/sta
 import { PatientService } from '../../services/patient.service';
 import { ToastService } from '../../../../core/services/toast.service';
 import { Patient } from '../../../../shared/models/patient.model';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-patient-list',
@@ -24,69 +25,9 @@ import { Patient } from '../../../../shared/models/patient.model';
   imports: [
     CommonModule, FormsModule, RouterModule, TableModule, ButtonModule, TooltipModule,
     InputTextModule, SelectModule, TagModule, IconFieldModule, InputIconModule,
-    ConfirmDialogModule, PageHeaderComponent, StatusTagComponent
+    ConfirmDialogModule, PageHeaderComponent, StatusTagComponent, TranslatePipe
   ],
-  template: `
-    <app-page-header title="Patients">
-      <p-button label="New Patient" icon="pi pi-plus" routerLink="new"></p-button>
-    </app-page-header>
-
-    <div class="card">
-      <!-- Filters -->
-      <div class="filters-bar">
-        <p-iconfield>
-          <p-inputicon styleClass="pi pi-search"></p-inputicon>
-          <input pInputText [(ngModel)]="searchTerm" placeholder="Search by name, MRN, phone..." (input)="applyFilter()" />
-        </p-iconfield>
-        <p-select [options]="statusOptions" [(ngModel)]="statusFilter" placeholder="All Statuses"
-          (onChange)="applyFilter()" [showClear]="true" optionLabel="label" optionValue="value"></p-select>
-      </div>
-
-      <p-table [value]="filteredPatients" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]"
-        [tableStyle]="{'min-width': '100%'}" [loading]="loading" dataKey="id">
-        <ng-template #header>
-          <tr>
-            <th pSortableColumn="mrn" style="width: 100px">MRN <p-sortIcon field="mrn"></p-sortIcon></th>
-            <th pSortableColumn="fullName">Name <p-sortIcon field="fullName"></p-sortIcon></th>
-            <th pSortableColumn="gender">Gender <p-sortIcon field="gender"></p-sortIcon></th>
-            <th>Phone</th>
-            <th>Blood Type</th>
-            <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-            <th style="width: 130px">Actions</th>
-          </tr>
-        </ng-template>
-        <ng-template #body let-patient>
-          <tr>
-            <td><span class="mrn-badge">{{ patient.mrn }}</span></td>
-            <td>
-              <div class="patient-name">{{ patient.fullName }}</div>
-              <div class="patient-sub">{{ patient.email }}</div>
-            </td>
-            <td>{{ patient.gender }}</td>
-            <td>{{ patient.phone }}</td>
-            <td><span class="blood-type">{{ patient.bloodType }}</span></td>
-            <td><app-status-tag [status]="patient.status"></app-status-tag></td>
-            <td>
-              <p-button icon="pi pi-eye" [text]="true" [rounded]="true" severity="info" size="small"
-                (onClick)="viewPatient(patient)" pTooltip="View Profile"></p-button>
-              <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="secondary" size="small"
-                (onClick)="editPatient(patient)" pTooltip="Edit"></p-button>
-              <p-button icon="pi pi-trash" [text]="true" [rounded]="true" severity="danger" size="small"
-                (onClick)="confirmDelete(patient)" pTooltip="Delete"></p-button>
-            </td>
-          </tr>
-        </ng-template>
-        <ng-template #emptymessage>
-          <tr>
-            <td colspan="7" class="empty-state">
-              <i class="pi pi-users" style="font-size: 2rem; color: var(--p-text-muted-color)"></i>
-              <p>No patients found.</p>
-            </td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
-  `,
+  templateUrl: './patient-list.component.html',
   styles: [`
     .card { background: var(--p-content-background); border: 1px solid var(--p-content-border-color); border-radius: 8px; padding: 1rem; }
     .filters-bar { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }

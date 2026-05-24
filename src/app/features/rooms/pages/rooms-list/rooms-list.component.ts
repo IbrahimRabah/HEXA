@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
@@ -22,7 +23,7 @@ const STATUS_COLOR: Record<string, string> = {
 @Component({
   selector: 'app-rooms-list',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, FormsModule, ButtonModule, SelectModule, TagModule, PageHeaderComponent, RoomFormComponent],
+  imports: [CommonModule, CurrencyPipe, FormsModule, ButtonModule, SelectModule, TagModule, TranslatePipe, PageHeaderComponent, RoomFormComponent],
   templateUrl: './rooms-list.component.html',
   styleUrl: './rooms-list.component.css'
 })

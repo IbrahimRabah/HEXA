@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -11,7 +12,7 @@ import { LabRequestStatus } from '../../../../shared/enums/status.enums';
 @Component({
   selector: 'app-lab-request-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, DialogModule, ButtonModule, InputTextModule, SelectModule],
+  imports: [CommonModule, ReactiveFormsModule, DialogModule, ButtonModule, InputTextModule, SelectModule, TranslatePipe],
   templateUrl: './lab-request-form.component.html',
   styleUrl: './lab-request-form.component.css',
 })

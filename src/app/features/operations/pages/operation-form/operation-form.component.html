@@ -1,5 +1,5 @@
 <p-dialog
-  header="Schedule Operation"
+  [header]="'OPERATIONS.NEW' | translate"
   [visible]="visible"
   (onHide)="close()"
   [modal]="true"
@@ -12,30 +12,30 @@
 
     <!-- Patient & Surgical Team -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-users"></i> Patient &amp; Surgical Team</h4>
+      <h4 class="section-title"><i class="pi pi-users"></i> {{ 'OPERATIONS.PATIENT_SURGICAL_TEAM' | translate }}</h4>
       <div class="form-grid-2">
         <div class="form-group">
-          <label>Patient Name <span class="req">*</span></label>
+          <label>{{ 'COMMON.NAME' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="patientName" placeholder="Full patient name" class="w-full"
             [class.invalid-field]="form.get('patientName')?.invalid && form.get('patientName')?.touched" />
           @if (form.get('patientName')?.invalid && form.get('patientName')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Patient ID</label>
+          <label>{{ 'OPERATIONS.PATIENT_ID' | translate }}</label>
           <input pInputText formControlName="patientId" placeholder="e.g. PAT-0042" class="w-full" />
         </div>
         <div class="form-group">
-          <label>Lead Surgeon <span class="req">*</span></label>
+          <label>{{ 'OPERATIONS.LEAD_SURGEON' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="surgeonName" placeholder="Dr. Full Name" class="w-full"
             [class.invalid-field]="form.get('surgeonName')?.invalid && form.get('surgeonName')?.touched" />
           @if (form.get('surgeonName')?.invalid && form.get('surgeonName')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Anesthesiologist</label>
+          <label>{{ 'OPERATIONS.ANESTHESIOLOGIST' | translate }}</label>
           <input pInputText formControlName="anesthesiologist" placeholder="Dr. Full Name" class="w-full" />
         </div>
       </div>
@@ -43,36 +43,36 @@
 
     <!-- Procedure Details -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-heart"></i> Procedure Details</h4>
+      <h4 class="section-title"><i class="pi pi-heart"></i> {{ 'OPERATIONS.PROCEDURE_DETAILS' | translate }}</h4>
       <div class="form-grid-2">
         <div class="form-group span-2">
-          <label>Procedure Name <span class="req">*</span></label>
+          <label>{{ 'OPERATIONS.PROCEDURE_NAME' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="procedureName" placeholder="e.g. Laparoscopic Appendectomy" class="w-full"
             [class.invalid-field]="form.get('procedureName')?.invalid && form.get('procedureName')?.touched" />
           @if (form.get('procedureName')?.invalid && form.get('procedureName')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group span-2">
-          <label>Diagnosis / Indication <span class="req">*</span></label>
+          <label>{{ 'OPERATIONS.DIAGNOSIS_INDICATION' | translate }} <span class="req">*</span></label>
           <textarea pInputText formControlName="diagnosis" rows="2"
             placeholder="e.g. Acute Appendicitis, Right inguinal hernia..." class="w-full notes-ta"
             [class.invalid-field]="form.get('diagnosis')?.invalid && form.get('diagnosis')?.touched"></textarea>
           @if (form.get('diagnosis')?.invalid && form.get('diagnosis')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Operating Room <span class="req">*</span></label>
+          <label>{{ 'OPERATIONS.OPERATING_ROOM' | translate }} <span class="req">*</span></label>
           <p-select formControlName="operationRoom" [options]="operationRooms"
             optionLabel="label" optionValue="value" placeholder="Select OR" styleClass="w-full"
             [class.invalid-field]="form.get('operationRoom')?.invalid && form.get('operationRoom')?.touched"></p-select>
           @if (form.get('operationRoom')?.invalid && form.get('operationRoom')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Anesthesia Type <span class="req">*</span></label>
+          <label>{{ 'OPERATIONS.ANESTHESIA' | translate }} <span class="req">*</span></label>
           <p-select formControlName="anesthesiaType" [options]="anesthesiaTypes"
             optionLabel="label" optionValue="value" styleClass="w-full"></p-select>
         </div>
@@ -81,10 +81,10 @@
 
     <!-- Scheduling -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-calendar"></i> Scheduling</h4>
+      <h4 class="section-title"><i class="pi pi-calendar"></i> {{ 'OPERATIONS.SCHEDULING_SECTION' | translate }}</h4>
 
       <div class="form-group" style="margin-bottom: 1rem;">
-        <label>Priority</label>
+        <label>{{ 'COMMON.PRIORITY' | translate }}</label>
         <div class="priority-chips">
           @for (p of priorities; track p.value) {
             <button type="button" class="priority-chip"
@@ -93,7 +93,7 @@
               [class.chip-emergency]="p.value === 'Emergency'"
               [class.chip-active]="form.get('priority')?.value === p.value"
               (click)="form.get('priority')?.setValue(p.value)">
-              {{ p.label }}
+              {{ ('PRIORITY.' + p.value) | translate }}
             </button>
           }
         </div>
@@ -101,27 +101,27 @@
 
       <div class="form-grid-3">
         <div class="form-group">
-          <label>Date <span class="req">*</span></label>
+          <label>{{ 'COMMON.DATE' | translate }} <span class="req">*</span></label>
           <input type="date" pInputText formControlName="scheduledDate" class="w-full"
             [class.invalid-field]="form.get('scheduledDate')?.invalid && form.get('scheduledDate')?.touched" />
           @if (form.get('scheduledDate')?.invalid && form.get('scheduledDate')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Time <span class="req">*</span></label>
+          <label>{{ 'COMMON.TIME' | translate }} <span class="req">*</span></label>
           <input type="time" pInputText formControlName="scheduledTime" class="w-full"
             [class.invalid-field]="form.get('scheduledTime')?.invalid && form.get('scheduledTime')?.touched" />
           @if (form.get('scheduledTime')?.invalid && form.get('scheduledTime')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Estimated Duration (min) <span class="req">*</span></label>
+          <label>{{ 'OPERATIONS.EST_DURATION' | translate }} <span class="req">*</span></label>
           <input type="number" pInputText formControlName="estimatedDuration" min="5" step="15" class="w-full"
             [class.invalid-field]="form.get('estimatedDuration')?.invalid && form.get('estimatedDuration')?.touched" />
           @if (form.get('estimatedDuration')?.invalid && form.get('estimatedDuration')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
       </div>
@@ -130,7 +130,7 @@
     <!-- Notes -->
     <div class="form-section">
       <div class="form-group">
-        <label>Pre-op Notes / Special Instructions</label>
+        <label>{{ 'OPERATIONS.PREOP_NOTES' | translate }}</label>
         <textarea pInputText formControlName="notes" rows="3"
           placeholder="e.g. Patient is on anticoagulants, allergies, special equipment needed..."
           class="w-full notes-ta"></textarea>
@@ -139,8 +139,8 @@
 
     <!-- Actions -->
     <div class="form-actions">
-      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
-      <p-button label="Schedule Operation" icon="pi pi-calendar-plus" (onClick)="submit()"></p-button>
+      <p-button [label]="'COMMON.CANCEL' | translate" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button [label]="'OPERATIONS.NEW' | translate" icon="pi pi-calendar-plus" (onClick)="submit()"></p-button>
     </div>
 
   </form>

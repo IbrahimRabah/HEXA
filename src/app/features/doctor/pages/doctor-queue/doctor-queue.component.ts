@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { Router, RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
@@ -15,7 +16,7 @@ import { VisitStatus } from '../../../../shared/enums/status.enums';
 @Component({
   selector: 'app-doctor-queue',
   standalone: true,
-  imports: [CommonModule, DatePipe, RouterModule, TableModule, ButtonModule, TooltipModule, TagModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, DatePipe, RouterModule, TableModule, ButtonModule, TooltipModule, TagModule, PageHeaderComponent, StatusTagComponent, TranslatePipe],
   templateUrl: './doctor-queue.component.html',
   styleUrl: './doctor-queue.component.css'
 })

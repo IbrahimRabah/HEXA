@@ -1,5 +1,5 @@
 <app-page-header title="PAGES.RADIOLOGY">
-  <p-button label="New Request" icon="pi pi-plus" (onClick)="showRadForm = true"></p-button>
+  <p-button [label]="'RADIOLOGY.NEW' | translate" icon="pi pi-plus" (onClick)="showRadForm = true"></p-button>
 </app-page-header>
 
 <app-radiology-request-form [(visible)]="showRadForm" (saved)="onRadSaved($event)"></app-radiology-request-form>
@@ -7,23 +7,23 @@
 <div class="filters-bar">
   <p-iconfield>
     <p-inputicon styleClass="pi pi-search"></p-inputicon>
-    <input pInputText [(ngModel)]="searchTerm" placeholder="Search patient, imaging type..." (input)="applyFilters()" />
+    <input pInputText [(ngModel)]="searchTerm" [placeholder]="'RADIOLOGY.SEARCH_PLACEHOLDER' | translate" (input)="applyFilters()" />
   </p-iconfield>
-  <p-select [(ngModel)]="selectedPriority" [options]="priorityOptions" optionLabel="label" optionValue="value" placeholder="Priority" (onChange)="applyFilters()"></p-select>
+  <p-select [(ngModel)]="selectedPriority" [options]="priorityOptions" optionLabel="label" optionValue="value" [placeholder]="'COMMON.ALL_PRIORITIES' | translate" (onChange)="applyFilters()"></p-select>
 </div>
 
 <div class="card">
   <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th pSortableColumn="requestDate">Date <p-sortIcon field="requestDate"></p-sortIcon></th>
-        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
-        <th pSortableColumn="doctorName">Doctor <p-sortIcon field="doctorName"></p-sortIcon></th>
-        <th pSortableColumn="imagingType">Imaging Type <p-sortIcon field="imagingType"></p-sortIcon></th>
-        <th pSortableColumn="bodyPart">Body Part <p-sortIcon field="bodyPart"></p-sortIcon></th>
-        <th pSortableColumn="priority">Priority <p-sortIcon field="priority"></p-sortIcon></th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th style="width: 120px">Actions</th>
+        <th pSortableColumn="requestDate">{{ 'COMMON.DATE' | translate }} <p-sortIcon field="requestDate"></p-sortIcon></th>
+        <th pSortableColumn="patientName">{{ 'COMMON.PATIENT' | translate }} <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="doctorName">{{ 'COMMON.DOCTOR' | translate }} <p-sortIcon field="doctorName"></p-sortIcon></th>
+        <th pSortableColumn="imagingType">{{ 'RADIOLOGY.IMAGING_TYPE' | translate }} <p-sortIcon field="imagingType"></p-sortIcon></th>
+        <th pSortableColumn="bodyPart">{{ 'RADIOLOGY.BODY_PART' | translate }} <p-sortIcon field="bodyPart"></p-sortIcon></th>
+        <th pSortableColumn="priority">{{ 'COMMON.PRIORITY' | translate }} <p-sortIcon field="priority"></p-sortIcon></th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 120px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-r>
@@ -39,14 +39,15 @@
         <td><app-status-tag [status]="r.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-image" [text]="true" [rounded]="true" severity="info" size="small"
-            pTooltip="Mark Imaging In Progress" (onClick)="markImaging(r)"></p-button>
+            [pTooltip]="'RADIOLOGY.MARK_IMAGING' | translate" (onClick)="markImaging(r)"></p-button>
           <p-button icon="pi pi-check-circle" [text]="true" [rounded]="true" severity="success" size="small"
-            pTooltip="Mark Result Ready" (onClick)="markReady(r)"></p-button>
+            [pTooltip]="'RADIOLOGY.MARK_READY' | translate" (onClick)="markReady(r)"></p-button>
         </td>
       </tr>
     </ng-template>
     <ng-template #emptymessage>
-      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No radiology requests found.</td></tr>
+      <tr><td colspan="8" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">{{ 'RADIOLOGY.NO_FOUND' | translate }}</td></tr>
     </ng-template>
   </p-table>
 </div>
+

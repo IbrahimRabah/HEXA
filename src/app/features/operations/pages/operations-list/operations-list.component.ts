@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
@@ -19,7 +20,7 @@ import { OperationStatus } from '../../../../shared/enums/status.enums';
 @Component({
   selector: 'app-operations-list',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent, StatusTagComponent, OperationFormComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, ButtonModule, TooltipModule, InputTextModule, SelectModule, IconFieldModule, InputIconModule, TagModule, TranslatePipe, PageHeaderComponent, StatusTagComponent, OperationFormComponent],
   templateUrl: './operations-list.component.html',
   styleUrl: './operations-list.component.css'
 })

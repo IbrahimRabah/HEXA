@@ -1,25 +1,25 @@
 <app-page-header title="PAGES.DOCTOR">
-  <p-button label="Refresh" icon="pi pi-refresh" severity="secondary" (onClick)="load()"></p-button>
+  <p-button [label]="'COMMON.REFRESH' | translate" icon="pi pi-refresh" severity="secondary" (onClick)="load()"></p-button>
 </app-page-header>
 
 <div class="summary-bar">
-  <div class="summary-item"><span class="count">{{ queue.length }}</span><span class="label">Total Today</span></div>
-  <div class="summary-item"><span class="count text-orange">{{ waitingCount }}</span><span class="label">Waiting</span></div>
-  <div class="summary-item"><span class="count text-blue">{{ inProgressCount }}</span><span class="label">In Consultation</span></div>
-  <div class="summary-item"><span class="count text-green">{{ completedCount }}</span><span class="label">Completed</span></div>
+  <div class="summary-item"><span class="count">{{ queue.length }}</span><span class="label">{{ 'DOCTOR.TOTAL_TODAY' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-orange">{{ waitingCount }}</span><span class="label">{{ 'DOCTOR.WAITING' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-blue">{{ inProgressCount }}</span><span class="label">{{ 'DOCTOR.IN_CONSULTATION' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-green">{{ completedCount }}</span><span class="label">{{ 'STATUS.COMPLETED' | translate }}</span></div>
 </div>
 
 <div class="card">
   <p-table [value]="queue" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th>Token</th>
-        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
-        <th pSortableColumn="doctorName">Doctor <p-sortIcon field="doctorName"></p-sortIcon></th>
-        <th pSortableColumn="visitDate">Time <p-sortIcon field="visitDate"></p-sortIcon></th>
-        <th>Chief Complaint</th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th style="width: 150px">Actions</th>
+        <th>{{ 'COMMON.TOKEN' | translate }}</th>
+        <th pSortableColumn="patientName">{{ 'COMMON.PATIENT' | translate }} <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="doctorName">{{ 'COMMON.DOCTOR' | translate }} <p-sortIcon field="doctorName"></p-sortIcon></th>
+        <th pSortableColumn="visitDate">{{ 'COMMON.TIME' | translate }} <p-sortIcon field="visitDate"></p-sortIcon></th>
+        <th>{{ 'DOCTOR.CHIEF_COMPLAINT' | translate }}</th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 150px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-v>
@@ -28,13 +28,13 @@
         <td><strong>{{ v.patientName }}</strong></td>
         <td>{{ v.doctorName }}</td>
         <td>{{ v.visitDate | date:'HH:mm' }}</td>
-        <td>{{ v.chiefComplaint || 'Not specified' }}</td>
+        <td>{{ v.chiefComplaint || ('DOCTOR.NO_SPECIFIED' | translate) }}</td>
         <td><app-status-tag [status]="v.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-stethoscope" [text]="true" [rounded]="true" severity="primary" size="small"
-            pTooltip="Open Consultation" (onClick)="openConsultation(v)"></p-button>
+            [pTooltip]="'DOCTOR.OPEN_CONSULTATION' | translate" (onClick)="openConsultation(v)"></p-button>
           <p-button icon="pi pi-check" [text]="true" [rounded]="true" severity="success" size="small"
-            pTooltip="Mark Complete" (onClick)="markComplete(v)"
+            [pTooltip]="'DOCTOR.MARK_COMPLETE' | translate" (onClick)="markComplete(v)"
             [disabled]="v.status === 'Completed'"></p-button>
         </td>
       </tr>
@@ -43,9 +43,10 @@
       <tr>
         <td colspan="7" class="empty-state">
           <i class="pi pi-inbox" style="font-size:2rem"></i>
-          <p>No patients in the consultation queue.</p>
+          <p>{{ 'DOCTOR.NO_PATIENTS' | translate }}</p>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+

@@ -1,5 +1,5 @@
 <app-page-header title="PAGES.ADMISSIONS">
-  <p-button label="New Admission" icon="pi pi-plus" (onClick)="showAdmForm = true"></p-button>
+  <p-button [label]="'ADMISSIONS.NEW' | translate" icon="pi pi-plus" (onClick)="showAdmForm = true"></p-button>
 </app-page-header>
 
 <app-admission-form [(visible)]="showAdmForm" (saved)="onAdmSaved($event)"></app-admission-form>
@@ -15,15 +15,15 @@
   <p-table [value]="filtered" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th pSortableColumn="admissionNumber">Admission # <p-sortIcon field="admissionNumber"></p-sortIcon></th>
-        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
-        <th pSortableColumn="admittingDoctorName">Doctor <p-sortIcon field="admittingDoctorName"></p-sortIcon></th>
-        <th>Room</th>
-        <th pSortableColumn="admissionDate">Admitted <p-sortIcon field="admissionDate"></p-sortIcon></th>
-        <th pSortableColumn="expectedDischarge">Expected Discharge <p-sortIcon field="expectedDischarge"></p-sortIcon></th>
-        <th>Diagnosis</th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th>Actions</th>
+        <th pSortableColumn="admissionNumber">{{ 'ADMISSIONS.ADMISSION_NO' | translate }} <p-sortIcon field="admissionNumber"></p-sortIcon></th>
+        <th pSortableColumn="patientName">{{ 'COMMON.PATIENT' | translate }} <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="admittingDoctorName">{{ 'COMMON.DOCTOR' | translate }} <p-sortIcon field="admittingDoctorName"></p-sortIcon></th>
+        <th>{{ 'COMMON.ROOM' | translate }}</th>
+        <th pSortableColumn="admissionDate">{{ 'ADMISSIONS.ADMITTED_DATE' | translate }} <p-sortIcon field="admissionDate"></p-sortIcon></th>
+        <th pSortableColumn="expectedDischarge">{{ 'ADMISSIONS.EXPECTED_DISCHARGE' | translate }} <p-sortIcon field="expectedDischarge"></p-sortIcon></th>
+        <th>{{ 'ADMISSIONS.DIAGNOSIS' | translate }}</th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th>{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-a>
@@ -38,12 +38,12 @@
         <td><app-status-tag [status]="a.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-sign-out" [text]="true" [rounded]="true" severity="warn" size="small"
-            pTooltip="Discharge" (onClick)="toastService.showInfo('Info', 'Discharge form coming soon.')"></p-button>
+            [pTooltip]="'ADMISSIONS.DISCHARGE' | translate" (onClick)="toastService.showInfo('Info', 'Discharge form coming soon.')"></p-button>
         </td>
       </tr>
     </ng-template>
     <ng-template #emptymessage>
-      <tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No admissions found.</td></tr>
+      <tr><td colspan="9" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">{{ 'ADMISSIONS.NO_FOUND' | translate }}</td></tr>
     </ng-template>
   </p-table>
 </div>

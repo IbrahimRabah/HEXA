@@ -1,5 +1,5 @@
 <app-page-header title="PAGES.HOUSEKEEPING">
-  <p-button label="New Task" icon="pi pi-plus" (onClick)="showTaskForm = true"></p-button>
+  <p-button [label]="'HOUSEKEEPING.NEW' | translate" icon="pi pi-plus" (onClick)="showTaskForm = true"></p-button>
 </app-page-header>
 
 <app-task-form [(visible)]="showTaskForm" (saved)="onTaskSaved($event)"></app-task-form>
@@ -8,13 +8,13 @@
   <p-table [value]="tasks" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th>Room</th>
-        <th>Task Type</th>
-        <th>Assigned To</th>
-        <th>Priority</th>
-        <th>Status</th>
-        <th>Notes</th>
-        <th>Actions</th>
+        <th>{{ 'COMMON.ROOM' | translate }}</th>
+        <th>{{ 'HOUSEKEEPING.TASK_TYPE' | translate }}</th>
+        <th>{{ 'HOUSEKEEPING.ASSIGNED_TO' | translate }}</th>
+        <th>{{ 'COMMON.PRIORITY' | translate }}</th>
+        <th>{{ 'COMMON.STATUS' | translate }}</th>
+        <th>{{ 'COMMON.NOTES' | translate }}</th>
+        <th>{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-t>
@@ -29,12 +29,12 @@
         <td>{{ t.notes || '—' }}</td>
         <td>
           <p-button icon="pi pi-check" [text]="true" [rounded]="true" severity="success" size="small"
-            pTooltip="Mark Complete" (onClick)="complete(t)" [disabled]="t.status === 'Completed'"></p-button>
+            [pTooltip]="'HOUSEKEEPING.MARK_COMPLETE' | translate" (onClick)="complete(t)" [disabled]="t.status === 'Completed'"></p-button>
         </td>
       </tr>
     </ng-template>
     <ng-template #emptymessage>
-      <tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">No tasks found.</td></tr>
+      <tr><td colspan="7" style="text-align:center;padding:3rem;color:var(--p-text-muted-color)">{{ 'HOUSEKEEPING.NO_TASKS' | translate }}</td></tr>
     </ng-template>
   </p-table>
 </div>

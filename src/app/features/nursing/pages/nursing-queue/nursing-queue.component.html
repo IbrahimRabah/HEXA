@@ -1,24 +1,24 @@
 <app-page-header title="PAGES.NURSING">
-  <p-button label="Refresh" icon="pi pi-refresh" severity="secondary" (onClick)="load()"></p-button>
+  <p-button [label]="'COMMON.REFRESH' | translate" icon="pi pi-refresh" severity="secondary" (onClick)="load()"></p-button>
 </app-page-header>
 
 <div class="summary-bar">
-  <div class="summary-item"><span class="count">{{ assessments.length }}</span><span class="label">In Queue</span></div>
-  <div class="summary-item"><span class="count text-orange">{{ waitingCount }}</span><span class="label">Waiting</span></div>
-  <div class="summary-item"><span class="count text-blue">{{ assessingCount }}</span><span class="label">Under Assessment</span></div>
-  <div class="summary-item"><span class="count text-green">{{ readyCount }}</span><span class="label">Ready for Doctor</span></div>
+  <div class="summary-item"><span class="count">{{ assessments.length }}</span><span class="label">{{ 'NURSING.IN_QUEUE' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-orange">{{ waitingCount }}</span><span class="label">{{ 'NURSING.WAITING' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-blue">{{ assessingCount }}</span><span class="label">{{ 'NURSING.UNDER_ASSESSMENT' | translate }}</span></div>
+  <div class="summary-item"><span class="count text-green">{{ readyCount }}</span><span class="label">{{ 'NURSING.READY_FOR_DOCTOR' | translate }}</span></div>
 </div>
 
 <div class="card">
   <p-table [value]="assessments" [loading]="loading" [paginator]="true" [rows]="15" dataKey="id">
     <ng-template #header>
       <tr>
-        <th>Date/Time</th>
-        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
-        <th>Nurse</th>
-        <th>Vitals</th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th style="width: 140px">Actions</th>
+        <th>{{ 'NURSING.DATE_TIME' | translate }}</th>
+        <th pSortableColumn="patientName">{{ 'COMMON.PATIENT' | translate }} <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th>{{ 'NURSING.NURSE' | translate }}</th>
+        <th>{{ 'NURSING.VITALS_COL' | translate }}</th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 140px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-a>
@@ -35,15 +35,15 @@
               SpO₂ {{ a.vitalSigns.spO2 }}%
             </span>
           } @else {
-            <span class="text-muted">No vitals recorded</span>
+            <span class="text-muted">{{ 'NURSING.NO_VITALS' | translate }}</span>
           }
         </td>
         <td><app-status-tag [status]="a.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-heart" [text]="true" [rounded]="true" severity="info" size="small"
-            pTooltip="Record Vitals" (onClick)="recordVitals(a)"></p-button>
+            [pTooltip]="'NURSING.RECORD_VITALS' | translate" (onClick)="recordVitals(a)"></p-button>
           <p-button icon="pi pi-send" [text]="true" [rounded]="true" severity="success" size="small"
-            pTooltip="Mark Ready for Doctor" (onClick)="markReady(a)"
+            [pTooltip]="'NURSING.MARK_READY' | translate" (onClick)="markReady(a)"
             [disabled]="a.status === 'ReadyForDoctor' || a.status === 'Completed'"></p-button>
         </td>
       </tr>
@@ -52,9 +52,10 @@
       <tr>
         <td colspan="6" class="empty-state">
           <i class="pi pi-heart" style="font-size:2rem"></i>
-          <p>No patients in nursing queue.</p>
+          <p>{{ 'NURSING.NO_PATIENTS' | translate }}</p>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+

@@ -117,7 +117,22 @@
     "PRINT": "Print",
     "REFRESH": "Refresh",
     "VIEW": "View",
-    "DOWNLOAD": "Download"
+    "DOWNLOAD": "Download",
+    "TIME": "Time",
+    "MRN": "MRN",
+    "TOKEN": "Token",
+    "SPECIALTY": "Specialty",
+    "TEST": "Test",
+    "CODE": "Code",
+    "BALANCE": "Balance",
+    "FORM": "Form",
+    "BLOOD_TYPE": "Blood Type",
+    "ALL_STATUSES": "All Statuses",
+    "ALL_TYPES": "All Types",
+    "ALL_PRIORITIES": "All Priorities",
+    "FILTER_BY_DATE": "Filter by date",
+    "VIEW_PROFILE": "View Profile",
+    "NO_RECORDS": "No records found."
   },
 
   "STATUS": {
@@ -146,7 +161,30 @@
     "EMERGENCY": "Emergency",
     "ELECTIVE": "Elective",
     "STAT": "STAT",
-    "ROUTINE": "Routine"
+    "ROUTINE": "Routine",
+    "STAT_LABEL": "STAT — Immediate",
+    "URGENT_LABEL": "Urgent — Within 4h",
+    "ROUTINE_LABEL": "Routine — Standard",
+    "REFERRAL": "Referral"
+  },
+
+  "DASHBOARD": {
+    "TODAY_APPOINTMENTS": "Today's Appointments",
+    "TOTAL_PATIENTS": "Total Patients",
+    "NEW_PATIENTS_TODAY": "New Patients Today",
+    "ROOM_OCCUPANCY": "Room Occupancy",
+    "PENDING_LAB": "Pending Lab Requests",
+    "PENDING_RADIOLOGY": "Pending Radiology",
+    "TODAY_REVENUE": "Today's Revenue",
+    "MONTH_REVENUE": "Month Revenue",
+    "ROOM_STATUS_CARD": "Room Status Summary",
+    "QUICK_ACTIONS": "Quick Actions",
+    "VIEW_ALL_APPOINTMENTS": "View all appointments",
+    "VIEW_ALL_ROOMS": "View all rooms",
+    "CHECKIN": "Check-in",
+    "NURSING_QUEUE": "Nursing Queue",
+    "LAB_REQUESTS": "Lab Requests",
+    "BILLING": "Billing"
   },
 
   "PATIENTS": {
@@ -159,7 +197,43 @@
     "BLOOD_GROUP": "Blood Group",
     "INSURANCE": "Insurance",
     "LAST_VISIT": "Last Visit",
-    "TOTAL_VISITS": "Total Visits"
+    "TOTAL_VISITS": "Total Visits",
+    "NO_FOUND": "No patients found.",
+    "EDIT": "Edit Patient",
+    "PROFILE": "Patient Profile",
+    "SAVE": "Save Patient",
+    "UPDATE": "Update Patient",
+    "BACK": "Back",
+    "PERSONAL_INFO": "Personal Information",
+    "CONTACT_INFO": "Contact Information",
+    "EMERGENCY_CONTACT_SECTION": "Emergency Contact",
+    "INSURANCE_SECTION": "Insurance",
+    "MEDICAL_INFO": "Medical Information",
+    "FIRST_NAME": "First Name",
+    "LAST_NAME": "Last Name",
+    "NATIONALITY": "Nationality",
+    "NATIONAL_ID": "National ID",
+    "INSURANCE_PROVIDER": "Insurance Provider",
+    "INSURANCE_NUMBER": "Insurance Number",
+    "ALLERGIES": "Allergies",
+    "CHRONIC_DISEASES": "Chronic Diseases",
+    "FIXED_MEDICATIONS": "Fixed Medications",
+    "CONTACT_NAME": "Contact Name",
+    "CONTACT_PHONE": "Contact Phone",
+    "NO_ALLERGIES": "No known allergies.",
+    "NO_CHRONIC": "No chronic diseases.",
+    "NO_MEDICATIONS": "No fixed medications.",
+    "NOT_FOUND_PROFILE": "Patient not found.",
+    "BACK_TO_LIST": "Back to Patients",
+    "OVERVIEW_TAB": "Overview",
+    "MEDICAL_HISTORY_TAB": "Medical History",
+    "ACTIVITY_TAB": "Activity",
+    "CREATED_BY": "Created By",
+    "LAST_UPDATED": "Last Updated",
+    "SELF_PAY": "Self-pay",
+    "SELECT_GENDER": "Select gender",
+    "SELECT_BLOOD_TYPE": "Select blood type",
+    "LOADING_PROFILE": "Loading patient profile..."
   },
 
   "APPOINTMENTS": {
@@ -171,7 +245,22 @@
     "DEPARTMENT": "Department",
     "DATE_TIME": "Date & Time",
     "REASON": "Reason",
-    "TYPE": "Type"
+    "TYPE": "Type",
+    "SPECIALTY": "Specialty",
+    "CHECK_IN": "Check In",
+    "NO_FOUND": "No appointments found.",
+    "EDIT": "Edit Appointment",
+    "SCHEDULE": "Schedule Appointment",
+    "UPDATE": "Update",
+    "START_TIME": "Start Time",
+    "END_TIME": "End Time",
+    "REASON_FOR_VISIT": "Reason for Visit",
+    "BACK": "Back",
+    "SELECT_PATIENT": "Select patient",
+    "SELECT_DOCTOR": "Select doctor",
+    "SELECT_TIME": "Select time",
+    "SELECT_TYPE": "Select type",
+    "VISIT_REASON_PH": "Brief reason for visit"
   },
 
   "ADMISSIONS": {
@@ -184,7 +273,21 @@
     "ATTENDING_DOCTOR": "Attending Doctor",
     "DIAGNOSIS": "Diagnosis",
     "ADMISSION_TYPE": "Admission Type",
-    "DISCHARGE": "Discharge"
+    "DISCHARGE": "Discharge",
+    "PATIENT_INFO": "Patient Information",
+    "PATIENT_ID": "Patient ID",
+    "DATE_OF_BIRTH": "Date of Birth",
+    "MEDICAL_DETAILS": "Medical Details",
+    "ADMITTING_DOCTOR": "Admitting Doctor",
+    "PRIMARY_DIAGNOSIS": "Primary Diagnosis",
+    "ROOM_ASSIGNMENT": "Room Assignment",
+    "ROOM_NUMBER": "Room Number",
+    "ADMISSION_DATE": "Admission Date",
+    "EXPECTED_DISCHARGE": "Expected Discharge",
+    "INSURANCE_OPTIONAL": "Insurance (Optional)",
+    "POLICY_NUMBER": "Policy Number",
+    "ADMIT_BUTTON": "Admit Patient",
+    "NO_FOUND": "No admissions found."
   },
 
   "BILLING": {
@@ -202,7 +305,25 @@
     "ITEM_DESCRIPTION": "Item / Description",
     "QUANTITY": "Qty",
     "UNIT_PRICE": "Unit Price",
-    "ADD_LINE": "Add Line"
+    "ADD_LINE": "Add Line",
+    "SEARCH_PLACEHOLDER": "Search patient, invoice #...",
+    "TOTAL_INVOICES": "Total Invoices",
+    "TOTAL_REVENUE": "Total Revenue",
+    "PAID_COL": "Paid",
+    "BALANCE": "Balance",
+    "NO_FOUND": "No invoices found.",
+    "RECORD_PAYMENT": "Record Payment",
+    "VIEW_INVOICE": "View Invoice",
+    "PATIENT_INVOICE_DETAILS": "Patient & Invoice Details",
+    "PATIENT_ID": "Patient ID",
+    "PAYMENT_METHOD": "Payment Method",
+    "INVOICE_ITEMS_SECTION": "Invoice Items",
+    "ADD_ITEM": "Add Item",
+    "AMOUNT_COL": "Amount",
+    "DISCOUNT_LABEL": "Discount ($)",
+    "TAX_LABEL": "Tax (%)",
+    "TOTAL_DUE": "Total Due",
+    "CREATE": "Create Invoice"
   },
 
   "PHARMACY": {
@@ -218,7 +339,24 @@
     "UNIT_PRICE": "Unit Price",
     "EXPIRY_DATE": "Expiry Date",
     "MANUFACTURER": "Manufacturer",
-    "REORDER_LEVEL": "Reorder Level"
+    "REORDER_LEVEL": "Reorder Level",
+    "NO_FOUND": "No medications found.",
+    "PRODUCT_INFO": "Product Information",
+    "TRADE_NAME": "Trade / Brand Name",
+    "BARCODE": "Barcode",
+    "CLASSIFICATION": "Classification",
+    "DOSAGE_FORM_LABEL": "Dosage Form",
+    "INVENTORY_PRICING": "Inventory & Pricing",
+    "UNIT_PRICE_LABEL": "Unit Price ($)",
+    "SHELF_LOCATION": "Shelf Location",
+    "CURRENT_STOCK": "Current Stock (units)",
+    "MIN_STOCK": "Minimum Stock Level",
+    "NOTES_STORAGE": "Notes / Storage Instructions",
+    "ADD_BUTTON": "Add Medication",
+    "BRAND_NAME_REQ": "Brand name is required",
+    "GENERIC_NAME_REQ": "Generic name is required",
+    "SELECT_CATEGORY": "Select category",
+    "SELECT_FORM": "Select form"
   },
 
   "LABORATORY": {
@@ -229,7 +367,22 @@
     "SAMPLE_TYPE": "Sample Type",
     "COLLECTED_AT": "Collected At",
     "RESULTS": "Results",
-    "NOTES": "Notes"
+    "NOTES": "Notes",
+    "NO_FOUND": "No lab requests found.",
+    "SEARCH_PLACEHOLDER": "Search patient, test...",
+    "MARK_READY": "Mark Result Ready",
+    "VIEW_RESULTS": "View Results",
+    "PATIENT_PHYSICIAN": "Patient & Physician",
+    "PATIENT_ID": "Patient ID",
+    "REQUESTING_DOCTOR": "Requesting Doctor",
+    "SELECT_SAMPLE_TYPE": "Select sample type",
+    "REQUESTED_TESTS": "Requested Tests",
+    "TEST_NAME": "Test Name",
+    "CLINICAL_INFO_SECTION": "Clinical Information",
+    "CLINICAL_NOTES_LABEL": "Clinical Notes / Indication",
+    "ICD_CODE": "ICD-10 Code",
+    "SUBMIT": "Submit Request",
+    "ADD_TEST": "Add Test"
   },
 
   "RADIOLOGY": {
@@ -240,7 +393,21 @@
     "BODY_PART": "Body Part",
     "CONTRAST": "Contrast Required",
     "FINDINGS": "Findings",
-    "RADIOLOGIST": "Radiologist"
+    "RADIOLOGIST": "Radiologist",
+    "NO_FOUND": "No radiology requests found.",
+    "SEARCH_PLACEHOLDER": "Search patient, imaging type...",
+    "MARK_IMAGING": "Mark Imaging In Progress",
+    "MARK_READY": "Mark Result Ready",
+    "PATIENT_PHYSICIAN": "Patient & Physician",
+    "PATIENT_ID": "Patient ID",
+    "REQUESTING_DOCTOR": "Requesting Doctor",
+    "IMAGING_DETAILS": "Imaging Details",
+    "BODY_PART_REGION": "Body Part / Region",
+    "PREVIOUS_IMAGING": "Previous Imaging Available",
+    "CLINICAL_INFO_SECTION": "Clinical Information",
+    "CLINICAL_INDICATION_LABEL": "Clinical Indication",
+    "SPECIAL_INSTRUCTIONS": "Special Instructions",
+    "SUBMIT": "Submit Request"
   },
 
   "OPERATIONS": {
@@ -252,7 +419,20 @@
     "OR_ROOM": "OR Room",
     "SCHEDULED_DATE": "Scheduled Date",
     "DURATION": "Duration (min)",
-    "ANESTHESIA": "Anesthesia Type"
+    "ANESTHESIA": "Anesthesia Type",
+    "PATIENT_SURGICAL_TEAM": "Patient & Surgical Team",
+    "PATIENT_ID": "Patient ID",
+    "LEAD_SURGEON": "Lead Surgeon",
+    "PROCEDURE_DETAILS": "Procedure Details",
+    "PROCEDURE_NAME": "Procedure Name",
+    "DIAGNOSIS_INDICATION": "Diagnosis / Indication",
+    "OPERATING_ROOM": "Operating Room",
+    "SCHEDULING_SECTION": "Scheduling",
+    "EST_DURATION": "Estimated Duration (min)",
+    "PREOP_NOTES": "Pre-op Notes / Special Instructions",
+    "OR_COL": "OR",
+    "DURATION_COL": "Duration",
+    "NO_OPERATIONS": "No operations scheduled."
   },
 
   "ROOMS": {
@@ -264,7 +444,27 @@
     "OCCUPANCY": "Occupancy",
     "PRICE_PER_NIGHT": "Price / Night",
     "AMENITIES": "Amenities",
-    "BED_COUNT": "Beds"
+    "BED_COUNT": "Beds",
+    "ROOM_LOCATION": "Room Location",
+    "FLOOR_LABEL": "Floor",
+    "WING_BLOCK": "Wing / Block",
+    "CLASSIFICATION": "Classification",
+    "ROOM_TYPE_LABEL": "Room Type",
+    "CAPACITY_PRICING": "Capacity & Pricing",
+    "BED_CAPACITY": "Bed Capacity",
+    "DAILY_RATE": "Daily Rate ($)",
+    "TELEPHONE_EXT": "Telephone Extension",
+    "PRIVATE_BATHROOM": "Private Bathroom",
+    "TELEVISION": "Television",
+    "AIR_CONDITIONING": "Air Conditioning",
+    "REFRIGERATOR": "Refrigerator",
+    "WIFI": "Wi-Fi",
+    "RECLINER": "Recliner Chair",
+    "ADD_BUTTON": "Add Room",
+    "MARK_AVAILABLE": "Mark Available",
+    "SET_CLEANING": "Set Cleaning",
+    "OCCUPIED_LABEL": "occupied",
+    "NO_ROOMS": "No rooms found."
   },
 
   "HOUSEKEEPING": {
@@ -276,7 +476,15 @@
     "SCHEDULED_TIME": "Scheduled Time",
     "DURATION": "Duration (min)",
     "FLOOR_WING": "Floor / Wing",
-    "ROOM_NUMBER": "Room Number"
+    "ROOM_NUMBER": "Room Number",
+    "NEW_TASK": "New Housekeeping Task",
+    "ROOM_ASSIGNMENT_SECTION": "Room & Assignment",
+    "TASK_DETAILS_SECTION": "Task Details",
+    "NOTES_SPECIAL": "Notes / Special Instructions",
+    "CREATE_TASK": "Create Task",
+    "NO_TASKS": "No tasks found.",
+    "EST_DURATION": "Est. Duration (min)",
+    "MARK_COMPLETE": "Mark Complete"
   },
 
   "NURSING": {
@@ -286,7 +494,18 @@
     "ASSIGNED_NURSE": "Assigned Nurse",
     "BED": "Bed",
     "VITAL_SIGNS": "Vital Signs",
-    "MEDICATION_DUE": "Medication Due"
+    "MEDICATION_DUE": "Medication Due",
+    "IN_QUEUE": "In Queue",
+    "WAITING": "Waiting",
+    "UNDER_ASSESSMENT": "Under Assessment",
+    "READY_FOR_DOCTOR": "Ready for Doctor",
+    "DATE_TIME": "Date/Time",
+    "NURSE": "Nurse",
+    "VITALS_COL": "Vitals",
+    "NO_VITALS": "No vitals recorded",
+    "NO_PATIENTS": "No patients in nursing queue.",
+    "RECORD_VITALS": "Record Vitals",
+    "MARK_READY": "Mark Ready for Doctor"
   },
 
   "DOCTOR": {
@@ -295,7 +514,14 @@
     "CHIEF_COMPLAINT": "Chief Complaint",
     "DIAGNOSIS": "Diagnosis",
     "PRESCRIPTION": "Prescription",
-    "FOLLOW_UP": "Follow-up"
+    "FOLLOW_UP": "Follow-up",
+    "TOTAL_TODAY": "Total Today",
+    "WAITING": "Waiting",
+    "IN_CONSULTATION": "In Consultation",
+    "NO_SPECIFIED": "Not specified",
+    "NO_PATIENTS": "No patients in the consultation queue.",
+    "OPEN_CONSULTATION": "Open Consultation",
+    "MARK_COMPLETE": "Mark Complete"
   },
 
   "RECEPTION": {
@@ -304,7 +530,21 @@
     "QUEUE_NO": "Queue No.",
     "ARRIVED_AT": "Arrived At",
     "WAITING_TIME": "Waiting Time",
-    "TRIAGE": "Triage"
+    "TRIAGE": "Triage",
+    "TODAY_APPOINTMENTS": "Today's Appointments",
+    "CHECKED_IN": "Checked In",
+    "WAITING_LABEL": "Waiting",
+    "TIME_COL": "Time",
+    "PATIENT_COL": "Patient",
+    "DOCTOR_COL": "Doctor",
+    "SPECIALTY_COL": "Specialty",
+    "TYPE_COL": "Type",
+    "STATUS_COL": "Status",
+    "CHECK_IN": "Check In",
+    "OPEN_VISIT": "Open Visit",
+    "NO_SHOW_LABEL": "No Show",
+    "NO_APPOINTMENTS": "No appointments for today.",
+    "REFRESH": "Refresh"
   },
 
   "AUDIT": {
@@ -314,7 +554,9 @@
     "USER": "User",
     "IP_ADDRESS": "IP Address",
     "TIMESTAMP": "Timestamp",
-    "DETAILS": "Details"
+    "DETAILS": "Details",
+    "DESCRIPTION_COL": "Description",
+    "NO_LOGS": "No audit logs found."
   },
 
   "REPORTS": {
@@ -324,7 +566,11 @@
     "FROM": "From",
     "TO": "To",
     "EXPORT_PDF": "Export PDF",
-    "EXPORT_EXCEL": "Export Excel"
+    "EXPORT_EXCEL": "Export Excel",
+    "CATEGORY_CLINICAL": "Clinical",
+    "CATEGORY_FINANCIAL": "Financial",
+    "CATEGORY_OPERATIONS": "Operations",
+    "CATEGORY_ADMINISTRATION": "Administration"
   },
 
   "SETTINGS": {
@@ -334,7 +580,14 @@
     "LANGUAGE": "Language",
     "TIMEZONE": "Timezone",
     "CURRENCY": "Currency",
-    "SAVE_CHANGES": "Save Changes"
+    "SAVE_CHANGES": "Save Changes",
+    "NOTIFICATIONS": "Notifications",
+    "SECURITY": "Security",
+    "HOSPITAL_INFO": "Hospital Information",
+    "LICENSE_NUMBER": "License Number",
+    "DATE_FORMAT": "Date Format",
+    "NOTIFICATIONS_COMING": "Notification settings coming soon.",
+    "SECURITY_COMING": "Security settings coming soon."
   },
 
   "AUTH": {

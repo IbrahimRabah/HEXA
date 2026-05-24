@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,7 +17,7 @@ const ACTION_SEVERITY: Record<string, string> = {
 @Component({
   selector: 'app-audit-log',
   standalone: true,
-  imports: [CommonModule, DatePipe, FormsModule, TableModule, InputTextModule, IconFieldModule, InputIconModule, TagModule, PageHeaderComponent],
+  imports: [CommonModule, DatePipe, FormsModule, TableModule, InputTextModule, IconFieldModule, InputIconModule, TagModule, TranslatePipe, PageHeaderComponent],
   templateUrl: './audit-log.component.html',
   styleUrl: './audit-log.component.css'
 })

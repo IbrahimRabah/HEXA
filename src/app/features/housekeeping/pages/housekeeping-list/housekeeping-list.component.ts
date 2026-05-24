@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button'
 import { TooltipModule } from 'primeng/tooltip';
@@ -13,7 +14,7 @@ import { ToastService } from '../../../../core/services/toast.service';
 @Component({
   selector: 'app-housekeeping-list',
   standalone: true,
-  imports: [CommonModule, TableModule, ButtonModule, TooltipModule, TagModule, PageHeaderComponent, StatusTagComponent, TaskFormComponent],
+  imports: [CommonModule, TableModule, ButtonModule, TooltipModule, TagModule, TranslatePipe, PageHeaderComponent, StatusTagComponent, TaskFormComponent],
   templateUrl: './housekeeping-list.component.html',
   styleUrl: './housekeeping-list.component.css'
 })

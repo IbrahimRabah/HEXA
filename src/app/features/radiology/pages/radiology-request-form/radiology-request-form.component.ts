@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -11,7 +12,7 @@ import { RadiologyRequestStatus } from '../../../../shared/enums/status.enums';
 @Component({
   selector: 'app-radiology-request-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, DialogModule, ButtonModule, InputTextModule, SelectModule],
+  imports: [CommonModule, ReactiveFormsModule, DialogModule, ButtonModule, InputTextModule, SelectModule, TranslatePipe],
   templateUrl: './radiology-request-form.component.html',
   styleUrl: './radiology-request-form.component.css',
 })

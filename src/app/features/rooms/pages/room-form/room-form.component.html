@@ -1,5 +1,5 @@
 <p-dialog
-  header="Add New Room"
+  [header]="'ROOMS.NEW' | translate"
   [visible]="visible"
   (onHide)="close()"
   [modal]="true"
@@ -12,26 +12,26 @@
 
     <!-- Room Location -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-map-marker"></i> Room Location</h4>
+      <h4 class="section-title"><i class="pi pi-map-marker"></i> {{ 'ROOMS.ROOM_LOCATION' | translate }}</h4>
       <div class="form-grid-3">
         <div class="form-group">
-          <label>Room Number <span class="req">*</span></label>
+          <label>{{ 'ADMISSIONS.ROOM_NUMBER' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="roomNumber" placeholder="e.g. 101, 3B-05" class="w-full"
             [class.invalid-field]="form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched" />
           @if (form.get('roomNumber')?.invalid && form.get('roomNumber')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Floor <span class="req">*</span></label>
+          <label>{{ 'ROOMS.FLOOR_LABEL' | translate }} <span class="req">*</span></label>
           <input pInputText formControlName="floor" placeholder="e.g. Ground, 1st, 2nd" class="w-full"
             [class.invalid-field]="form.get('floor')?.invalid && form.get('floor')?.touched" />
           @if (form.get('floor')?.invalid && form.get('floor')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Wing / Block</label>
+          <label>{{ 'ROOMS.WING_BLOCK' | translate }}</label>
           <input pInputText formControlName="wing" placeholder="e.g. North Wing, Block A" class="w-full" />
         </div>
       </div>
@@ -39,24 +39,24 @@
 
     <!-- Classification -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-tags"></i> Classification</h4>
+      <h4 class="section-title"><i class="pi pi-tags"></i> {{ 'ROOMS.CLASSIFICATION' | translate }}</h4>
       <div class="form-grid-2">
         <div class="form-group">
-          <label>Ward <span class="req">*</span></label>
+          <label>{{ 'COMMON.WARD' | translate }} <span class="req">*</span></label>
           <p-select formControlName="wardName" [options]="wards"
             optionLabel="label" optionValue="value" placeholder="Select ward" styleClass="w-full"
             [class.invalid-field]="form.get('wardName')?.invalid && form.get('wardName')?.touched"></p-select>
           @if (form.get('wardName')?.invalid && form.get('wardName')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Room Type <span class="req">*</span></label>
+          <label>{{ 'ROOMS.ROOM_TYPE_LABEL' | translate }} <span class="req">*</span></label>
           <p-select formControlName="type" [options]="roomTypes"
             optionLabel="label" optionValue="value" placeholder="Select type" styleClass="w-full"
             [class.invalid-field]="form.get('type')?.invalid && form.get('type')?.touched"></p-select>
           @if (form.get('type')?.invalid && form.get('type')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
       </div>
@@ -64,26 +64,26 @@
 
     <!-- Pricing & Capacity -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-dollar"></i> Capacity &amp; Pricing</h4>
+      <h4 class="section-title"><i class="pi pi-dollar"></i> {{ 'ROOMS.CAPACITY_PRICING' | translate }}</h4>
       <div class="form-grid-3">
         <div class="form-group">
-          <label>Bed Capacity <span class="req">*</span></label>
+          <label>{{ 'ROOMS.BED_CAPACITY' | translate }} <span class="req">*</span></label>
           <input type="number" pInputText formControlName="capacity" min="1" class="w-full"
             [class.invalid-field]="form.get('capacity')?.invalid && form.get('capacity')?.touched" />
           @if (form.get('capacity')?.invalid && form.get('capacity')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Daily Rate ($) <span class="req">*</span></label>
+          <label>{{ 'ROOMS.DAILY_RATE' | translate }} <span class="req">*</span></label>
           <input type="number" pInputText formControlName="dailyRate" min="0" step="0.01" class="w-full"
             [class.invalid-field]="form.get('dailyRate')?.invalid && form.get('dailyRate')?.touched" />
           @if (form.get('dailyRate')?.invalid && form.get('dailyRate')?.touched) {
-            <small class="field-error">Required</small>
+            <small class="field-error">{{ 'COMMON.REQUIRED' | translate }}</small>
           }
         </div>
         <div class="form-group">
-          <label>Telephone Extension</label>
+          <label>{{ 'ROOMS.TELEPHONE_EXT' | translate }}</label>
           <input pInputText formControlName="telephoneExt" placeholder="e.g. 1042" class="w-full" />
         </div>
       </div>
@@ -91,37 +91,37 @@
 
     <!-- Amenities -->
     <div class="form-section">
-      <h4 class="section-title"><i class="pi pi-star"></i> Amenities</h4>
+      <h4 class="section-title"><i class="pi pi-star"></i> {{ 'ROOMS.AMENITIES' | translate }}</h4>
       <div class="amenities-grid">
         <label class="amenity-check">
           <input type="checkbox" formControlName="hasPrivateBathroom" class="cb" />
           <span class="amenity-icon"><i class="pi pi-inbox"></i></span>
-          <span>Private Bathroom</span>
+          <span>{{ 'ROOMS.PRIVATE_BATHROOM' | translate }}</span>
         </label>
         <label class="amenity-check">
           <input type="checkbox" formControlName="hasTv" class="cb" />
           <span class="amenity-icon"><i class="pi pi-desktop"></i></span>
-          <span>Television</span>
+          <span>{{ 'ROOMS.TELEVISION' | translate }}</span>
         </label>
         <label class="amenity-check">
           <input type="checkbox" formControlName="hasAc" class="cb" />
           <span class="amenity-icon"><i class="pi pi-sun"></i></span>
-          <span>Air Conditioning</span>
+          <span>{{ 'ROOMS.AIR_CONDITIONING' | translate }}</span>
         </label>
         <label class="amenity-check">
           <input type="checkbox" formControlName="hasRefrigerator" class="cb" />
           <span class="amenity-icon"><i class="pi pi-box"></i></span>
-          <span>Refrigerator</span>
+          <span>{{ 'ROOMS.REFRIGERATOR' | translate }}</span>
         </label>
         <label class="amenity-check">
           <input type="checkbox" formControlName="hasWifi" class="cb" />
           <span class="amenity-icon"><i class="pi pi-wifi"></i></span>
-          <span>Wi-Fi</span>
+          <span>{{ 'ROOMS.WIFI' | translate }}</span>
         </label>
         <label class="amenity-check">
           <input type="checkbox" formControlName="hasRecliner" class="cb" />
           <span class="amenity-icon"><i class="pi pi-user"></i></span>
-          <span>Recliner Chair</span>
+          <span>{{ 'ROOMS.RECLINER' | translate }}</span>
         </label>
       </div>
     </div>
@@ -129,7 +129,7 @@
     <!-- Notes -->
     <div class="form-section">
       <div class="form-group">
-        <label>Notes</label>
+        <label>{{ 'COMMON.NOTES' | translate }}</label>
         <textarea pInputText formControlName="notes" rows="3"
           placeholder="Special features, access requirements, maintenance notes..."
           class="w-full notes-ta"></textarea>
@@ -138,8 +138,8 @@
 
     <!-- Actions -->
     <div class="form-actions">
-      <p-button label="Cancel" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
-      <p-button label="Add Room" icon="pi pi-check" (onClick)="submit()"></p-button>
+      <p-button [label]="'COMMON.CANCEL' | translate" icon="pi pi-times" [text]="true" severity="secondary" (onClick)="close()"></p-button>
+      <p-button [label]="'ROOMS.ADD_BUTTON' | translate" icon="pi pi-check" (onClick)="submit()"></p-button>
     </div>
 
   </form>

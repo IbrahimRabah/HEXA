@@ -1,18 +1,18 @@
 <app-page-header title="PAGES.APPOINTMENTS">
-  <p-button label="New Appointment" icon="pi pi-plus" routerLink="new"></p-button>
+  <p-button [label]="'APPOINTMENTS.NEW' | translate" icon="pi pi-plus" routerLink="new"></p-button>
 </app-page-header>
 
 <div class="card">
   <div class="filters-bar">
     <p-iconfield>
       <p-inputicon styleClass="pi pi-search"></p-inputicon>
-      <input pInputText [(ngModel)]="searchTerm" placeholder="Search by patient or doctor..." (input)="applyFilter()" />
+      <input pInputText [(ngModel)]="searchTerm" [placeholder]="'APPOINTMENTS.SEARCH_PLACEHOLDER' | translate" (input)="applyFilter()" />
     </p-iconfield>
-    <p-select [options]="statusOptions" [(ngModel)]="statusFilter" placeholder="All Statuses"
+    <p-select [options]="statusOptions" [(ngModel)]="statusFilter" [placeholder]="'COMMON.ALL_STATUSES' | translate"
       (onChange)="applyFilter()" [showClear]="true" optionLabel="label" optionValue="value"></p-select>
-    <p-select [options]="typeOptions" [(ngModel)]="typeFilter" placeholder="All Types"
+    <p-select [options]="typeOptions" [(ngModel)]="typeFilter" [placeholder]="'COMMON.ALL_TYPES' | translate"
       (onChange)="applyFilter()" [showClear]="true" optionLabel="label" optionValue="value"></p-select>
-    <p-datepicker [(ngModel)]="dateFilter" [showIcon]="true" placeholder="Filter by date"
+    <p-datepicker [(ngModel)]="dateFilter" [showIcon]="true" [placeholder]="'COMMON.FILTER_BY_DATE' | translate"
       (onSelect)="applyFilter()" [showClear]="true" dateFormat="dd/mm/yy"></p-datepicker>
   </div>
 
@@ -20,14 +20,14 @@
     [loading]="loading" dataKey="id" [tableStyle]="{'min-width':'100%'}">
     <ng-template #header>
       <tr>
-        <th pSortableColumn="appointmentDate">Date <p-sortIcon field="appointmentDate"></p-sortIcon></th>
-        <th>Time</th>
-        <th pSortableColumn="patientName">Patient <p-sortIcon field="patientName"></p-sortIcon></th>
-        <th pSortableColumn="doctorName">Doctor <p-sortIcon field="doctorName"></p-sortIcon></th>
-        <th pSortableColumn="specialtyName">Specialty <p-sortIcon field="specialtyName"></p-sortIcon></th>
-        <th>Type</th>
-        <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-        <th style="width: 140px">Actions</th>
+        <th pSortableColumn="appointmentDate">{{ 'COMMON.DATE' | translate }} <p-sortIcon field="appointmentDate"></p-sortIcon></th>
+        <th>{{ 'COMMON.TIME' | translate }}</th>
+        <th pSortableColumn="patientName">{{ 'COMMON.PATIENT' | translate }} <p-sortIcon field="patientName"></p-sortIcon></th>
+        <th pSortableColumn="doctorName">{{ 'COMMON.DOCTOR' | translate }} <p-sortIcon field="doctorName"></p-sortIcon></th>
+        <th pSortableColumn="specialtyName">{{ 'APPOINTMENTS.SPECIALTY' | translate }} <p-sortIcon field="specialtyName"></p-sortIcon></th>
+        <th>{{ 'COMMON.TYPE' | translate }}</th>
+        <th pSortableColumn="status">{{ 'COMMON.STATUS' | translate }} <p-sortIcon field="status"></p-sortIcon></th>
+        <th style="width: 140px">{{ 'COMMON.ACTIONS' | translate }}</th>
       </tr>
     </ng-template>
     <ng-template #body let-apt>
@@ -43,11 +43,11 @@
         <td><app-status-tag [status]="apt.status"></app-status-tag></td>
         <td>
           <p-button icon="pi pi-check-circle" [text]="true" [rounded]="true" severity="success" size="small"
-            (onClick)="checkIn(apt)" pTooltip="Check In" [disabled]="apt.status !== 'Confirmed' && apt.status !== 'Pending'"></p-button>
+            (onClick)="checkIn(apt)" [pTooltip]="'APPOINTMENTS.CHECK_IN' | translate" [disabled]="apt.status !== 'Confirmed' && apt.status !== 'Pending'"></p-button>
           <p-button icon="pi pi-pencil" [text]="true" [rounded]="true" severity="secondary" size="small"
-            (onClick)="editAppointment(apt)" pTooltip="Edit"></p-button>
+            (onClick)="editAppointment(apt)" [pTooltip]="'COMMON.EDIT' | translate"></p-button>
           <p-button icon="pi pi-trash" [text]="true" [rounded]="true" severity="danger" size="small"
-            (onClick)="confirmDelete(apt)" pTooltip="Cancel"></p-button>
+            (onClick)="confirmDelete(apt)" [pTooltip]="'COMMON.CANCEL' | translate"></p-button>
         </td>
       </tr>
     </ng-template>
@@ -55,9 +55,10 @@
       <tr>
         <td colspan="8" class="empty-state">
           <i class="pi pi-calendar" style="font-size:2rem"></i>
-          <p>No appointments found.</p>
+          <p>{{ 'APPOINTMENTS.NO_FOUND' | translate }}</p>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+

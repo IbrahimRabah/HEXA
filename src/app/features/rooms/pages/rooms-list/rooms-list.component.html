@@ -1,5 +1,5 @@
 <app-page-header title="PAGES.ROOMS">
-  <p-button label="Add Room" icon="pi pi-plus" (onClick)="showRoomForm = true"></p-button>
+  <p-button [label]="'ROOMS.NEW' | translate" icon="pi pi-plus" (onClick)="showRoomForm = true"></p-button>
 </app-page-header>
 
 <app-room-form [(visible)]="showRoomForm" (saved)="onRoomSaved($event)"></app-room-form>
@@ -29,11 +29,11 @@
       <div class="room-occ">{{ room.currentOccupancy }}/{{ room.capacity }} occupied</div>
       <div class="room-actions">
         @if (room.status === 'Cleaning' || room.status === 'Sanitizing') {
-          <p-button label="Mark Available" size="small" severity="success" [text]="true"
+        <p-button [label]="'ROOMS.MARK_AVAILABLE' | translate" size="small" severity="success" [text]="true"
             (onClick)="markAvailable(room)"></p-button>
         }
         @if (room.status === 'Available') {
-          <p-button label="Set Cleaning" size="small" severity="warn" [text]="true"
+          <p-button [label]="'ROOMS.SET_CLEANING' | translate" size="small" severity="warn" [text]="true"
             (onClick)="setStatus(room, 'Cleaning')"></p-button>
         }
       </div>
