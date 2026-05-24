@@ -15,7 +15,7 @@
     @for (section of visibleSections(); track section.label) {
 
       @if (!collapsed) {
-        <span class="nav-section-label">{{ section.label }}</span>
+        <span class="nav-section-label">{{ section.label | translate }}</span>
       } @else {
         <div class="nav-section-divider"></div>
       }
@@ -25,11 +25,11 @@
           [routerLink]="item.route"
           routerLinkActive="active"
           class="nav-item"
-          [title]="collapsed ? item.label : ''"
+          [title]="item.label | translate"
         >
           <i [class]="item.icon + ' nav-icon'"></i>
           @if (!collapsed) {
-            <span class="nav-label">{{ item.label }}</span>
+            <span class="nav-label">{{ item.label | translate }}</span>
           }
         </a>
       }

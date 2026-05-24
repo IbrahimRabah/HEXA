@@ -1,0 +1,360 @@
+{
+  "APP": {
+    "NAME": "HexaCare",
+    "TAGLINE": "Healthcare Platform"
+  },
+
+  "NAV": {
+    "SECTIONS": {
+      "CORE": "Core",
+      "PATIENT_CARE": "Patient Care",
+      "CLINICAL": "Clinical",
+      "HOSPITAL": "Hospital",
+      "SPECIALTIES": "Specialties",
+      "ADMINISTRATION": "Administration"
+    },
+    "DASHBOARD": "Dashboard",
+    "PATIENTS": "Patients",
+    "APPOINTMENTS": "Appointments",
+    "RECEPTION": "Reception",
+    "NURSING": "Nursing",
+    "DOCTOR": "Doctor",
+    "LABORATORY": "Laboratory",
+    "RADIOLOGY": "Radiology",
+    "PHARMACY": "Pharmacy",
+    "BILLING": "Billing",
+    "OPERATIONS": "Operations",
+    "ADMISSIONS": "Admissions",
+    "ROOMS": "Rooms",
+    "HOUSEKEEPING": "Housekeeping",
+    "OPHTHALMOLOGY": "Ophthalmology",
+    "DENTAL": "Dental",
+    "AUDIT": "Audit",
+    "REPORTS": "Reports",
+    "SETTINGS": "Settings",
+    "USERS": "Users"
+  },
+
+  "TOPBAR": {
+    "TOGGLE_SIDEBAR": "Toggle Sidebar",
+    "NOTIFICATIONS": "Notifications",
+    "SWITCH_DARK": "Switch to Dark Mode",
+    "SWITCH_LIGHT": "Switch to Light Mode",
+    "SWITCH_AR": "عربي",
+    "SWITCH_EN": "EN"
+  },
+
+  "USER_MENU": {
+    "MY_PROFILE": "My Profile",
+    "SETTINGS": "Settings",
+    "SIGN_OUT": "Sign Out"
+  },
+
+  "PAGES": {
+    "DASHBOARD": "Dashboard",
+    "PATIENTS": "Patients",
+    "APPOINTMENTS": "Appointments",
+    "RECEPTION": "Reception & Check-in",
+    "NURSING": "Nursing Queue",
+    "DOCTOR": "Doctor Consultation Queue",
+    "LABORATORY": "Laboratory Requests",
+    "RADIOLOGY": "Radiology Requests",
+    "PHARMACY": "Pharmacy — Medication Inventory",
+    "BILLING": "Billing & Invoices",
+    "OPERATIONS": "Surgical Operations",
+    "ADMISSIONS": "Admissions",
+    "ROOMS": "Room Management",
+    "HOUSEKEEPING": "Housekeeping Tasks",
+    "AUDIT": "Audit Log",
+    "REPORTS": "Reports & Analytics",
+    "SETTINGS": "System Settings",
+    "USER_MANAGEMENT": "User Management"
+  },
+
+  "COMMON": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "ADD": "Add",
+    "NEW": "New",
+    "SEARCH": "Search...",
+    "FILTER": "Filter",
+    "EXPORT": "Export",
+    "ACTIONS": "Actions",
+    "STATUS": "Status",
+    "DATE": "Date",
+    "NAME": "Name",
+    "NOTES": "Notes",
+    "LOADING": "Loading...",
+    "NO_DATA": "No data found",
+    "REQUIRED": "Required",
+    "SUBMIT": "Submit",
+    "CLOSE": "Close",
+    "YES": "Yes",
+    "NO": "No",
+    "ALL": "All",
+    "DETAILS": "Details",
+    "CREATED_AT": "Created At",
+    "UPDATED_AT": "Updated At",
+    "DESCRIPTION": "Description",
+    "TYPE": "Type",
+    "PRIORITY": "Priority",
+    "PATIENT": "Patient",
+    "DOCTOR": "Doctor",
+    "ROOM": "Room",
+    "FLOOR": "Floor",
+    "WARD": "Ward",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "ADDRESS": "Address",
+    "GENDER": "Gender",
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "AGE": "Age",
+    "AMOUNT": "Amount",
+    "TOTAL": "Total",
+    "PRINT": "Print",
+    "REFRESH": "Refresh",
+    "VIEW": "View",
+    "DOWNLOAD": "Download"
+  },
+
+  "STATUS": {
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "PENDING": "Pending",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled",
+    "SCHEDULED": "Scheduled",
+    "IN_PROGRESS": "In Progress",
+    "CONFIRMED": "Confirmed",
+    "DRAFT": "Draft",
+    "PAID": "Paid",
+    "AVAILABLE": "Available",
+    "OCCUPIED": "Occupied",
+    "CLEANING": "Cleaning",
+    "MAINTENANCE": "Under Maintenance",
+    "OUT_OF_SERVICE": "Out of Service"
+  },
+
+  "PRIORITY": {
+    "HIGH": "High",
+    "NORMAL": "Normal",
+    "LOW": "Low",
+    "URGENT": "Urgent",
+    "EMERGENCY": "Emergency",
+    "ELECTIVE": "Elective",
+    "STAT": "STAT",
+    "ROUTINE": "Routine"
+  },
+
+  "PATIENTS": {
+    "TITLE": "Patients",
+    "NEW": "New Patient",
+    "SEARCH_PLACEHOLDER": "Search by name, ID or phone...",
+    "ID": "Patient ID",
+    "FULL_NAME": "Full Name",
+    "DATE_OF_BIRTH": "Date of Birth",
+    "BLOOD_GROUP": "Blood Group",
+    "INSURANCE": "Insurance",
+    "LAST_VISIT": "Last Visit",
+    "TOTAL_VISITS": "Total Visits"
+  },
+
+  "APPOINTMENTS": {
+    "TITLE": "Appointments",
+    "NEW": "New Appointment",
+    "SEARCH_PLACEHOLDER": "Search appointments...",
+    "APPOINTMENT_ID": "Appointment ID",
+    "DOCTOR": "Doctor",
+    "DEPARTMENT": "Department",
+    "DATE_TIME": "Date & Time",
+    "REASON": "Reason",
+    "TYPE": "Type"
+  },
+
+  "ADMISSIONS": {
+    "TITLE": "Admissions",
+    "NEW": "New Admission",
+    "ADMISSION_NO": "Admission No.",
+    "PATIENT": "Patient",
+    "ADMITTED_DATE": "Admitted Date",
+    "DISCHARGE_DATE": "Discharge Date",
+    "ATTENDING_DOCTOR": "Attending Doctor",
+    "DIAGNOSIS": "Diagnosis",
+    "ADMISSION_TYPE": "Admission Type",
+    "DISCHARGE": "Discharge"
+  },
+
+  "BILLING": {
+    "TITLE": "Billing & Invoices",
+    "NEW": "New Invoice",
+    "INVOICE_NO": "Invoice No.",
+    "PATIENT": "Patient",
+    "ISSUE_DATE": "Issue Date",
+    "DUE_DATE": "Due Date",
+    "SUBTOTAL": "Subtotal",
+    "DISCOUNT": "Discount",
+    "TAX": "Tax",
+    "GRAND_TOTAL": "Grand Total",
+    "LINE_ITEMS": "Line Items",
+    "ITEM_DESCRIPTION": "Item / Description",
+    "QUANTITY": "Qty",
+    "UNIT_PRICE": "Unit Price",
+    "ADD_LINE": "Add Line"
+  },
+
+  "PHARMACY": {
+    "TITLE": "Medication Inventory",
+    "NEW": "Add Medication",
+    "SEARCH_PLACEHOLDER": "Search medications...",
+    "MEDICATION_NAME": "Medication Name",
+    "GENERIC_NAME": "Generic Name",
+    "CATEGORY": "Category",
+    "DOSAGE_FORM": "Dosage Form",
+    "STRENGTH": "Strength",
+    "STOCK": "Stock",
+    "UNIT_PRICE": "Unit Price",
+    "EXPIRY_DATE": "Expiry Date",
+    "MANUFACTURER": "Manufacturer",
+    "REORDER_LEVEL": "Reorder Level"
+  },
+
+  "LABORATORY": {
+    "TITLE": "Laboratory Requests",
+    "NEW": "New Lab Request",
+    "REQUEST_NO": "Request No.",
+    "TESTS": "Tests",
+    "SAMPLE_TYPE": "Sample Type",
+    "COLLECTED_AT": "Collected At",
+    "RESULTS": "Results",
+    "NOTES": "Notes"
+  },
+
+  "RADIOLOGY": {
+    "TITLE": "Radiology Requests",
+    "NEW": "New Radiology Request",
+    "REQUEST_NO": "Request No.",
+    "IMAGING_TYPE": "Imaging Type",
+    "BODY_PART": "Body Part",
+    "CONTRAST": "Contrast Required",
+    "FINDINGS": "Findings",
+    "RADIOLOGIST": "Radiologist"
+  },
+
+  "OPERATIONS": {
+    "TITLE": "Surgical Operations",
+    "NEW": "Schedule Operation",
+    "PROCEDURE": "Procedure",
+    "SURGEON": "Surgeon",
+    "ANESTHESIOLOGIST": "Anesthesiologist",
+    "OR_ROOM": "OR Room",
+    "SCHEDULED_DATE": "Scheduled Date",
+    "DURATION": "Duration (min)",
+    "ANESTHESIA": "Anesthesia Type"
+  },
+
+  "ROOMS": {
+    "TITLE": "Room Management",
+    "NEW": "Add Room",
+    "ROOM_NO": "Room No.",
+    "ROOM_TYPE": "Room Type",
+    "CAPACITY": "Capacity",
+    "OCCUPANCY": "Occupancy",
+    "PRICE_PER_NIGHT": "Price / Night",
+    "AMENITIES": "Amenities",
+    "BED_COUNT": "Beds"
+  },
+
+  "HOUSEKEEPING": {
+    "TITLE": "Housekeeping Tasks",
+    "NEW": "New Task",
+    "TASK_TYPE": "Task Type",
+    "ASSIGNED_TO": "Assigned To",
+    "SCHEDULED_DATE": "Scheduled Date",
+    "SCHEDULED_TIME": "Scheduled Time",
+    "DURATION": "Duration (min)",
+    "FLOOR_WING": "Floor / Wing",
+    "ROOM_NUMBER": "Room Number"
+  },
+
+  "NURSING": {
+    "TITLE": "Nursing Queue",
+    "NEW": "New Task",
+    "TASK": "Task",
+    "ASSIGNED_NURSE": "Assigned Nurse",
+    "BED": "Bed",
+    "VITAL_SIGNS": "Vital Signs",
+    "MEDICATION_DUE": "Medication Due"
+  },
+
+  "DOCTOR": {
+    "TITLE": "Doctor Queue",
+    "CONSULTATION": "Consultation",
+    "CHIEF_COMPLAINT": "Chief Complaint",
+    "DIAGNOSIS": "Diagnosis",
+    "PRESCRIPTION": "Prescription",
+    "FOLLOW_UP": "Follow-up"
+  },
+
+  "RECEPTION": {
+    "TITLE": "Reception & Check-in",
+    "NEW": "Check-in Patient",
+    "QUEUE_NO": "Queue No.",
+    "ARRIVED_AT": "Arrived At",
+    "WAITING_TIME": "Waiting Time",
+    "TRIAGE": "Triage"
+  },
+
+  "AUDIT": {
+    "TITLE": "Audit Log",
+    "ACTION": "Action",
+    "MODULE": "Module",
+    "USER": "User",
+    "IP_ADDRESS": "IP Address",
+    "TIMESTAMP": "Timestamp",
+    "DETAILS": "Details"
+  },
+
+  "REPORTS": {
+    "TITLE": "Reports & Analytics",
+    "GENERATE": "Generate Report",
+    "DATE_RANGE": "Date Range",
+    "FROM": "From",
+    "TO": "To",
+    "EXPORT_PDF": "Export PDF",
+    "EXPORT_EXCEL": "Export Excel"
+  },
+
+  "SETTINGS": {
+    "TITLE": "System Settings",
+    "GENERAL": "General",
+    "HOSPITAL_NAME": "Hospital Name",
+    "LANGUAGE": "Language",
+    "TIMEZONE": "Timezone",
+    "CURRENCY": "Currency",
+    "SAVE_CHANGES": "Save Changes"
+  },
+
+  "AUTH": {
+    "SIGN_IN": "Sign In",
+    "SIGN_IN_SUBTITLE": "Enter your credentials to access the system",
+    "USERNAME": "Username",
+    "PASSWORD": "Password",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "INVALID_CREDENTIALS": "Invalid username or password",
+    "SIGNING_IN": "Signing in..."
+  },
+
+  "TOAST": {
+    "SUCCESS": "Success",
+    "ERROR": "Error",
+    "INFO": "Info",
+    "WARNING": "Warning",
+    "SAVED": "Record saved successfully.",
+    "DELETED": "Record deleted successfully.",
+    "UPDATED": "Record updated successfully."
+  }
+}

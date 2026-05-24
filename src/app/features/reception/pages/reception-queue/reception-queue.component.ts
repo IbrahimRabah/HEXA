@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
@@ -18,7 +18,7 @@ import { AppointmentStatus } from '../../../../shared/enums/status.enums';
 @Component({
   selector: 'app-reception-queue',
   standalone: true,
-  imports: [CommonModule, DatePipe, RouterModule, TableModule, ButtonModule, CardModule, TagModule, DialogModule, InputTextModule, PageHeaderComponent, StatusTagComponent],
+  imports: [CommonModule, RouterModule, TableModule, ButtonModule, CardModule, TagModule, DialogModule, InputTextModule, PageHeaderComponent, StatusTagComponent],
   templateUrl: './reception-queue.component.html',
   styleUrl: './reception-queue.component.css'
 })

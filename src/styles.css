@@ -498,3 +498,48 @@ html {
 .dark-mode ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+/* ============================================ */
+/* RTL Support — Arabic Layout                  */
+/* ============================================ */
+[dir="rtl"] body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+}
+
+[dir="rtl"] .flex-between {
+  flex-direction: row-reverse;
+}
+
+/* Flip table text alignment */
+[dir="rtl"] .p-datatable .p-datatable-thead > tr > th,
+[dir="rtl"] .p-datatable .p-datatable-tbody > tr > td {
+  text-align: right;
+}
+
+/* Dialog footer RTL */
+[dir="rtl"] .p-dialog .p-dialog-footer {
+  direction: rtl;
+}
+
+/* Form grid RTL - labels and inputs align right */
+[dir="rtl"] .form-grid .form-field label,
+[dir="rtl"] .form-group label {
+  text-align: right;
+}
+
+/* PrimeNG input icon RTL swap */
+[dir="rtl"] .p-icon-field-left {
+  padding-left: unset;
+  padding-right: 2.5rem;
+}
+[dir="rtl"] .p-icon-field-left > .p-input-icon:first-child {
+  left: unset;
+  right: 0.75rem;
+}
+
+/* Toast position RTL */
+[dir="rtl"] .p-toast {
+  right: unset;
+  left: 20px;
+}
+

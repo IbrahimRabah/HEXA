@@ -1,0 +1,360 @@
+{
+  "APP": {
+    "NAME": "هيكسا كير",
+    "TAGLINE": "منصة الرعاية الصحية"
+  },
+
+  "NAV": {
+    "SECTIONS": {
+      "CORE": "الرئيسية",
+      "PATIENT_CARE": "رعاية المرضى",
+      "CLINICAL": "السريري",
+      "HOSPITAL": "المستشفى",
+      "SPECIALTIES": "التخصصات",
+      "ADMINISTRATION": "الإدارة"
+    },
+    "DASHBOARD": "لوحة التحكم",
+    "PATIENTS": "المرضى",
+    "APPOINTMENTS": "المواعيد",
+    "RECEPTION": "الاستقبال",
+    "NURSING": "التمريض",
+    "DOCTOR": "الطبيب",
+    "LABORATORY": "المختبر",
+    "RADIOLOGY": "الأشعة",
+    "PHARMACY": "الصيدلية",
+    "BILLING": "الفواتير",
+    "OPERATIONS": "العمليات",
+    "ADMISSIONS": "القبول",
+    "ROOMS": "الغرف",
+    "HOUSEKEEPING": "الخدمات",
+    "OPHTHALMOLOGY": "طب العيون",
+    "DENTAL": "طب الأسنان",
+    "AUDIT": "سجل التدقيق",
+    "REPORTS": "التقارير",
+    "SETTINGS": "الإعدادات",
+    "USERS": "المستخدمون"
+  },
+
+  "TOPBAR": {
+    "TOGGLE_SIDEBAR": "تبديل الشريط الجانبي",
+    "NOTIFICATIONS": "الإشعارات",
+    "SWITCH_DARK": "الوضع الداكن",
+    "SWITCH_LIGHT": "الوضع الفاتح",
+    "SWITCH_AR": "عربي",
+    "SWITCH_EN": "EN"
+  },
+
+  "USER_MENU": {
+    "MY_PROFILE": "ملفي الشخصي",
+    "SETTINGS": "الإعدادات",
+    "SIGN_OUT": "تسجيل الخروج"
+  },
+
+  "PAGES": {
+    "DASHBOARD": "لوحة التحكم",
+    "PATIENTS": "المرضى",
+    "APPOINTMENTS": "المواعيد",
+    "RECEPTION": "الاستقبال والتسجيل",
+    "NURSING": "قائمة التمريض",
+    "DOCTOR": "قائمة الاستشارات الطبية",
+    "LABORATORY": "طلبات المختبر",
+    "RADIOLOGY": "طلبات الأشعة",
+    "PHARMACY": "مخزون الأدوية",
+    "BILLING": "الفواتير والمحاسبة",
+    "OPERATIONS": "العمليات الجراحية",
+    "ADMISSIONS": "قسم القبول",
+    "ROOMS": "إدارة الغرف",
+    "HOUSEKEEPING": "مهام الخدمات",
+    "AUDIT": "سجل التدقيق",
+    "REPORTS": "التقارير والتحليلات",
+    "SETTINGS": "إعدادات النظام",
+    "USER_MANAGEMENT": "إدارة المستخدمين"
+  },
+
+  "COMMON": {
+    "SAVE": "حفظ",
+    "CANCEL": "إلغاء",
+    "EDIT": "تعديل",
+    "DELETE": "حذف",
+    "ADD": "إضافة",
+    "NEW": "جديد",
+    "SEARCH": "بحث...",
+    "FILTER": "تصفية",
+    "EXPORT": "تصدير",
+    "ACTIONS": "الإجراءات",
+    "STATUS": "الحالة",
+    "DATE": "التاريخ",
+    "NAME": "الاسم",
+    "NOTES": "الملاحظات",
+    "LOADING": "جاري التحميل...",
+    "NO_DATA": "لا توجد بيانات",
+    "REQUIRED": "مطلوب",
+    "SUBMIT": "إرسال",
+    "CLOSE": "إغلاق",
+    "YES": "نعم",
+    "NO": "لا",
+    "ALL": "الكل",
+    "DETAILS": "التفاصيل",
+    "CREATED_AT": "تاريخ الإنشاء",
+    "UPDATED_AT": "تاريخ التحديث",
+    "DESCRIPTION": "الوصف",
+    "TYPE": "النوع",
+    "PRIORITY": "الأولوية",
+    "PATIENT": "المريض",
+    "DOCTOR": "الطبيب",
+    "ROOM": "الغرفة",
+    "FLOOR": "الطابق",
+    "WARD": "الجناح",
+    "PHONE": "الهاتف",
+    "EMAIL": "البريد الإلكتروني",
+    "ADDRESS": "العنوان",
+    "GENDER": "الجنس",
+    "MALE": "ذكر",
+    "FEMALE": "أنثى",
+    "AGE": "العمر",
+    "AMOUNT": "المبلغ",
+    "TOTAL": "الإجمالي",
+    "PRINT": "طباعة",
+    "REFRESH": "تحديث",
+    "VIEW": "عرض",
+    "DOWNLOAD": "تحميل"
+  },
+
+  "STATUS": {
+    "ACTIVE": "نشط",
+    "INACTIVE": "غير نشط",
+    "PENDING": "قيد الانتظار",
+    "COMPLETED": "مكتمل",
+    "CANCELLED": "ملغي",
+    "SCHEDULED": "مجدول",
+    "IN_PROGRESS": "جاري",
+    "CONFIRMED": "مؤكد",
+    "DRAFT": "مسودة",
+    "PAID": "مدفوع",
+    "AVAILABLE": "متاح",
+    "OCCUPIED": "مشغول",
+    "CLEANING": "قيد التنظيف",
+    "MAINTENANCE": "تحت الصيانة",
+    "OUT_OF_SERVICE": "خارج الخدمة"
+  },
+
+  "PRIORITY": {
+    "HIGH": "عالية",
+    "NORMAL": "عادية",
+    "LOW": "منخفضة",
+    "URGENT": "عاجل",
+    "EMERGENCY": "طارئ",
+    "ELECTIVE": "اختياري",
+    "STAT": "فوري",
+    "ROUTINE": "روتيني"
+  },
+
+  "PATIENTS": {
+    "TITLE": "المرضى",
+    "NEW": "مريض جديد",
+    "SEARCH_PLACEHOLDER": "ابحث بالاسم أو الرقم أو الهاتف...",
+    "ID": "رقم المريض",
+    "FULL_NAME": "الاسم الكامل",
+    "DATE_OF_BIRTH": "تاريخ الميلاد",
+    "BLOOD_GROUP": "فصيلة الدم",
+    "INSURANCE": "التأمين",
+    "LAST_VISIT": "آخر زيارة",
+    "TOTAL_VISITS": "إجمالي الزيارات"
+  },
+
+  "APPOINTMENTS": {
+    "TITLE": "المواعيد",
+    "NEW": "موعد جديد",
+    "SEARCH_PLACEHOLDER": "بحث في المواعيد...",
+    "APPOINTMENT_ID": "رقم الموعد",
+    "DOCTOR": "الطبيب",
+    "DEPARTMENT": "القسم",
+    "DATE_TIME": "التاريخ والوقت",
+    "REASON": "السبب",
+    "TYPE": "النوع"
+  },
+
+  "ADMISSIONS": {
+    "TITLE": "قسم القبول",
+    "NEW": "قبول جديد",
+    "ADMISSION_NO": "رقم القبول",
+    "PATIENT": "المريض",
+    "ADMITTED_DATE": "تاريخ الدخول",
+    "DISCHARGE_DATE": "تاريخ الخروج",
+    "ATTENDING_DOCTOR": "الطبيب المعالج",
+    "DIAGNOSIS": "التشخيص",
+    "ADMISSION_TYPE": "نوع القبول",
+    "DISCHARGE": "الخروج"
+  },
+
+  "BILLING": {
+    "TITLE": "الفواتير والمحاسبة",
+    "NEW": "فاتورة جديدة",
+    "INVOICE_NO": "رقم الفاتورة",
+    "PATIENT": "المريض",
+    "ISSUE_DATE": "تاريخ الإصدار",
+    "DUE_DATE": "تاريخ الاستحقاق",
+    "SUBTOTAL": "المجموع الفرعي",
+    "DISCOUNT": "الخصم",
+    "TAX": "الضريبة",
+    "GRAND_TOTAL": "الإجمالي الكلي",
+    "LINE_ITEMS": "بنود الفاتورة",
+    "ITEM_DESCRIPTION": "الصنف / الوصف",
+    "QUANTITY": "الكمية",
+    "UNIT_PRICE": "سعر الوحدة",
+    "ADD_LINE": "إضافة بند"
+  },
+
+  "PHARMACY": {
+    "TITLE": "مخزون الأدوية",
+    "NEW": "إضافة دواء",
+    "SEARCH_PLACEHOLDER": "بحث في الأدوية...",
+    "MEDICATION_NAME": "اسم الدواء",
+    "GENERIC_NAME": "الاسم العلمي",
+    "CATEGORY": "الفئة",
+    "DOSAGE_FORM": "شكل الجرعة",
+    "STRENGTH": "التركيز",
+    "STOCK": "المخزون",
+    "UNIT_PRICE": "سعر الوحدة",
+    "EXPIRY_DATE": "تاريخ الانتهاء",
+    "MANUFACTURER": "الشركة المصنعة",
+    "REORDER_LEVEL": "مستوى إعادة الطلب"
+  },
+
+  "LABORATORY": {
+    "TITLE": "طلبات المختبر",
+    "NEW": "طلب مختبر جديد",
+    "REQUEST_NO": "رقم الطلب",
+    "TESTS": "التحاليل",
+    "SAMPLE_TYPE": "نوع العينة",
+    "COLLECTED_AT": "وقت الأخذ",
+    "RESULTS": "النتائج",
+    "NOTES": "الملاحظات"
+  },
+
+  "RADIOLOGY": {
+    "TITLE": "طلبات الأشعة",
+    "NEW": "طلب أشعة جديد",
+    "REQUEST_NO": "رقم الطلب",
+    "IMAGING_TYPE": "نوع التصوير",
+    "BODY_PART": "منطقة الجسم",
+    "CONTRAST": "مع صبغة تباين",
+    "FINDINGS": "النتائج",
+    "RADIOLOGIST": "طبيب الأشعة"
+  },
+
+  "OPERATIONS": {
+    "TITLE": "العمليات الجراحية",
+    "NEW": "جدولة عملية",
+    "PROCEDURE": "الإجراء الجراحي",
+    "SURGEON": "الجراح",
+    "ANESTHESIOLOGIST": "طبيب التخدير",
+    "OR_ROOM": "غرفة العمليات",
+    "SCHEDULED_DATE": "تاريخ العملية",
+    "DURATION": "المدة (دقيقة)",
+    "ANESTHESIA": "نوع التخدير"
+  },
+
+  "ROOMS": {
+    "TITLE": "إدارة الغرف",
+    "NEW": "إضافة غرفة",
+    "ROOM_NO": "رقم الغرفة",
+    "ROOM_TYPE": "نوع الغرفة",
+    "CAPACITY": "السعة",
+    "OCCUPANCY": "الإشغال",
+    "PRICE_PER_NIGHT": "السعر / الليلة",
+    "AMENITIES": "المرافق",
+    "BED_COUNT": "عدد الأسرة"
+  },
+
+  "HOUSEKEEPING": {
+    "TITLE": "مهام الخدمات",
+    "NEW": "مهمة جديدة",
+    "TASK_TYPE": "نوع المهمة",
+    "ASSIGNED_TO": "مسند إلى",
+    "SCHEDULED_DATE": "تاريخ الجدولة",
+    "SCHEDULED_TIME": "وقت الجدولة",
+    "DURATION": "المدة (دقيقة)",
+    "FLOOR_WING": "الطابق / الجناح",
+    "ROOM_NUMBER": "رقم الغرفة"
+  },
+
+  "NURSING": {
+    "TITLE": "قائمة التمريض",
+    "NEW": "مهمة جديدة",
+    "TASK": "المهمة",
+    "ASSIGNED_NURSE": "الممرضة المعينة",
+    "BED": "السرير",
+    "VITAL_SIGNS": "العلامات الحيوية",
+    "MEDICATION_DUE": "الدواء المستحق"
+  },
+
+  "DOCTOR": {
+    "TITLE": "قائمة الاستشارات",
+    "CONSULTATION": "الاستشارة",
+    "CHIEF_COMPLAINT": "الشكوى الرئيسية",
+    "DIAGNOSIS": "التشخيص",
+    "PRESCRIPTION": "الوصفة الطبية",
+    "FOLLOW_UP": "المتابعة"
+  },
+
+  "RECEPTION": {
+    "TITLE": "الاستقبال والتسجيل",
+    "NEW": "تسجيل مريض",
+    "QUEUE_NO": "رقم الدور",
+    "ARRIVED_AT": "وقت الوصول",
+    "WAITING_TIME": "وقت الانتظار",
+    "TRIAGE": "الفرز"
+  },
+
+  "AUDIT": {
+    "TITLE": "سجل التدقيق",
+    "ACTION": "الإجراء",
+    "MODULE": "الوحدة",
+    "USER": "المستخدم",
+    "IP_ADDRESS": "عنوان IP",
+    "TIMESTAMP": "الوقت",
+    "DETAILS": "التفاصيل"
+  },
+
+  "REPORTS": {
+    "TITLE": "التقارير والتحليلات",
+    "GENERATE": "إنشاء تقرير",
+    "DATE_RANGE": "نطاق التاريخ",
+    "FROM": "من",
+    "TO": "إلى",
+    "EXPORT_PDF": "تصدير PDF",
+    "EXPORT_EXCEL": "تصدير Excel"
+  },
+
+  "SETTINGS": {
+    "TITLE": "إعدادات النظام",
+    "GENERAL": "عام",
+    "HOSPITAL_NAME": "اسم المستشفى",
+    "LANGUAGE": "اللغة",
+    "TIMEZONE": "المنطقة الزمنية",
+    "CURRENCY": "العملة",
+    "SAVE_CHANGES": "حفظ التغييرات"
+  },
+
+  "AUTH": {
+    "SIGN_IN": "تسجيل الدخول",
+    "SIGN_IN_SUBTITLE": "أدخل بياناتك للوصول إلى النظام",
+    "USERNAME": "اسم المستخدم",
+    "PASSWORD": "كلمة المرور",
+    "REMEMBER_ME": "تذكرني",
+    "FORGOT_PASSWORD": "نسيت كلمة المرور؟",
+    "INVALID_CREDENTIALS": "اسم المستخدم أو كلمة المرور غير صحيحة",
+    "SIGNING_IN": "جاري تسجيل الدخول..."
+  },
+
+  "TOAST": {
+    "SUCCESS": "نجاح",
+    "ERROR": "خطأ",
+    "INFO": "معلومة",
+    "WARNING": "تحذير",
+    "SAVED": "تم حفظ السجل بنجاح.",
+    "DELETED": "تم حذف السجل بنجاح.",
+    "UPDATED": "تم تحديث السجل بنجاح."
+  }
+}

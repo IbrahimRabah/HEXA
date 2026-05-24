@@ -2,27 +2,34 @@
 
   <!-- Left: hamburger + brand -->
   <div class="topbar-left">
-    <button class="icon-btn toggle-btn" (click)="onToggleSidebar()" title="Toggle Sidebar" aria-label="Toggle Sidebar">
+    <button class="icon-btn toggle-btn" (click)="onToggleSidebar()"
+      [title]="'TOPBAR.TOGGLE_SIDEBAR' | translate" [attr.aria-label]="'TOPBAR.TOGGLE_SIDEBAR' | translate">
       <i class="pi pi-bars"></i>
     </button>
     <div class="brand">
       <span class="brand-name">Hexa<span class="brand-accent">Care</span></span>
-      <span class="brand-tagline">Healthcare Platform</span>
+      <span class="brand-tagline">{{ 'APP.TAGLINE' | translate }}</span>
     </div>
   </div>
 
-  <!-- Right: notifications + user -->
+  <!-- Right: notifications + theme + language + user -->
   <div class="topbar-right">
 
-    <button class="icon-btn notif-btn" title="Notifications" aria-label="Notifications">
+    <button class="icon-btn notif-btn" [title]="'TOPBAR.NOTIFICATIONS' | translate"
+      [attr.aria-label]="'TOPBAR.NOTIFICATIONS' | translate">
       <i class="pi pi-bell"></i>
       <span class="notif-badge">3</span>
     </button>
 
     <button class="icon-btn theme-btn" (click)="toggleTheme()"
-      [title]="isDark() ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
-      [attr.aria-label]="isDark() ? 'Switch to Light Mode' : 'Switch to Dark Mode'">
+      [title]="isDark() ? ('TOPBAR.SWITCH_LIGHT' | translate) : ('TOPBAR.SWITCH_DARK' | translate)"
+      [attr.aria-label]="isDark() ? ('TOPBAR.SWITCH_LIGHT' | translate) : ('TOPBAR.SWITCH_DARK' | translate)">
       <i [class]="isDark() ? 'pi pi-sun' : 'pi pi-moon'"></i>
+    </button>
+
+    <button class="icon-btn lang-btn" (click)="toggleLanguage()"
+      [title]="langService.isArabic() ? ('TOPBAR.SWITCH_EN' | translate) : ('TOPBAR.SWITCH_AR' | translate)">
+      <span class="lang-label">{{ langService.isArabic() ? 'EN' : 'ع' }}</span>
     </button>
 
     @if (currentUser()) {

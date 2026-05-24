@@ -159,3 +159,13 @@
 :host-context(.dark-mode) .sidebar-nav::-webkit-scrollbar-thumb {
   background: #334155;
 }
+
+/* RTL overrides */
+:host-context([dir="rtl"]) .sidebar {
+  border-right: none;
+  border-left: 1px solid #e2e8f0;
+  direction: rtl;
+}
+:host-context([dir="rtl"].dark-mode) .sidebar {
+  border-left-color: #334155;
+}

@@ -1,6 +1,7 @@
 import { Component, Input, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
 import { ADMIN_ROLE, ROLE_NAV_ACCESS } from '../../../shared/constants/role-nav-access';
 
@@ -17,53 +18,53 @@ interface NavSection {
 
 const ALL_NAV_SECTIONS: NavSection[] = [
   {
-    label: 'Core',
+    label: 'NAV.SECTIONS.CORE',
     items: [
-      { label: 'Dashboard',    icon: 'pi pi-home',         route: '/dashboard'       },
+      { label: 'NAV.DASHBOARD',    icon: 'pi pi-home',         route: '/dashboard'       },
     ],
   },
   {
-    label: 'Patient Care',
+    label: 'NAV.SECTIONS.PATIENT_CARE',
     items: [
-      { label: 'Patients',     icon: 'pi pi-users',        route: '/patients'        },
-      { label: 'Appointments', icon: 'pi pi-calendar',     route: '/appointments'    },
+      { label: 'NAV.PATIENTS',     icon: 'pi pi-users',        route: '/patients'        },
+      { label: 'NAV.APPOINTMENTS', icon: 'pi pi-calendar',     route: '/appointments'    },
     ],
   },
   {
-    label: 'Clinical',
+    label: 'NAV.SECTIONS.CLINICAL',
     items: [
-      { label: 'Reception',    icon: 'pi pi-desktop',      route: '/reception'       },
-      { label: 'Nursing',      icon: 'pi pi-heart',        route: '/nursing'         },
-      { label: 'Doctor',       icon: 'pi pi-user',         route: '/doctor'          },
-      { label: 'Laboratory',   icon: 'pi pi-filter',       route: '/laboratory'      },
-      { label: 'Radiology',    icon: 'pi pi-camera',       route: '/radiology'       },
-      { label: 'Pharmacy',     icon: 'pi pi-shop',         route: '/pharmacy'        },
-      { label: 'Billing',      icon: 'pi pi-dollar',       route: '/billing'         },
+      { label: 'NAV.RECEPTION',    icon: 'pi pi-desktop',      route: '/reception'       },
+      { label: 'NAV.NURSING',      icon: 'pi pi-heart',        route: '/nursing'         },
+      { label: 'NAV.DOCTOR',       icon: 'pi pi-user',         route: '/doctor'          },
+      { label: 'NAV.LABORATORY',   icon: 'pi pi-filter',       route: '/laboratory'      },
+      { label: 'NAV.RADIOLOGY',    icon: 'pi pi-camera',       route: '/radiology'       },
+      { label: 'NAV.PHARMACY',     icon: 'pi pi-shop',         route: '/pharmacy'        },
+      { label: 'NAV.BILLING',      icon: 'pi pi-dollar',       route: '/billing'         },
     ],
   },
   {
-    label: 'Hospital',
+    label: 'NAV.SECTIONS.HOSPITAL',
     items: [
-      { label: 'Operations',   icon: 'pi pi-cog',          route: '/operations'      },
-      { label: 'Admissions',   icon: 'pi pi-id-card',      route: '/admissions'      },
-      { label: 'Rooms',        icon: 'pi pi-box',          route: '/rooms'           },
-      { label: 'Housekeeping', icon: 'pi pi-wrench',       route: '/housekeeping'    },
+      { label: 'NAV.OPERATIONS',   icon: 'pi pi-cog',          route: '/operations'      },
+      { label: 'NAV.ADMISSIONS',   icon: 'pi pi-id-card',      route: '/admissions'      },
+      { label: 'NAV.ROOMS',        icon: 'pi pi-box',          route: '/rooms'           },
+      { label: 'NAV.HOUSEKEEPING', icon: 'pi pi-wrench',       route: '/housekeeping'    },
     ],
   },
   {
-    label: 'Specialties',
+    label: 'NAV.SECTIONS.SPECIALTIES',
     items: [
-      { label: 'Ophthalmology',icon: 'pi pi-eye',          route: '/ophthalmology'   },
-      { label: 'Dental',       icon: 'pi pi-star',         route: '/dental'          },
+      { label: 'NAV.OPHTHALMOLOGY',icon: 'pi pi-eye',          route: '/ophthalmology'   },
+      { label: 'NAV.DENTAL',       icon: 'pi pi-star',         route: '/dental'          },
     ],
   },
   {
-    label: 'Administration',
+    label: 'NAV.SECTIONS.ADMINISTRATION',
     items: [
-      { label: 'Audit',        icon: 'pi pi-shield',       route: '/audit'           },
-      { label: 'Reports',      icon: 'pi pi-chart-bar',    route: '/reports'         },
-      { label: 'Settings',     icon: 'pi pi-sliders-h',    route: '/settings'        },
-      { label: 'Users',        icon: 'pi pi-users',        route: '/user-management' },
+      { label: 'NAV.AUDIT',        icon: 'pi pi-shield',       route: '/audit'           },
+      { label: 'NAV.REPORTS',      icon: 'pi pi-chart-bar',    route: '/reports'         },
+      { label: 'NAV.SETTINGS',     icon: 'pi pi-sliders-h',    route: '/settings'        },
+      { label: 'NAV.USERS',        icon: 'pi pi-users',        route: '/user-management' },
     ],
   },
 ];
@@ -71,7 +72,7 @@ const ALL_NAV_SECTIONS: NavSection[] = [
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive],
+  imports: [CommonModule, RouterLink, RouterLinkActive, TranslatePipe],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })

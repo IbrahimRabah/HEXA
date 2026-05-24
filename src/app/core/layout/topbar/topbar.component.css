@@ -116,6 +116,34 @@
   color: #dc2626 !important;
 }
 
+/* Language toggle button */
+.lang-btn {
+  font-weight: 700;
+  font-size: 0.8rem;
+  min-width: 38px;
+  letter-spacing: 0.3px;
+}
+.lang-label {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0;
+}
+
+/* RTL overrides */
+:host-context([dir="rtl"]) .topbar-left {
+  flex-direction: row-reverse;
+}
+:host-context([dir="rtl"]) .topbar-right {
+  flex-direction: row-reverse;
+}
+:host-context([dir="rtl"]) .user-info {
+  text-align: right;
+}
+:host-context([dir="rtl"]) .chevron-icon {
+  transform: scaleX(-1);
+}
+
 /* ============================================
    Dark Mode
    ============================================ */

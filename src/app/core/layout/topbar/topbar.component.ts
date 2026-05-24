@@ -5,8 +5,10 @@ import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { Menu } from 'primeng/menu';
 import { MenuItem } from 'primeng/api';
+import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
 import { ThemeService } from '../../services/theme.service';
+import { LanguageService } from '../../services/language.service';
 
 const ROLE_COLORS: Record<string, string> = {
   Admin:           '#2563eb',
@@ -21,7 +23,7 @@ const ROLE_COLORS: Record<string, string> = {
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [CommonModule, ButtonModule, AvatarModule, MenuModule],
+  imports: [CommonModule, ButtonModule, AvatarModule, MenuModule, TranslatePipe],
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.css'],
 })
@@ -31,32 +33,40 @@ export class TopbarComponent {
 
   private authService = inject(AuthService);
   private themeService = inject(ThemeService);
+  readonly langService = inject(LanguageService);
+  private translate = inject(TranslateService);
 
   readonly currentUser = this.authService.currentUser;
   readonly isDark = this.themeService.isDark;
+
+  get userMenuItems(): MenuItem[] {
+    return [
+      {
+        label: this.translate.instant('USER_MENU.MY_PROFILE'),
+        icon: 'pi pi-user',
+      },
+      {
+        label: this.translate.instant('USER_MENU.SETTINGS'),
+        icon: 'pi pi-cog',
+        routerLink: '/settings',
+      },
+      { separator: true },
+      {
+        label: this.translate.instant('USER_MENU.SIGN_OUT'),
+        icon: 'pi pi-sign-out',
+        styleClass: 'danger-item',
+        command: () => this.authService.logout(),
+      },
+    ];
+  }
 
   toggleTheme(): void {
     this.themeService.toggle();
   }
 
-  readonly userMenuItems: MenuItem[] = [
-    {
-      label: 'My Profile',
-      icon: 'pi pi-user',
-    },
-    {
-      label: 'Settings',
-      icon: 'pi pi-cog',
-      routerLink: '/settings',
-    },
-    { separator: true },
-    {
-      label: 'Sign Out',
-      icon: 'pi pi-sign-out',
-      styleClass: 'danger-item',
-      command: () => this.authService.logout(),
-    },
-  ];
+  toggleLanguage(): void {
+    this.langService.toggle();
+  }
 
   getUserInitials(): string {
     const name = this.currentUser()?.name ?? '';
