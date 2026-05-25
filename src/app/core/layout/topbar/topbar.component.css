@@ -175,9 +175,6 @@
 }
 
 /* RTL overrides */
-:host-context([dir="rtl"]) .topbar-left {
-  flex-direction: row-reverse;
-}
 :host-context([dir="rtl"]) .topbar-right {
   flex-direction: row-reverse;
 }
