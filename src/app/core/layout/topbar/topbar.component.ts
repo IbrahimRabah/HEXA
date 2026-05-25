@@ -4,6 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { MenuModule } from 'primeng/menu';
 import { Menu } from 'primeng/menu';
+import { PopoverModule } from 'primeng/popover';
+import { Popover } from 'primeng/popover';
 import { MenuItem } from 'primeng/api';
 import { TranslateService, TranslatePipe } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
@@ -23,13 +25,14 @@ const ROLE_COLORS: Record<string, string> = {
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [CommonModule, ButtonModule, AvatarModule, MenuModule, TranslatePipe],
+  imports: [CommonModule, ButtonModule, AvatarModule, MenuModule, PopoverModule, TranslatePipe],
   templateUrl: './topbar.component.html',
   styleUrls: ['./topbar.component.css'],
 })
 export class TopbarComponent {
   @Output() toggleSidebar = new EventEmitter<void>();
   @ViewChild('userMenu') userMenu!: Menu;
+  @ViewChild('notifPanel') notifPanel!: Popover;
 
   private authService = inject(AuthService);
   private themeService = inject(ThemeService);
@@ -38,6 +41,18 @@ export class TopbarComponent {
 
   readonly currentUser = this.authService.currentUser;
   readonly isDark = this.themeService.isDark;
+
+  notifications = [
+    { icon: 'pi-calendar',             color: '#2563eb', title: 'New appointment scheduled', body: 'Dr. Smith — Room 204',          time: '2 min ago',  read: false },
+    { icon: 'pi-flask',                color: '#d97706', title: 'Lab result ready',           body: 'Patient: Ahmed Hassan',         time: '18 min ago', read: false },
+    { icon: 'pi-exclamation-triangle', color: '#ef4444', title: 'Critical stock alert',       body: 'Pharmacy: Amoxicillin low',     time: '1 hr ago',   read: false },
+    { icon: 'pi-check-circle',         color: '#16a34a', title: 'Surgery completed',          body: 'OR-2 — Patient discharged',     time: '3 hrs ago',  read: true  },
+  ];
+
+  get unreadCount() { return this.notifications.filter(n => !n.read).length; }
+
+  toggleNotifPanel(e: Event) { this.notifPanel.toggle(e); }
+  markAllRead() { this.notifications.forEach(n => (n.read = true)); }
 
   get userMenuItems(): MenuItem[] {
     return [

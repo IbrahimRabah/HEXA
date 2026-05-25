@@ -15,11 +15,37 @@
   <!-- Right: notifications + theme + language + user -->
   <div class="topbar-right">
 
-    <button class="icon-btn notif-btn" [title]="'TOPBAR.NOTIFICATIONS' | translate"
+    <button class="icon-btn notif-btn" (click)="toggleNotifPanel($event)"
+      [title]="'TOPBAR.NOTIFICATIONS' | translate"
       [attr.aria-label]="'TOPBAR.NOTIFICATIONS' | translate">
       <i class="pi pi-bell"></i>
-      <span class="notif-badge">3</span>
+      @if (unreadCount > 0) {
+        <span class="notif-badge">{{ unreadCount }}</span>
+      }
     </button>
+
+    <p-popover #notifPanel styleClass="notif-popover">
+      <div class="notif-header">
+        <span class="notif-title">{{ 'TOPBAR.NOTIFICATIONS' | translate }}</span>
+        @if (unreadCount > 0) {
+          <button class="notif-mark-all" (click)="markAllRead()">Mark all read</button>
+        }
+      </div>
+      <ul class="notif-list">
+        @for (n of notifications; track n.title) {
+          <li class="notif-item" [class.notif-unread]="!n.read">
+            <span class="notif-icon" [style.background]="n.color + '18'" [style.color]="n.color">
+              <i class="pi {{ n.icon }}"></i>
+            </span>
+            <div class="notif-body">
+              <p class="notif-item-title">{{ n.title }}</p>
+              <p class="notif-item-body">{{ n.body }}</p>
+            </div>
+            <span class="notif-time">{{ n.time }}</span>
+          </li>
+        }
+      </ul>
+    </p-popover>
 
     <button class="icon-btn theme-btn" (click)="toggleTheme()"
       [title]="isDark() ? ('TOPBAR.SWITCH_LIGHT' | translate) : ('TOPBAR.SWITCH_DARK' | translate)"
