@@ -57,7 +57,7 @@
               [class.chip-routine]="p.value === 'Routine'"
               [class.chip-active]="form.get('priority')?.value === p.value"
               (click)="form.get('priority')?.setValue(p.value)">
-              {{ ('PRIORITY.' + p.value + '_LABEL') | translate }}
+              {{ ('PRIORITY.' + p.value.toUpperCase() + '_LABEL') | translate }}
             </button>
           }
         </div>
@@ -91,7 +91,7 @@
               </div>
               <div class="col-tcat">
                 <p-select formControlName="category" [options]="testCategories"
-                  optionLabel="label" optionValue="value" placeholder="Category" styleClass="w-full"></p-select>
+                  optionLabel="label" optionValue="value" placeholder="Category" styleClass="w-full" appendTo="body"></p-select>
               </div>
               <div class="col-tremove">
                 <button type="button" class="btn-remove" (click)="removeTest($index)"
