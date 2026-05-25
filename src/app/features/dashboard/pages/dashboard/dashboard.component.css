@@ -24,8 +24,8 @@
 .kpi-cyan    { background: linear-gradient(135deg, #26C6DA, #00838F); }
 
 .kpi-icon  { font-size: 2rem; opacity: 0.9; }
-.kpi-value { font-size: 1.75rem; font-weight: 700; line-height: 1; }
-.kpi-label { font-size: 0.8rem; opacity: 0.9; margin-top: 0.25rem; }
+.kpi-card .kpi-value { font-size: 1.75rem; font-weight: 700; line-height: 1; color: white; }
+.kpi-card .kpi-label { font-size: 0.8rem; color: rgba(255, 255, 255, 0.85); margin-top: 0.25rem; }
 
 .dashboard-grid {
   display: grid;
@@ -85,7 +85,7 @@
   border: 1px solid var(--p-surface-300);
   border-radius: 6px;
   text-decoration: none;
-  color: var(--p-text-color);
+  color: var(--hc-text);
   font-size: 0.875rem;
   transition: all 0.2s;
 }
